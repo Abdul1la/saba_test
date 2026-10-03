@@ -1,0 +1,11 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- The INTERNET permission is declared in the main manifest, because the
+         app needs it in every build type, not only during development. -->
+
+    <!-- Debug-only: permit cleartext HTTP to loopback hosts so the app can
+         reach a local backend. Release builds do not include this file and
+         keep Android's default, which refuses cleartext entirely.
+         See src/debug/res/xml/network_security_config.xml. -->
+    <application
+        android:networkSecurityConfig="@xml/network_security_config" />
+</manifest>

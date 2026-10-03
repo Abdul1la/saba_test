@@ -1,0 +1,7 @@
+# Copy to android/key.properties and fill it in. Never commit either, nor
+# the .jks file (android/.gitignore keeps them out). See mobile/README.md,
+# "Android release signing".
+storeFile=C:/path/to/upload-keystore.jks
+storePassword=
+keyAlias=upload
+keyPassword=

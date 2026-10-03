@@ -1,0 +1,8 @@
+node_modules/
+dist/
+.env
+storage/
+# Firebase's service-account file (FCM_SERVICE_ACCOUNT_FILE): a private key.
+*service-account*.json
+*firebase-adminsdk*.json
+test/.prove-backup.json

@@ -1,0 +1,95 @@
+<!doctype html>
+<!--
+  Google Play's account-deletion page (BACKEND_PLAN.md §2.0, "Before launch").
+  Served at /delete-account. Before launch, replace every {{…}} below
+  (the list is in BACKEND_PLAN.md §12): the support email, the WhatsApp
+  number, and how long order records are kept, in English and in Arabic.
+-->
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>حذف حسابك في سبأ · Delete your Saba account</title>
+    <style>
+      :root { color-scheme: light dark; --ink: #1d1d1f; --soft: #5f6368; --line: #e3e3e6; --page: #ffffff; --accent: #0b7a5c; }
+      @media (prefers-color-scheme: dark) { :root { --ink: #ececef; --soft: #a8a8ae; --line: #33343a; --page: #141416; --accent: #4fc9a1; } }
+      body { margin: 0; background: var(--page); color: var(--ink); font: 16px/1.6 system-ui, "Segoe UI", Tahoma, sans-serif; }
+      main { max-width: 680px; margin: 0 auto; padding: 32px 16px 48px; }
+      section + section { margin-top: 40px; padding-top: 32px; border-top: 1px solid var(--line); }
+      h1 { font-size: 1.6rem; line-height: 1.3; margin: 0 0 8px; }
+      h2 { font-size: 1.1rem; margin: 28px 0 8px; }
+      p, li { color: var(--ink); }
+      .lead { color: var(--soft); margin-top: 0; }
+      ul { padding-inline-start: 22px; }
+      a { color: var(--accent); }
+      [lang="en"] { direction: ltr; text-align: left; }
+    </style>
+  </head>
+  <body>
+    <main>
+      <section lang="ar" dir="rtl">
+        <h1>حذف حسابك في سبأ</h1>
+        <p class="lead">سبأ سوق إلكتروني في العراق. هكذا تطلب حذف حسابك، متسوقاً كنت أو صاحب متجر.</p>
+
+        <h2>من التطبيق</h2>
+        <ul>
+          <li><strong>المتسوق:</strong> افتح تطبيق سبأ، ثم <strong>حسابي</strong>، واضغط على اسمك في الأعلى، ثم <strong>حذف الحساب</strong>.</li>
+          <li><strong>صاحب المتجر:</strong> افتح تطبيق سبأ، ثم <strong>حسابي</strong>، ثم <strong>ملفي الشخصي</strong>، ثم <strong>حذف الحساب</strong>.</li>
+        </ul>
+        <p>ما يحدث بعدها:</p>
+        <ul>
+          <li><strong>المتسوق:</strong> يُحذف حسابك فوراً، إلا إذا كان لديك طلب لم ينتهِ بعد؛ عندها يمكن حذفه بعد انتهاء الطلب.</li>
+          <li><strong>صاحب المتجر:</strong> يُغلق متجرك فوراً، ويُحذف حسابك خلال ساعة من انتهاء طلباتك ومرتجعاتك المفتوحة، ومرور مهلة الإرجاع (7 أيام بعد آخر توصيل)، ودفع آخر فاتورة لسبأ. تصلك رسالة SMS عند الحذف. ما دامت فاتورة غير مدفوعة يبقى المتجر مغلقاً ولا يُحذف، ونحتفظ برقمك لتحصيلها.</li>
+        </ul>
+
+        <h2>من دون التطبيق</h2>
+        <p>راسلنا من رقم الهاتف المسجّل به حسابك على واتساب <a href="https://wa.me/{{WHATSAPP}}" dir="ltr">+{{WHATSAPP}}</a>، أو اكتب إلى <a href="mailto:{{SUPPORT_EMAIL}}">{{SUPPORT_EMAIL}}</a> وأرسل رقم الهاتف المسجّل به حسابك. نتأكد من الطلب معك، ثم نحذف الحساب بالقواعد نفسها المذكورة أعلاه.</p>
+
+        <h2>ما يُحذف</h2>
+        <ul>
+          <li>اسمك ورقم هاتفك وبريدك الإلكتروني وكلمة المرور.</li>
+          <li>عناوينك المحفوظة وسلة التسوق والمفضلة، وأجهزتك المسجّلة للإشعارات.</li>
+          <li>لصاحب المتجر أيضاً: صفحة المتجر ومنتجاته ورموز الخصم وشعاره وصورة غلافه.</li>
+        </ul>
+
+        <h2>ما نحتفظ به ولماذا</h2>
+        <ul>
+          <li>الطلبات والفواتير والمرتجعات وفواتير المتاجر تبقى سجلاتٍ كما يطلب القانون، ومعها الاسم ورقم الهاتف والعنوان الذي وُصّل إليه الطلب، واسم المتجر. نحتفظ بها {{RECORDS_KEPT_AR}}.</li>
+          <li>تبقى تقييماتك ورسائلك من دون اسمك. رسائل المتجر المحذوف تبقى عند المتسوق باسم المتجر.</li>
+        </ul>
+      </section>
+
+      <section lang="en" dir="ltr">
+        <h1>Delete your Saba account</h1>
+        <p class="lead">Saba is an online marketplace in Iraq. This is how to ask for your account to be deleted, as a shopper or as a store owner.</p>
+
+        <h2>In the app</h2>
+        <ul>
+          <li><strong>Shoppers:</strong> open the Saba app, go to <strong>Account</strong>, tap your name at the top, then <strong>Delete account</strong>.</li>
+          <li><strong>Store owners:</strong> open the Saba app, go to <strong>Account</strong>, then <strong>My profile</strong>, then <strong>Delete account</strong>.</li>
+        </ul>
+        <p>What happens next:</p>
+        <ul>
+          <li><strong>Shoppers:</strong> your account is deleted at once, unless an order is still open; then it can be deleted once that order is finished.</li>
+          <li><strong>Store owners:</strong> your store closes at once. Your account is deleted within the hour once your open orders and returns are finished, the return window (7 days after your last delivery) has passed, and your last bill to Saba is paid. You get an SMS when it's done. While a bill is unpaid, the store stays closed and is not deleted, and we keep your number to collect it.</li>
+        </ul>
+
+        <h2>Without the app</h2>
+        <p>Message us on WhatsApp at <a href="https://wa.me/{{WHATSAPP}}">+{{WHATSAPP}}</a> from the phone number of your account, or email <a href="mailto:{{SUPPORT_EMAIL}}">{{SUPPORT_EMAIL}}</a> with the phone number of your account. We confirm the request with you, then delete the account by the same rules as above.</p>
+
+        <h2>What is deleted</h2>
+        <ul>
+          <li>Your name, phone number, email and password.</li>
+          <li>Your saved addresses, cart and wishlist, and your devices registered for notifications.</li>
+          <li>For a store owner, also: the store's page, its products, its discount codes, its logo and its banner.</li>
+        </ul>
+
+        <h2>What we keep, and why</h2>
+        <ul>
+          <li>Orders, invoices, returns and store bills are kept as records, as the law requires, with the name, phone number and address each order was delivered to, and the store's name. We keep them for {{RECORDS_KEPT_EN}}.</li>
+          <li>Your reviews and messages stay without your name. A deleted store's messages stay with the shopper under the store's name.</li>
+        </ul>
+      </section>
+    </main>
+  </body>
+</html>

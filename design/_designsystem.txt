@@ -1,0 +1,587 @@
+س
+Saba
+/ سَبَأ
+Design system
+Foundations and components for the Saba multi-vendor marketplace. Phase 1: tokens, type, states. Screens follow in the next pass. Every token here is named exactly as it should be implemented in Flutter.
+390 × 844
+iOS · Android · Flutter
+AR-RTL + EN-LTR
+IQD · 250,000 د.ع
+01 — FOUNDATIONS
+Colour
+Near-black carries the brand. Orange is the only chromatic accent and appears on icon tiles, sale badges and one‑per‑screen highlights — never as background decoration. Semantic colours are always paired with an icon or a word.
+Light theme
+color/bg/page
+#F5F6F8
+color/surface
+#FFFFFF
+color/surface/sunken
+#EDEFF2
+color/surface/dark
+#14181D
+color/border
+#E4E7EC
+color/primary
+#14181D
+color/text/primary
+#0E1A2B · 15.8:1
+color/text/secondary
+#55677D · 5.6:1
+color/text/muted
+#8A99AB · 3.0:1 ✳
+color/accent
+#D9600B · 4.6:1
+color/accent/soft
+#FDF1E7
+on dark
+color/on-primary
+#FFFFFF
+✳ text/muted is for 11–12px helper and footer text only, never for body copy or for anything a user must read to act.
+Dark theme
+color/bg/page
+#0B0E12
+color/surface
+#151A21
+color/surface/sunken
+#10151A
+color/surface/dark
+#1F2730 ↑
+color/border
+#2A323C
+color/primary ⇄
+#F2F5F8
+color/text/primary
+#F2F5F8 · 16.1:1
+color/text/secondary
+#A2B0C0 · 7.4:1
+color/text/muted
+#6E7C8C
+color/accent
+#F5852B · 7.9:1
+color/accent/soft
+#2B1B0E
+on light
+color/on-primary ⇄
+#0B0E12
+Semantic and stock
+semantic/success
+#127346 / #34C77B
+semantic/warning
+#9A6208 / #E8A33D
+semantic/error
+#B32D1C / #FF7A66
+semantic/info
+#1B5FA8 / #6BA9E8
+stock/in
+✓ In stock
+stock/low
+! Only 3 left
+stock/out
+✕ Out of stock
+Two hexes per semantic token: light theme / dark theme. Out of stock is grey, not red — it is a fact, not a failure.
+02 — FOUNDATIONS
+Dark mode: keeping the dark elements readable
+The identity is dark-on-light, so a naive dark theme erases it. The rule is:
+dark elements do not stay dark — they keep their role by inverting or by rising.
+Three different fixes, one per element class.
+1 · Primary buttons invert
+Ink and paper swap.
+color/primary
+becomes near-white and
+color/on-primary
+becomes near-black, so the primary action is still the highest-contrast thing on screen.
+Buy Now
+Buy Now
+2 · The header card rises
+It was dark to separate itself from a white page. In dark mode it becomes the
+lightest
+surface on the page —
+#1F2730
+plus a hairline border. Same shape, same role, opposite direction.
+3 · The nav keeps its white pill
+The bar lifts to
+#1F2730
+with a border and a stronger shadow so it still reads as floating; the active pill stays white. The signature is the pill, not the bar.
+Home
+Home
+!
+The one thing never to do:
+keep a dark fill on a dark page. If a component was dark in light mode, in dark mode it is either inverted (buttons, active pill, corner action button, rating pill) or elevated with a border (header card, nav bar, bottom sheet, dialog). There is no third option, and no component keeps
+#14181D
+in dark mode.
+03 — FOUNDATIONS
+Type scale
+One family,
+IBM Plex Sans Arabic
+, for Arabic and Latin. It has real weights at 300–700, sharp Latin, and Arabic that keeps its structure at small sizes. Arabic runs longer and taller: every level gets
++0.12 line height
+and drops the negative tracking, which is a Latin-only optical fix.
+token
+latin
+عربي
+spec
+type/display
+Welcome back
+أهلاً بعودتك
+34 / 700 / 1.08
+AR 1.20 · ls 0
+type/heading
+Create your account
+أنشئ حسابك
+26 / 700 / 1.15
+AR 1.27
+type/subtitle
+How do you want to use Saba? You can always add a store later.
+كيف تريد استخدام سبأ؟ يمكنك دائماً إضافة متجر لاحقاً.
+16 / 400 / 1.50
+AR 1.62
+type/card-title
+I'm a merchant
+أنا تاجر
+18 / 700 / 1.25
+AR 1.37
+type/body
+Open a store, list products and reach buyers near you.
+افتح متجراً واعرض منتجاتك ووصّلها لمشترين قريبين منك.
+14.5 / 400 / 1.55
+AR 1.67
+type/price
+250,000 IQD
+250,000 د.ع
+22 / 700 / 1.10
+tabular-nums, no decimals
+type/label
+Proceed to checkout
+متابعة الدفع
+13 / 600 / 1.30
+AR 1.42 · buttons, chips
+type/caption
+Drivers are added by the admin
+يُضاف السائقون من قِبل المشرف
+12 / 400 / 1.40
+AR 1.55 · min 11.5 in cards
+The weight gap is the hierarchy
+Headings are 700, body is 400. Nothing sits at 500 except numerals in dense merchant tiles. Two weights, far apart, is what stops the app reading flat — 600 is reserved for button and chip labels only.
+Numerals stay Western in both languages
+Iraqi users read 250,000 far faster than ٢٥٠٬٠٠٠ in a price. Digits are Western with a comma group separator; only the currency mark localises:
+د.ع
+/ IQD. Always tabular so columns of prices align.
+04 — FOUNDATIONS
+Space, radius, separation
+Spacing — 4pt base
+space/xs · 4
+icon to its label
+space/sm · 8
+title to description
+space/md · 12
+between chips, grid gutter
+space/lg · 16
+card padding, screen gutter
+space/xl · 24
+heading to content
+space/section-gap · 32
+between home sections
+space/2xl · 48
+empty-state breathing room
+space/nav-safe · 104
+bottom padding on every scroll view
+Radius
+radius/xs · 8
+badges, chips-sm
+radius/action · 14
+corner action, size box
+radius/input · 18
+fields, list rows
+radius/card · 24
+product + merchant cards
+radius/sheet · 32
+header card, bottom sheet
+radius/pill · full
+buttons, nav, chips
+How separation works
+In order of preference:
+space first
+— 32 between sections does the job of a divider. Then a
+soft neutral fill
+(
+surface/sunken
+) behind product images and inactive chips. Then a
+1px border
+where a card must hold its own edge against a same-colour background. Shadow is used on exactly three things: the floating nav, the sticky buy bar and the bottom sheet —
+elevation/float: 0 8px 24px rgba(14,26,43,.10)
+. Divider lines appear only inside a totals table, where rows are genuinely a table.
+05 — COMPONENTS
+Buttons and actions
+Every interactive element is at least 48×48 including its invisible tap padding, even when it looks smaller. Pressed is a 2% scale-down plus a fill shift, never a colour change to another hue.
+Dark pill button ·
+button/primary
+The one action on the screen that moves the user forward. Height 52, radius full, label 13/600, optional 18px leading icon. Never two of these visible at once.
+Shop Now
+default
+Shop Now
+pressed
+Shop Now
+focused · keyboard / TalkBack
+Signing in…
+loading · label changes, width holds
+Shop Now
+disabled
+Shop Now
+default · inverted
+Shop Now
+pressed
+Shop Now
+focused
+Shop Now
+disabled
+Outlined button ·
+button/outlined
+The second real action — Add to cart, Register as merchant. Same height and radius as primary, 1.5px border, dark label.
+Register as merchant
+default
+Add to cart
+pressed
+Add to cart
+disabled
+Add to cart
+default
+Add to cart
+disabled
+Text and destructive ·
+button/text
+·
+button/destructive
+Text buttons for reversible, low-stakes taps. Destructive is outlined in error, never a filled red block — it should be findable, not tempting.
+Forgot password?
+default
+Forgot password?
+disabled
+Delete account
+destructive
+Delete account
+destructive · confirm step only
+Forgot password?
+default
+Delete account
+destructive
+Circular icon button ·
+button/icon-circle
+Back, share, favourite, filter, notifications. 44 visible, 48 tap. Grey circle on white; white circle when it sits on a dark card or a photo. Every one carries an accessibility label — the icon alone is not the name.
+default
+pressed
+focused
+disabled
+unread dot
+selected
+default
+selected · inverts
+disabled
+Corner action button ·
+button/corner-action
+The small dark rounded square in the bottom trailing corner of a product card. One tap adds to cart. It confirms in place — tick for 1.2s — instead of firing a snackbar for every add.
+default
+pressed
+added
+loading
+disabled · out of stock
+error · tap to retry
+default · inverts
+added
+disabled
+06 — COMPONENTS
+Inputs and selection
+Fields are filled, not outlined, at rest —
+surface/sunken
+with no border. The border only appears on focus and on error, so an errored field is visible from across the screen. Errors sit below the field in words, and the field keeps what the user typed.
+Text input ·
+input/text
+Email
+you@example.com
+empty · placeholder
+Email
+amina.h@gmail.com
+focused · filled
+Password
+••••••••
+with show / hide
+Password
+•••••
+Password needs at least 8 characters.
+error · icon + words, never colour alone
+Country
+Iraq
+disabled
+Arabic input, dropdown, search ·
+input/select
+·
+input/search
+البريد الإلكتروني
+amina.h@gmail.com
+RTL: label right, but the email itself stays LTR
+City
+Baghdad
+dropdown · opens a bottom sheet, not a menu
+Search products and stores
+search bar · a tappable pill, not a live field. Filter button is a separate 52 circle.
+ابحث عن منتجات ومتاجر
+Expanding filter chip ·
+chip/filter
+Unselected chips are icon-only 44 circles. The selected chip expands into a dark pill and reveals its label, so the row stays short and the selection is unmistakable. The expansion animates over 180ms; in RTL the row scrolls from the right and the chip expands leftward.
+Popular
+selected · unselected ×3 · disabled
+الأكثر رواجاً
+RTL · label is longer in Arabic, so the pill sizes to content
+Popular
+dark · selected chip inverts to light
+Checkbox, radio, switch
+off · on · mixed · disabled · error
+off · on · disabled off · disabled on
+off · on · disabled · saving
+Switches save immediately and show the spinner in the track; if the save fails the switch snaps back and an inline error appears under the row. Radio and checkbox rows put the control on the leading side — left in English, right in Arabic.
+Rating pill, star row, badges
+★★★★★
+250 Reviews
+★★★★★
+250 تقييم
+★★★★★
+No reviews yet
+★★★★
+★
+4.6
+(128)
+star row · card size, always with the numeral
+Delivered
+Pending
+Shipped
+Cancelled
+Out of stock
+−25%
+Every badge is icon + word. A colour-blind user, or a screenshot printed in black and white, still reads the status.
+Quantity stepper
+−
+1
++
+at minimum — decrement is greyed, not hidden
+−
+3
++
+Only 3 left — that is the stock ceiling.
+Colour swatch
+Stacked vertically
+beside the image, as in the reference.
+Selected carries a tick, not just a ring. Unavailable is struck through and still tappable — tapping says which size makes it available.
+The colour name is announced to screen readers and shown in the label above.
+Size / option selector
+S
+M
+L
+XL
+XXL
+unselected · selected · unselected · unavailable · focused
+Unavailable combinations stay visible and struck through. Hiding them makes the user think the product changed.
+128 GB
+256 GB
+same component, word-length options → pill-width boxes
+07 — COMPONENTS
+Cards, containers, navigation
+Shown at real size on a 390-wide column. Product names are the awkward cases on purpose: two-line Arabic, a missing image, a long store name.
+Product card ·
+card/product
+−25%
+Cotton hoodie, heavy weight
+★★★★
+★
+4.6 (128)
+180,000
+135,000
+IQD
+لا توجد صورة
+نفد المخزون
+طقم أواني طبخ ستانلس ستيل 12 قطعة
+★★★★★
+لا تقييمات
+450,000
+د.ع
+Name clamps at two lines and the card height is fixed, so a grid never goes ragged. No image → a neutral tile with the words "no image", never a stretched placeholder photo.
+Product row ·
+row/product
+Cotton hoodie, heavy weight
+Black · Size M
+135,000 IQD
+−
+1
++
+Wireless earbuds, noise cancelling
+Out of stock
+default · out of stock, with save-for-later and remove
+Dark header card ·
+card/header-dark
+أ
+Welcome back
+Amina Hussein
+Introducing
+Furniture week
+up to 40% off
+Shop Now
+The card owns the status bar area too — it runs to the top edge of the screen.
+Floating pill navigation ·
+nav/pill
+Height 64, side margin 20, bottom margin 16 above the safe area, radius full. The active tab is a white pill holding icon + label; everything else is an icon in a 48 tap circle. A badge sits on the icon's trailing-top corner with a 2px ring in the bar colour so it reads as separate from the icon — inside the active white pill the badge flips to dark fill.
+Home
+3
+السلة
+3
+customer LTR · customer RTL with cart active and a badge inside the white pill
+Dashboard
+12
+merchant, dark theme · Dashboard, Products, Orders, Analytics, Store
+App bar and section header
+Order details
+تفاصيل الطلب
+the back chevron flips direction — it points at the edge the user came from
+Top picks nearby
+See all
+اختيارات قريبة منك
+عرض الكل
+Bottom sheet and dialog
+Choose a city
+Delivery times and fees change by city.
+Baghdad
+Basra
+Erbil
+Delete your account?
+Your orders, addresses and wishlist are removed. This cannot be undone.
+Delete account
+Keep my account
+Destructive dialogs name the consequence in the body and put the safe choice second but visually equal. Neither button is pre-focused.
+08 — COMPONENTS
+Feedback and shared states
+Designed once, used on every screen. Snackbars sit
+above
+the floating nav — bottom offset 96, not 16 — so the bar never hides them.
+Snackbars and offline banner
+Added to your cart.
+View
+Couldn't add that item. Try again.
+Retry
+حُفظ المنتج في المفضلة.
+تراجع
+No connection — showing saved items
+success · error · info RTL · offline banner, pinned under the app bar
+Skeletons ·
+skeleton/list · grid · detail
+list
+grid
+Skeletons take the exact shape of the content that replaces them, so nothing jumps. A 1.2s shimmer sweeps in the reading direction — left to right in English, right to left in Arabic. After 8 seconds the skeleton becomes the error state; it never spins forever.
+Empty state
+Your cart is empty
+Items you add from any store will appear here, grouped by seller.
+Start shopping
+Error — full page
+Can't reach Saba
+Check your connection and try again. Nothing you did was lost.
+Retry
+Calm, not alarmed. No red, no warning triangle — a weak signal is not an error the user caused.
+Inline error, load more, pull to refresh
+That email or password is wrong
+Check them and try again, or reset your password.
+Loading more
+Couldn't load more — tap to retry
+You've reached the end
+pull to refresh — the spinner floats over the dark header card
+09 — WRITING
+Short bold title, one plain sentence
+Every choice, setting, option and empty state is written the same way: a title of two to four words, then one sentence saying what happens when the user taps it. No marketing, no jargon, no second sentence. The Arabic is written natively, not translated word for word.
+I'm a customer
+Browse stores and buy safely with escrow.
+I'm a merchant
+Open a store, list products and reach buyers near you.
+أنا عميل
+تصفّح المتاجر واشترِ بأمان عبر الضمان.
+أنا تاجر
+افتح متجراً واعرض منتجاتك ووصّلها لمشترين قريبين منك.
+Write this
+“Only 3 left” · “Your store is under review. We check documents within two working days.” · “Saved for later. It moves back to your cart when you tap it.”
+Not this
+“Hurry — almost gone!” · “Verification pending.” · “Item successfully moved to the saved items list.”
+10 — HANDOFF
+Token list
+Implement these names verbatim. Two values per colour token: light / dark. Tokens marked ⇄ swap roles between themes rather than shifting shade.
+COLOUR
+color/bg/page
+color/surface
+color/surface/sunken
+color/surface/dark ⇄
+color/border
+color/border/strong
+color/primary ⇄
+color/on-primary ⇄
+color/accent
+color/accent/soft
+color/text/primary
+color/text/secondary
+color/text/muted
+color/text/on-dark
+color/overlay/scrim
+SEMANTIC
+semantic/success · /soft
+semantic/warning · /soft
+semantic/error · /soft
+semantic/info · /soft
+stock/in
+stock/low
+stock/out
+TYPE
+type/display · 34/700/1.08
+type/heading · 26/700/1.15
+type/subtitle · 16/400/1.50
+type/card-title · 18/700/1.25
+type/body · 14.5/400/1.55
+type/price · 22/700/1.10
+type/label · 13/600/1.30
+type/caption · 12/400/1.40
+type/caption-sm · 11.5/400/1.35
+type/line-height/ar-delta · +0.12
+SPACE
+space/xs · 4
+space/sm · 8
+space/md · 12
+space/lg · 16
+space/xl · 24
+space/section-gap · 32
+space/2xl · 48
+space/screen-gutter · 16
+space/nav-safe · 104
+RADIUS
+radius/xs · 8
+radius/action · 14
+radius/input · 18
+radius/card · 24
+radius/sheet · 32
+radius/pill · 999
+COMPONENT
+button/primary/height · 52
+button/icon-circle/size · 44
+button/corner-action/size · 40
+input/height · 54
+chip/filter/height · 44
+nav/pill/height · 64
+nav/pill/inset-x · 20
+nav/pill/inset-bottom · 16
+nav/pill/active/height · 48
+nav/badge/size · 18
+card/product/radius · 24
+card/product/image-ratio · 4:3
+card/header-dark/radius-bottom · 32
+sheet/handle · 36×4
+snackbar/inset-bottom · 96
+tap/min · 48
+ELEVATION · MOTION
+elevation/float · 0 8 24 / 10%
+elevation/dialog · 0 12 32 / 16%
+motion/press · 120ms · scale .98
+motion/chip-expand · 180ms
+motion/sheet · 240ms
+motion/skeleton · 1200ms
+Next pass
+The ten screens, at 390×844, each in English LTR and Arabic RTL side by side, light and dark — plus the per-screen RTL notes and the tappable customer flow (Home → Product → Cart → Checkout). Tell me which screen to start with, or I'll start with Home and Product detail since they set the rhythm everything else follows.

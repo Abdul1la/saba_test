@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- The launch screen's mark, white on the purple. Drawn by tool/app_icons.py from SabaMark's paths. -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+    <group
+        android:scaleX="0.52"
+        android:scaleY="0.52"
+        android:translateX="26"
+        android:translateY="26">
+        <path
+            android:fillColor="#FFFFFF"
+            android:pathData="M18,0 L82,0 A18,18 0 0 1 100,18 L100,82 A18,18 0 0 1 82,100 L18,100 A18,18 0 0 1 0,82 L0,18 A18,18 0 0 1 18,0 Z" />
+        <path
+            android:fillColor="#6B3FA0"
+            android:fillType="evenOdd"
+            android:pathData="M33.6 83.02 L66.07 83.02 A12.5 12.5 0 0 0 78.57 70.52 L78.57 38.19 A8 8 0 0 0 70.57 30.19 L68.96 30.19 A19.3 19.3 0 0 0 31.04 30.19 L29.43 30.19 A8 8 0 0 0 21.43 38.19 L21.43 75.95 L53.29 57.55 A5.64 5.64 0 0 1 58.93 67.31 Z M38.4 34.34 A11.6 11.6 0 0 1 61.6 34.34 L61.6 42.97 L35.9 57.81 L35.9 39.9 L38.4 37.4 Z" />
+        <path
+            android:fillColor="#F0A22E"
+            android:pathData="M50 27.84 L57.3 35.14 L50 42.44 L42.7 35.14 Z" />
+    </group>
+</vector>

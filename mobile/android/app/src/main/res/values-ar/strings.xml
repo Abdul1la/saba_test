@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- The name under the icon and in the recent-apps list. It was
+         the package name, so the phone called the app
+         "saba_marketplace". Matches appName in the app strings. -->
+    <string name="app_name">سبأ</string>
+    <!-- The pushes' channel, as Android's settings name it. -->
+    <string name="push_channel">الطلبات والرسائل</string>
+</resources>

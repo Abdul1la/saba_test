@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "246011975732",
+    "project_id": "saba-marketplace",
+    "storage_bucket": "saba-marketplace.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:246011975732:android:cf0d4f22464b4b85b01261",
+        "android_client_info": {
+          "package_name": "com.sabacompany.sabamarketplace"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBtA86tCWJxo93k7iLJ9bvXcYFpTgsWYpg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

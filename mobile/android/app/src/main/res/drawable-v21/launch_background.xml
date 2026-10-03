@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- The window behind the app while the Dart VM starts: the logo's purple,
+     the colour Flutter's splash screen opens on, so there is no cut. -->
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:drawable="@color/saba_launch_background" />
+</layer-list>

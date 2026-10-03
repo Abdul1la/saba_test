@@ -1,0 +1,764 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet data-dc-atomics>
+<meta name="design_doc_mode" content="canvas">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#E9EBEE;font-family:'IBM Plex Sans Arabic',system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+a{color:#C2560B;text-decoration:none}
+a:hover{color:#8F3E06}
+*{box-sizing:border-box}
+</style>
+</helmet>
+
+<div style="width:1360px;margin:0 auto;padding:56px 20px 120px;display:flex;flex-direction:column;gap:28px">
+
+  <div style="display:flex;justify-content:space-between;align-items:flex-end;gap:40px;padding:8px 4px 20px">
+    <div style="display:flex;flex-direction:column;gap:18px">
+      <div style="display:flex;align-items:center;gap:14px">
+        <div style="width:44px;height:44px;border-radius:14px;background:#14181D;color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:20px;letter-spacing:-.03em">س</div>
+        <div style="font:700 20px/1 'IBM Plex Sans Arabic';color:#0E1A2B;letter-spacing:-.02em">Saba<span style="color:#93A1B3;font-weight:400"> / سَبَأ</span></div>
+      </div>
+      <div style="font:700 56px/1.02 'IBM Plex Sans Arabic';color:#0E1A2B;letter-spacing:-.035em">Design system</div>
+      <div style="font:400 18px/1.6 'IBM Plex Sans Arabic';color:#5A6B80;max-width:60ch;text-wrap:pretty">Foundations and components for the Saba multi-vendor marketplace. Phase 1: tokens, type, states. Screens follow in the next pass. Every token here is named exactly as it should be implemented in Flutter.</div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:10px;flex:none;padding-bottom:6px">
+      <div style="display:flex;gap:10px"><div style="font:500 12px/1 'IBM Plex Mono';color:#5A6B80;background:#fff;border:1px solid #E4E7EC;border-radius:8px;padding:9px 12px">390 × 844</div><div style="font:500 12px/1 'IBM Plex Mono';color:#5A6B80;background:#fff;border:1px solid #E4E7EC;border-radius:8px;padding:9px 12px">iOS · Android · Flutter</div></div>
+      <div style="display:flex;gap:10px"><div style="font:500 12px/1 'IBM Plex Mono';color:#5A6B80;background:#fff;border:1px solid #E4E7EC;border-radius:8px;padding:9px 12px">AR-RTL + EN-LTR</div><div style="font:500 12px/1 'IBM Plex Mono';color:#5A6B80;background:#fff;border:1px solid #E4E7EC;border-radius:8px;padding:9px 12px">IQD · 250,000 د.ع</div></div>
+    </div>
+  </div>
+
+  <div style="background:#fff;border:1px solid #E4E7EC;border-radius:24px;padding:36px 40px 40px;display:flex;flex-direction:column;gap:28px">
+    <div style="display:flex;flex-direction:column;gap:10px">
+      <div style="font:700 11px/1 'IBM Plex Sans Arabic';letter-spacing:.16em;color:#93A1B3">01 — FOUNDATIONS</div>
+      <div style="font:700 34px/1.1 'IBM Plex Sans Arabic';color:#0E1A2B;letter-spacing:-.025em">Colour</div>
+      <div style="font:400 16px/1.6 'IBM Plex Sans Arabic';color:#5A6B80;max-width:72ch;text-wrap:pretty">Near-black carries the brand. Orange is the only chromatic accent and appears on icon tiles, sale badges and one‑per‑screen highlights — never as background decoration. Semantic colours are always paired with an icon or a word.</div>
+    </div>
+
+    <div style="display:flex;flex-direction:column;gap:14px">
+      <div style="font:600 13px/1 'IBM Plex Sans Arabic';color:#0E1A2B;letter-spacing:.02em">Light theme</div>
+      <div style="display:grid;grid-template-columns:repeat(6,1fr);gap:14px">
+        <div style="display:flex;flex-direction:column;gap:8px"><div style="height:72px;border-radius:14px;background:#F5F6F8;border:1px solid #E4E7EC"></div><div style="font:500 11px/1.3 'IBM Plex Mono';color:#0E1A2B">color/bg/page</div><div style="font:400 11px/1 'IBM Plex Mono';color:#93A1B3">#F5F6F8</div></div>
+        <div style="display:flex;flex-direction:column;gap:8px"><div style="height:72px;border-radius:14px;background:#FFFFFF;border:1px solid #E4E7EC"></div><div style="font:500 11px/1.3 'IBM Plex Mono';color:#0E1A2B">color/surface</div><div style="font:400 11px/1 'IBM Plex Mono';color:#93A1B3">#FFFFFF</div></div>
+        <div style="display:flex;flex-direction:column;gap:8px"><div style="height:72px;border-radius:14px;background:#EDEFF2;border:1px solid #E4E7EC"></div><div style="font:500 11px/1.3 'IBM Plex Mono';color:#0E1A2B">color/surface/sunken</div><div style="font:400 11px/1 'IBM Plex Mono';color:#93A1B3">#EDEFF2</div></div>
+        <div style="display:flex;flex-direction:column;gap:8px"><div style="height:72px;border-radius:14px;background:#14181D"></div><div style="font:500 11px/1.3 'IBM Plex Mono';color:#0E1A2B">color/surface/dark</div><div style="font:400 11px/1 'IBM Plex Mono';color:#93A1B3">#14181D</div></div>
+        <div style="display:flex;flex-direction:column;gap:8px"><div style="height:72px;border-radius:14px;background:#E4E7EC"></div><div style="font:500 11px/1.3 'IBM Plex Mono';color:#0E1A2B">color/border</div><div style="font:400 11px/1 'IBM Plex Mono';color:#93A1B3">#E4E7EC</div></div>
+        <div style="display:flex;flex-direction:column;gap:8px"><div style="height:72px;border-radius:14px;background:#14181D"></div><div style="font:500 11px/1.3 'IBM Plex Mono';color:#0E1A2B">color/primary</div><div style="font:400 11px/1 'IBM Plex Mono';color:#93A1B3">#14181D</div></div>
+        <div style="display:flex;flex-direction:column;gap:8px"><div style="height:72px;border-radius:14px;background:#0E1A2B"></div><div style="font:500 11px/1.3 'IBM Plex Mono';color:#0E1A2B">color/text/primary</div><div style="font:400 11px/1 'IBM Plex Mono';color:#93A1B3">#0E1A2B · 15.8:1</div></div>
+        <div style="display:flex;flex-direction:column;gap:8px"><div style="height:72px;border-radius:14px;background:#55677D"></div><div style="font:500 11px/1.3 'IBM Plex Mono';color:#0E1A2B">color/text/secondary</div><div style="font:400 11px/1 'IBM Plex Mono';color:#93A1B3">#55677D · 5.6:1</div></div>
+        <div style="display:flex;flex-direction:column;gap:8px"><div style="height:72px;border-radius:14px;background:#8A99AB"></div><div style="font:500 11px/1.3 'IBM Plex Mono';color:#0E1A2B">color/text/muted</div><div style="font:400 11px/1 'IBM Plex Mono';color:#93A1B3">#8A99AB · 3.0:1 ✳</div></div>
+        <div style="display:flex;flex-direction:column;gap:8px"><div style="height:72px;border-radius:14px;background:#D9600B"></div><div style="font:500 11px/1.3 'IBM Plex Mono';color:#0E1A2B">color/accent</div><div style="font:400 11px/1 'IBM Plex Mono';color:#93A1B3">#D9600B · 4.6:1</div></div>
+        <div style="display:flex;flex-direction:column;gap:8px"><div style="height:72px;border-radius:14px;background:#FDF1E7;border:1px solid #F6DCC6"></div><div style="font:500 11px/1.3 'IBM Plex Mono';color:#0E1A2B">color/accent/soft</div><div style="font:400 11px/1 'IBM Plex Mono';color:#93A1B3">#FDF1E7</div></div>
+        <div style="display:flex;flex-direction:column;gap:8px"><div style="height:72px;border-radius:14px;background:#FFFFFF;border:1px solid #E4E7EC;display:flex;align-items:center;justify-content:center;font:500 11px 'IBM Plex Mono';color:#8A99AB">on dark</div><div style="font:500 11px/1.3 'IBM Plex Mono';color:#0E1A2B">color/on-primary</div><div style="font:400 11px/1 'IBM Plex Mono';color:#93A1B3">#FFFFFF</div></div>
+      </div>
+      <div style="font:400 12px/1.5 'IBM Plex Sans Arabic';color:#8A99AB">✳ text/muted is for 11–12px helper and footer text only, never for body copy or for anything a user must read to act.</div>
+    </div>
+
+    <div style="display:flex;flex-direction:column;gap:14px;background:#0B0E12;border-radius:20px;padding:26px 28px">
+      <div style="font:600 13px/1 'IBM Plex Sans Arabic';color:#F2F5F8;letter-spacing:.02em">Dark theme</div>
+      <div style="display:grid;grid-template-columns:repeat(6,1fr);gap:14px">
+        <div style="display:flex;flex-direction:column;gap:8px"><div style="height:72px;border-radius:14px;background:#0B0E12;border:1px solid #2A323C"></div><div style="font:500 11px/1.3 'IBM Plex Mono';color:#F2F5F8">color/bg/page</div><div style="font:400 11px/1 'IBM Plex Mono';color:#7D8B9C">#0B0E12</div></div>
+        <div style="display:flex;flex-direction:column;gap:8px"><div style="height:72px;border-radius:14px;background:#151A21;border:1px solid #2A323C"></div><div style="font:500 11px/1.3 'IBM Plex Mono';color:#F2F5F8">color/surface</div><div style="font:400 11px/1 'IBM Plex Mono';color:#7D8B9C">#151A21</div></div>
+        <div style="display:flex;flex-direction:column;gap:8px"><div style="height:72px;border-radius:14px;background:#10151A;border:1px solid #2A323C"></div><div style="font:500 11px/1.3 'IBM Plex Mono';color:#F2F5F8">color/surface/sunken</div><div style="font:400 11px/1 'IBM Plex Mono';color:#7D8B9C">#10151A</div></div>
+        <div style="display:flex;flex-direction:column;gap:8px"><div style="height:72px;border-radius:14px;background:#1F2730;border:1px solid #303A45"></div><div style="font:500 11px/1.3 'IBM Plex Mono';color:#F2F5F8">color/surface/dark</div><div style="font:400 11px/1 'IBM Plex Mono';color:#7D8B9C">#1F2730 ↑</div></div>
+        <div style="display:flex;flex-direction:column;gap:8px"><div style="height:72px;border-radius:14px;background:#2A323C"></div><div style="font:500 11px/1.3 'IBM Plex Mono';color:#F2F5F8">color/border</div><div style="font:400 11px/1 'IBM Plex Mono';color:#7D8B9C">#2A323C</div></div>
+        <div style="display:flex;flex-direction:column;gap:8px"><div style="height:72px;border-radius:14px;background:#F2F5F8"></div><div style="font:500 11px/1.3 'IBM Plex Mono';color:#F2F5F8">color/primary ⇄</div><div style="font:400 11px/1 'IBM Plex Mono';color:#7D8B9C">#F2F5F8</div></div>
+        <div style="display:flex;flex-direction:column;gap:8px"><div style="height:72px;border-radius:14px;background:#F2F5F8"></div><div style="font:500 11px/1.3 'IBM Plex Mono';color:#F2F5F8">color/text/primary</div><div style="font:400 11px/1 'IBM Plex Mono';color:#7D8B9C">#F2F5F8 · 16.1:1</div></div>
+        <div style="display:flex;flex-direction:column;gap:8px"><div style="height:72px;border-radius:14px;background:#A2B0C0"></div><div style="font:500 11px/1.3 'IBM Plex Mono';color:#F2F5F8">color/text/secondary</div><div style="font:400 11px/1 'IBM Plex Mono';color:#7D8B9C">#A2B0C0 · 7.4:1</div></div>
+        <div style="display:flex;flex-direction:column;gap:8px"><div style="height:72px;border-radius:14px;background:#6E7C8C"></div><div style="font:500 11px/1.3 'IBM Plex Mono';color:#F2F5F8">color/text/muted</div><div style="font:400 11px/1 'IBM Plex Mono';color:#7D8B9C">#6E7C8C</div></div>
+        <div style="display:flex;flex-direction:column;gap:8px"><div style="height:72px;border-radius:14px;background:#F5852B"></div><div style="font:500 11px/1.3 'IBM Plex Mono';color:#F2F5F8">color/accent</div><div style="font:400 11px/1 'IBM Plex Mono';color:#7D8B9C">#F5852B · 7.9:1</div></div>
+        <div style="display:flex;flex-direction:column;gap:8px"><div style="height:72px;border-radius:14px;background:#2B1B0E;border:1px solid #47301A"></div><div style="font:500 11px/1.3 'IBM Plex Mono';color:#F2F5F8">color/accent/soft</div><div style="font:400 11px/1 'IBM Plex Mono';color:#7D8B9C">#2B1B0E</div></div>
+        <div style="display:flex;flex-direction:column;gap:8px"><div style="height:72px;border-radius:14px;background:#0B0E12;border:1px solid #2A323C;display:flex;align-items:center;justify-content:center;font:500 11px 'IBM Plex Mono';color:#7D8B9C">on light</div><div style="font:500 11px/1.3 'IBM Plex Mono';color:#F2F5F8">color/on-primary ⇄</div><div style="font:400 11px/1 'IBM Plex Mono';color:#7D8B9C">#0B0E12</div></div>
+      </div>
+    </div>
+
+    <div style="display:flex;flex-direction:column;gap:14px">
+      <div style="font:600 13px/1 'IBM Plex Sans Arabic';color:#0E1A2B;letter-spacing:.02em">Semantic and stock</div>
+      <div style="display:grid;grid-template-columns:repeat(7,1fr);gap:14px">
+        <div style="display:flex;flex-direction:column;gap:8px"><div style="height:56px;border-radius:14px;background:#127346"></div><div style="font:500 11px/1.3 'IBM Plex Mono';color:#0E1A2B">semantic/success</div><div style="font:400 11px/1 'IBM Plex Mono';color:#93A1B3">#127346 / #34C77B</div></div>
+        <div style="display:flex;flex-direction:column;gap:8px"><div style="height:56px;border-radius:14px;background:#9A6208"></div><div style="font:500 11px/1.3 'IBM Plex Mono';color:#0E1A2B">semantic/warning</div><div style="font:400 11px/1 'IBM Plex Mono';color:#93A1B3">#9A6208 / #E8A33D</div></div>
+        <div style="display:flex;flex-direction:column;gap:8px"><div style="height:56px;border-radius:14px;background:#B32D1C"></div><div style="font:500 11px/1.3 'IBM Plex Mono';color:#0E1A2B">semantic/error</div><div style="font:400 11px/1 'IBM Plex Mono';color:#93A1B3">#B32D1C / #FF7A66</div></div>
+        <div style="display:flex;flex-direction:column;gap:8px"><div style="height:56px;border-radius:14px;background:#1B5FA8"></div><div style="font:500 11px/1.3 'IBM Plex Mono';color:#0E1A2B">semantic/info</div><div style="font:400 11px/1 'IBM Plex Mono';color:#93A1B3">#1B5FA8 / #6BA9E8</div></div>
+        <div style="display:flex;flex-direction:column;gap:8px"><div style="height:56px;border-radius:14px;background:#127346"></div><div style="font:500 11px/1.3 'IBM Plex Mono';color:#0E1A2B">stock/in</div><div style="font:400 11px/1 'IBM Plex Mono';color:#93A1B3">✓ In stock</div></div>
+        <div style="display:flex;flex-direction:column;gap:8px"><div style="height:56px;border-radius:14px;background:#9A6208"></div><div style="font:500 11px/1.3 'IBM Plex Mono';color:#0E1A2B">stock/low</div><div style="font:400 11px/1 'IBM Plex Mono';color:#93A1B3">! Only 3 left</div></div>
+        <div style="display:flex;flex-direction:column;gap:8px"><div style="height:56px;border-radius:14px;background:#6B7787"></div><div style="font:500 11px/1.3 'IBM Plex Mono';color:#0E1A2B">stock/out</div><div style="font:400 11px/1 'IBM Plex Mono';color:#93A1B3">✕ Out of stock</div></div>
+      </div>
+      <div style="font:400 12px/1.5 'IBM Plex Sans Arabic';color:#8A99AB">Two hexes per semantic token: light theme / dark theme. Out of stock is grey, not red — it is a fact, not a failure.</div>
+    </div>
+  </div>
+
+  <div style="background:#fff;border:1px solid #E4E7EC;border-radius:24px;padding:36px 40px 40px;display:flex;flex-direction:column;gap:26px">
+    <div style="display:flex;flex-direction:column;gap:10px">
+      <div style="font:700 11px/1 'IBM Plex Sans Arabic';letter-spacing:.16em;color:#93A1B3">02 — FOUNDATIONS</div>
+      <div style="font:700 34px/1.1 'IBM Plex Sans Arabic';color:#0E1A2B;letter-spacing:-.025em">Dark mode: keeping the dark elements readable</div>
+      <div style="font:400 16px/1.6 'IBM Plex Sans Arabic';color:#5A6B80;max-width:72ch;text-wrap:pretty">The identity is dark-on-light, so a naive dark theme erases it. The rule is: <strong style="color:#0E1A2B;font-weight:600">dark elements do not stay dark — they keep their role by inverting or by rising.</strong> Three different fixes, one per element class.</div>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:20px">
+
+      <div style="display:flex;flex-direction:column;gap:12px;border:1px solid #E4E7EC;border-radius:18px;padding:20px;background:#FAFBFC">
+        <div style="font:700 16px/1.3 'IBM Plex Sans Arabic';color:#0E1A2B">1 · Primary buttons invert</div>
+        <div style="font:400 13.5px/1.6 'IBM Plex Sans Arabic';color:#5A6B80">Ink and paper swap. <code style="font:500 12px 'IBM Plex Mono';color:#0E1A2B">color/primary</code> becomes near-white and <code style="font:500 12px 'IBM Plex Mono';color:#0E1A2B">color/on-primary</code> becomes near-black, so the primary action is still the highest-contrast thing on screen.</div>
+        <div style="display:flex;flex-direction:column;gap:10px;margin-top:2px">
+          <div style="background:#F5F6F8;border-radius:14px;padding:16px;display:flex;justify-content:center"><div style="background:#14181D;color:#fff;border-radius:999px;padding:14px 28px;font:600 14px/1 'IBM Plex Sans Arabic'">Buy Now</div></div>
+          <div style="background:#0B0E12;border-radius:14px;padding:16px;display:flex;justify-content:center"><div style="background:#F2F5F8;color:#0B0E12;border-radius:999px;padding:14px 28px;font:600 14px/1 'IBM Plex Sans Arabic'">Buy Now</div></div>
+        </div>
+      </div>
+
+      <div style="display:flex;flex-direction:column;gap:12px;border:1px solid #E4E7EC;border-radius:18px;padding:20px;background:#FAFBFC">
+        <div style="font:700 16px/1.3 'IBM Plex Sans Arabic';color:#0E1A2B">2 · The header card rises</div>
+        <div style="font:400 13.5px/1.6 'IBM Plex Sans Arabic';color:#5A6B80">It was dark to separate itself from a white page. In dark mode it becomes the <em>lightest</em> surface on the page — <code style="font:500 12px 'IBM Plex Mono';color:#0E1A2B">#1F2730</code> plus a hairline border. Same shape, same role, opposite direction.</div>
+        <div style="display:flex;flex-direction:column;gap:10px;margin-top:2px">
+          <div style="background:#F5F6F8;border-radius:14px;padding:12px"><div style="background:#14181D;border-radius:14px;height:64px;display:flex;align-items:center;gap:10px;padding:0 14px"><div style="width:28px;height:28px;border-radius:50%;background:#3A424C"></div><div style="display:flex;flex-direction:column;gap:5px"><div style="width:70px;height:7px;border-radius:4px;background:#fff"></div><div style="width:44px;height:6px;border-radius:4px;background:#6E7C8C"></div></div></div></div>
+          <div style="background:#0B0E12;border-radius:14px;padding:12px"><div style="background:#1F2730;border:1px solid #303A45;border-radius:14px;height:64px;display:flex;align-items:center;gap:10px;padding:0 14px"><div style="width:28px;height:28px;border-radius:50%;background:#3A424C"></div><div style="display:flex;flex-direction:column;gap:5px"><div style="width:70px;height:7px;border-radius:4px;background:#F2F5F8"></div><div style="width:44px;height:6px;border-radius:4px;background:#6E7C8C"></div></div></div></div>
+        </div>
+      </div>
+
+      <div style="display:flex;flex-direction:column;gap:12px;border:1px solid #E4E7EC;border-radius:18px;padding:20px;background:#FAFBFC">
+        <div style="font:700 16px/1.3 'IBM Plex Sans Arabic';color:#0E1A2B">3 · The nav keeps its white pill</div>
+        <div style="font:400 13.5px/1.6 'IBM Plex Sans Arabic';color:#5A6B80">The bar lifts to <code style="font:500 12px 'IBM Plex Mono';color:#0E1A2B">#1F2730</code> with a border and a stronger shadow so it still reads as floating; the active pill stays white. The signature is the pill, not the bar.</div>
+        <div style="display:flex;flex-direction:column;gap:10px;margin-top:2px">
+          <div style="background:#F5F6F8;border-radius:14px;padding:16px 12px;display:flex;justify-content:center"><div style="background:#14181D;border-radius:999px;height:52px;display:flex;align-items:center;gap:6px;padding:0 8px"><div style="background:#fff;border-radius:999px;height:36px;padding:0 14px;display:flex;align-items:center;font:600 11px 'IBM Plex Sans Arabic';color:#14181D">Home</div><div style="width:36px;height:36px;border-radius:50%;background:#2A323C"></div><div style="width:36px;height:36px;border-radius:50%;background:#2A323C"></div><div style="width:36px;height:36px;border-radius:50%;background:#2A323C"></div></div></div>
+          <div style="background:#0B0E12;border-radius:14px;padding:16px 12px;display:flex;justify-content:center"><div style="background:#1F2730;border:1px solid #39434F;border-radius:999px;height:52px;display:flex;align-items:center;gap:6px;padding:0 8px;box-shadow:0 8px 24px rgba(0,0,0,.6)"><div style="background:#fff;border-radius:999px;height:36px;padding:0 14px;display:flex;align-items:center;font:600 11px 'IBM Plex Sans Arabic';color:#14181D">Home</div><div style="width:36px;height:36px;border-radius:50%;background:#333D49"></div><div style="width:36px;height:36px;border-radius:50%;background:#333D49"></div><div style="width:36px;height:36px;border-radius:50%;background:#333D49"></div></div></div>
+        </div>
+      </div>
+    </div>
+    <div style="display:flex;gap:16px;background:#FDF1E7;border:1px solid #F6DCC6;border-radius:16px;padding:18px 20px">
+      <div style="flex:none;width:28px;height:28px;border-radius:9px;background:#D9600B;color:#fff;display:flex;align-items:center;justify-content:center;font:700 15px/1 'IBM Plex Sans Arabic'">!</div>
+      <div style="font:400 14px/1.6 'IBM Plex Sans Arabic';color:#5A3612;max-width:100ch"><strong style="font-weight:700;color:#7A3D06">The one thing never to do:</strong> keep a dark fill on a dark page. If a component was dark in light mode, in dark mode it is either inverted (buttons, active pill, corner action button, rating pill) or elevated with a border (header card, nav bar, bottom sheet, dialog). There is no third option, and no component keeps <code style="font:500 13px 'IBM Plex Mono'">#14181D</code> in dark mode.</div>
+    </div>
+  </div>
+
+  <div style="background:#fff;border:1px solid #E4E7EC;border-radius:24px;padding:36px 40px 40px;display:flex;flex-direction:column;gap:26px">
+    <div style="display:flex;flex-direction:column;gap:10px">
+      <div style="font:700 11px/1 'IBM Plex Sans Arabic';letter-spacing:.16em;color:#93A1B3">03 — FOUNDATIONS</div>
+      <div style="font:700 34px/1.1 'IBM Plex Sans Arabic';color:#0E1A2B;letter-spacing:-.025em">Type scale</div>
+      <div style="font:400 16px/1.6 'IBM Plex Sans Arabic';color:#5A6B80;max-width:72ch;text-wrap:pretty">One family, <strong style="color:#0E1A2B;font-weight:600">IBM Plex Sans Arabic</strong>, for Arabic and Latin. It has real weights at 300–700, sharp Latin, and Arabic that keeps its structure at small sizes. Arabic runs longer and taller: every level gets <strong style="color:#0E1A2B;font-weight:600">+0.12 line height</strong> and drops the negative tracking, which is a Latin-only optical fix.</div>
+    </div>
+
+    <div style="display:grid;grid-template-columns:150px 1fr 1fr 190px;gap:0;border:1px solid #E4E7EC;border-radius:18px;overflow:hidden">
+      <div style="background:#F5F6F8;padding:12px 16px;font:600 11px/1.4 'IBM Plex Mono';color:#55677D">token</div>
+      <div style="background:#F5F6F8;padding:12px 16px;font:600 11px/1.4 'IBM Plex Mono';color:#55677D">latin</div>
+      <div style="background:#F5F6F8;padding:12px 16px;font:600 11px/1.4 'IBM Plex Mono';color:#55677D;text-align:right">عربي</div>
+      <div style="background:#F5F6F8;padding:12px 16px;font:600 11px/1.4 'IBM Plex Mono';color:#55677D">spec</div>
+
+      <div style="padding:20px 16px;border-top:1px solid #EDEFF2;font:500 11px/1.4 'IBM Plex Mono';color:#0E1A2B">type/display</div>
+      <div style="padding:20px 16px;border-top:1px solid #EDEFF2;font:700 34px/1.08 'IBM Plex Sans Arabic';color:#0E1A2B;letter-spacing:-.03em">Welcome back</div>
+      <div style="padding:20px 16px;border-top:1px solid #EDEFF2;font:700 34px/1.2 'IBM Plex Sans Arabic';color:#0E1A2B;text-align:right" dir="rtl">أهلاً بعودتك</div>
+      <div style="padding:20px 16px;border-top:1px solid #EDEFF2;font:400 11.5px/1.7 'IBM Plex Mono';color:#55677D">34 / 700 / 1.08<br>AR 1.20 · ls 0</div>
+
+      <div style="padding:20px 16px;border-top:1px solid #EDEFF2;font:500 11px/1.4 'IBM Plex Mono';color:#0E1A2B">type/heading</div>
+      <div style="padding:20px 16px;border-top:1px solid #EDEFF2;font:700 26px/1.15 'IBM Plex Sans Arabic';color:#0E1A2B;letter-spacing:-.025em">Create your account</div>
+      <div style="padding:20px 16px;border-top:1px solid #EDEFF2;font:700 26px/1.27 'IBM Plex Sans Arabic';color:#0E1A2B;text-align:right" dir="rtl">أنشئ حسابك</div>
+      <div style="padding:20px 16px;border-top:1px solid #EDEFF2;font:400 11.5px/1.7 'IBM Plex Mono';color:#55677D">26 / 700 / 1.15<br>AR 1.27</div>
+
+      <div style="padding:20px 16px;border-top:1px solid #EDEFF2;font:500 11px/1.4 'IBM Plex Mono';color:#0E1A2B">type/subtitle</div>
+      <div style="padding:20px 16px;border-top:1px solid #EDEFF2;font:400 16px/1.5 'IBM Plex Sans Arabic';color:#55677D">How do you want to use Saba? You can always add a store later.</div>
+      <div style="padding:20px 16px;border-top:1px solid #EDEFF2;font:400 16px/1.62 'IBM Plex Sans Arabic';color:#55677D;text-align:right" dir="rtl">كيف تريد استخدام سبأ؟ يمكنك دائماً إضافة متجر لاحقاً.</div>
+      <div style="padding:20px 16px;border-top:1px solid #EDEFF2;font:400 11.5px/1.7 'IBM Plex Mono';color:#55677D">16 / 400 / 1.50<br>AR 1.62</div>
+
+      <div style="padding:20px 16px;border-top:1px solid #EDEFF2;font:500 11px/1.4 'IBM Plex Mono';color:#0E1A2B">type/card-title</div>
+      <div style="padding:20px 16px;border-top:1px solid #EDEFF2;font:700 18px/1.25 'IBM Plex Sans Arabic';color:#0E1A2B;letter-spacing:-.01em">I'm a merchant</div>
+      <div style="padding:20px 16px;border-top:1px solid #EDEFF2;font:700 18px/1.37 'IBM Plex Sans Arabic';color:#0E1A2B;text-align:right" dir="rtl">أنا تاجر</div>
+      <div style="padding:20px 16px;border-top:1px solid #EDEFF2;font:400 11.5px/1.7 'IBM Plex Mono';color:#55677D">18 / 700 / 1.25<br>AR 1.37</div>
+
+      <div style="padding:20px 16px;border-top:1px solid #EDEFF2;font:500 11px/1.4 'IBM Plex Mono';color:#0E1A2B">type/body</div>
+      <div style="padding:20px 16px;border-top:1px solid #EDEFF2;font:400 14.5px/1.55 'IBM Plex Sans Arabic';color:#55677D">Open a store, list products and reach buyers near you.</div>
+      <div style="padding:20px 16px;border-top:1px solid #EDEFF2;font:400 14.5px/1.67 'IBM Plex Sans Arabic';color:#55677D;text-align:right" dir="rtl">افتح متجراً واعرض منتجاتك ووصّلها لمشترين قريبين منك.</div>
+      <div style="padding:20px 16px;border-top:1px solid #EDEFF2;font:400 11.5px/1.7 'IBM Plex Mono';color:#55677D">14.5 / 400 / 1.55<br>AR 1.67</div>
+
+      <div style="padding:20px 16px;border-top:1px solid #EDEFF2;font:500 11px/1.4 'IBM Plex Mono';color:#0E1A2B">type/price</div>
+      <div style="padding:20px 16px;border-top:1px solid #EDEFF2;font:700 22px/1.1 'IBM Plex Sans Arabic';color:#0E1A2B;letter-spacing:-.02em;font-variant-numeric:tabular-nums">250,000 IQD</div>
+      <div style="padding:20px 16px;border-top:1px solid #EDEFF2;font:700 22px/1.2 'IBM Plex Sans Arabic';color:#0E1A2B;text-align:right;font-variant-numeric:tabular-nums" dir="rtl">250,000 د.ع</div>
+      <div style="padding:20px 16px;border-top:1px solid #EDEFF2;font:400 11.5px/1.7 'IBM Plex Mono';color:#55677D">22 / 700 / 1.10<br>tabular-nums, no decimals</div>
+
+      <div style="padding:20px 16px;border-top:1px solid #EDEFF2;font:500 11px/1.4 'IBM Plex Mono';color:#0E1A2B">type/label</div>
+      <div style="padding:20px 16px;border-top:1px solid #EDEFF2;font:600 13px/1.3 'IBM Plex Sans Arabic';color:#0E1A2B">Proceed to checkout</div>
+      <div style="padding:20px 16px;border-top:1px solid #EDEFF2;font:600 13px/1.42 'IBM Plex Sans Arabic';color:#0E1A2B;text-align:right" dir="rtl">متابعة الدفع</div>
+      <div style="padding:20px 16px;border-top:1px solid #EDEFF2;font:400 11.5px/1.7 'IBM Plex Mono';color:#55677D">13 / 600 / 1.30<br>AR 1.42 · buttons, chips</div>
+
+      <div style="padding:20px 16px;border-top:1px solid #EDEFF2;font:500 11px/1.4 'IBM Plex Mono';color:#0E1A2B">type/caption</div>
+      <div style="padding:20px 16px;border-top:1px solid #EDEFF2;font:400 12px/1.4 'IBM Plex Sans Arabic';color:#8A99AB">Drivers are added by the admin</div>
+      <div style="padding:20px 16px;border-top:1px solid #EDEFF2;font:400 12px/1.55 'IBM Plex Sans Arabic';color:#8A99AB;text-align:right" dir="rtl">يُضاف السائقون من قِبل المشرف</div>
+      <div style="padding:20px 16px;border-top:1px solid #EDEFF2;font:400 11.5px/1.7 'IBM Plex Mono';color:#55677D">12 / 400 / 1.40<br>AR 1.55 · min 11.5 in cards</div>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px">
+      <div style="border:1px solid #E4E7EC;border-radius:16px;padding:18px 20px;display:flex;flex-direction:column;gap:8px"><div style="font:700 15px/1.3 'IBM Plex Sans Arabic';color:#0E1A2B">The weight gap is the hierarchy</div><div style="font:400 13.5px/1.6 'IBM Plex Sans Arabic';color:#5A6B80">Headings are 700, body is 400. Nothing sits at 500 except numerals in dense merchant tiles. Two weights, far apart, is what stops the app reading flat — 600 is reserved for button and chip labels only.</div></div>
+      <div style="border:1px solid #E4E7EC;border-radius:16px;padding:18px 20px;display:flex;flex-direction:column;gap:8px"><div style="font:700 15px/1.3 'IBM Plex Sans Arabic';color:#0E1A2B">Numerals stay Western in both languages</div><div style="font:400 13.5px/1.6 'IBM Plex Sans Arabic';color:#5A6B80">Iraqi users read 250,000 far faster than ٢٥٠٬٠٠٠ in a price. Digits are Western with a comma group separator; only the currency mark localises: <span dir="rtl">د.ع</span> / IQD. Always tabular so columns of prices align.</div></div>
+    </div>
+  </div>
+
+  <div style="background:#fff;border:1px solid #E4E7EC;border-radius:24px;padding:36px 40px 40px;display:flex;flex-direction:column;gap:26px">
+    <div style="display:flex;flex-direction:column;gap:10px">
+      <div style="font:700 11px/1 'IBM Plex Sans Arabic';letter-spacing:.16em;color:#93A1B3">04 — FOUNDATIONS</div>
+      <div style="font:700 34px/1.1 'IBM Plex Sans Arabic';color:#0E1A2B;letter-spacing:-.025em">Space, radius, separation</div>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:28px">
+      <div style="display:flex;flex-direction:column;gap:14px">
+        <div style="font:600 13px/1 'IBM Plex Sans Arabic';color:#0E1A2B">Spacing — 4pt base</div>
+        <div style="display:flex;flex-direction:column;gap:9px">
+          <div style="display:flex;align-items:center;gap:14px"><div style="width:4px;height:22px;background:#D9600B;border-radius:2px"></div><div style="font:500 11.5px 'IBM Plex Mono';color:#0E1A2B;width:130px">space/xs · 4</div><div style="font:400 12.5px 'IBM Plex Sans Arabic';color:#8A99AB">icon to its label</div></div>
+          <div style="display:flex;align-items:center;gap:14px"><div style="width:8px;height:22px;background:#D9600B;border-radius:2px"></div><div style="font:500 11.5px 'IBM Plex Mono';color:#0E1A2B;width:130px">space/sm · 8</div><div style="font:400 12.5px 'IBM Plex Sans Arabic';color:#8A99AB">title to description</div></div>
+          <div style="display:flex;align-items:center;gap:14px"><div style="width:12px;height:22px;background:#D9600B;border-radius:2px"></div><div style="font:500 11.5px 'IBM Plex Mono';color:#0E1A2B;width:130px">space/md · 12</div><div style="font:400 12.5px 'IBM Plex Sans Arabic';color:#8A99AB">between chips, grid gutter</div></div>
+          <div style="display:flex;align-items:center;gap:14px"><div style="width:16px;height:22px;background:#D9600B;border-radius:2px"></div><div style="font:500 11.5px 'IBM Plex Mono';color:#0E1A2B;width:130px">space/lg · 16</div><div style="font:400 12.5px 'IBM Plex Sans Arabic';color:#8A99AB">card padding, screen gutter</div></div>
+          <div style="display:flex;align-items:center;gap:14px"><div style="width:24px;height:22px;background:#D9600B;border-radius:2px"></div><div style="font:500 11.5px 'IBM Plex Mono';color:#0E1A2B;width:130px">space/xl · 24</div><div style="font:400 12.5px 'IBM Plex Sans Arabic';color:#8A99AB">heading to content</div></div>
+          <div style="display:flex;align-items:center;gap:14px"><div style="width:32px;height:22px;background:#D9600B;border-radius:2px"></div><div style="font:500 11.5px 'IBM Plex Mono';color:#0E1A2B;width:130px">space/section-gap · 32</div><div style="font:400 12.5px 'IBM Plex Sans Arabic';color:#8A99AB">between home sections</div></div>
+          <div style="display:flex;align-items:center;gap:14px"><div style="width:48px;height:22px;background:#D9600B;border-radius:2px"></div><div style="font:500 11.5px 'IBM Plex Mono';color:#0E1A2B;width:130px">space/2xl · 48</div><div style="font:400 12.5px 'IBM Plex Sans Arabic';color:#8A99AB">empty-state breathing room</div></div>
+          <div style="display:flex;align-items:center;gap:14px"><div style="width:104px;height:22px;background:#0E1A2B;border-radius:2px"></div><div style="font:500 11.5px 'IBM Plex Mono';color:#0E1A2B;width:130px">space/nav-safe · 104</div><div style="font:400 12.5px 'IBM Plex Sans Arabic';color:#8A99AB">bottom padding on every scroll view</div></div>
+        </div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:14px">
+        <div style="font:600 13px/1 'IBM Plex Sans Arabic';color:#0E1A2B">Radius</div>
+        <div style="display:flex;flex-wrap:wrap;gap:14px">
+          <div style="display:flex;flex-direction:column;gap:7px"><div style="width:84px;height:62px;background:#EDEFF2;border:1px solid #E4E7EC;border-radius:8px"></div><div style="font:500 11px 'IBM Plex Mono';color:#0E1A2B">radius/xs · 8</div><div style="font:400 11px 'IBM Plex Sans Arabic';color:#8A99AB">badges, chips-sm</div></div>
+          <div style="display:flex;flex-direction:column;gap:7px"><div style="width:84px;height:62px;background:#EDEFF2;border:1px solid #E4E7EC;border-radius:14px"></div><div style="font:500 11px 'IBM Plex Mono';color:#0E1A2B">radius/action · 14</div><div style="font:400 11px 'IBM Plex Sans Arabic';color:#8A99AB">corner action, size box</div></div>
+          <div style="display:flex;flex-direction:column;gap:7px"><div style="width:84px;height:62px;background:#EDEFF2;border:1px solid #E4E7EC;border-radius:18px"></div><div style="font:500 11px 'IBM Plex Mono';color:#0E1A2B">radius/input · 18</div><div style="font:400 11px 'IBM Plex Sans Arabic';color:#8A99AB">fields, list rows</div></div>
+          <div style="display:flex;flex-direction:column;gap:7px"><div style="width:84px;height:62px;background:#EDEFF2;border:1px solid #E4E7EC;border-radius:24px"></div><div style="font:500 11px 'IBM Plex Mono';color:#0E1A2B">radius/card · 24</div><div style="font:400 11px 'IBM Plex Sans Arabic';color:#8A99AB">product + merchant cards</div></div>
+          <div style="display:flex;flex-direction:column;gap:7px"><div style="width:84px;height:62px;background:#EDEFF2;border:1px solid #E4E7EC;border-radius:32px"></div><div style="font:500 11px 'IBM Plex Mono';color:#0E1A2B">radius/sheet · 32</div><div style="font:400 11px 'IBM Plex Sans Arabic';color:#8A99AB">header card, bottom sheet</div></div>
+          <div style="display:flex;flex-direction:column;gap:7px"><div style="width:84px;height:62px;background:#EDEFF2;border:1px solid #E4E7EC;border-radius:999px"></div><div style="font:500 11px 'IBM Plex Mono';color:#0E1A2B">radius/pill · full</div><div style="font:400 11px 'IBM Plex Sans Arabic';color:#8A99AB">buttons, nav, chips</div></div>
+        </div>
+        <div style="font:600 13px/1 'IBM Plex Sans Arabic';color:#0E1A2B;margin-top:10px">How separation works</div>
+        <div style="font:400 13.5px/1.65 'IBM Plex Sans Arabic';color:#5A6B80">In order of preference: <strong style="color:#0E1A2B;font-weight:600">space first</strong> — 32 between sections does the job of a divider. Then a <strong style="color:#0E1A2B;font-weight:600">soft neutral fill</strong> (<code style="font:500 12px 'IBM Plex Mono'">surface/sunken</code>) behind product images and inactive chips. Then a <strong style="color:#0E1A2B;font-weight:600">1px border</strong> where a card must hold its own edge against a same-colour background. Shadow is used on exactly three things: the floating nav, the sticky buy bar and the bottom sheet — <code style="font:500 12px 'IBM Plex Mono'">elevation/float: 0 8px 24px rgba(14,26,43,.10)</code>. Divider lines appear only inside a totals table, where rows are genuinely a table.</div>
+      </div>
+    </div>
+  </div>
+
+  <div style="background:#fff;border:1px solid #E4E7EC;border-radius:24px;padding:36px 40px 40px;display:flex;flex-direction:column;gap:30px">
+    <div style="display:flex;flex-direction:column;gap:10px">
+      <div style="font:700 11px/1 'IBM Plex Sans Arabic';letter-spacing:.16em;color:#93A1B3">05 — COMPONENTS</div>
+      <div style="font:700 34px/1.1 'IBM Plex Sans Arabic';color:#0E1A2B;letter-spacing:-.025em">Buttons and actions</div>
+      <div style="font:400 16px/1.6 'IBM Plex Sans Arabic';color:#5A6B80;max-width:72ch">Every interactive element is at least 48×48 including its invisible tap padding, even when it looks smaller. Pressed is a 2% scale-down plus a fill shift, never a colour change to another hue.</div>
+    </div>
+
+    <div style="display:flex;flex-direction:column;gap:16px">
+      <div style="font:700 18px/1.3 'IBM Plex Sans Arabic';color:#0E1A2B">Dark pill button · <code style="font:500 13px 'IBM Plex Mono';color:#55677D">button/primary</code></div>
+      <div style="font:400 13.5px/1.6 'IBM Plex Sans Arabic';color:#5A6B80;max-width:70ch">The one action on the screen that moves the user forward. Height 52, radius full, label 13/600, optional 18px leading icon. Never two of these visible at once.</div>
+      <div style="background:#F5F6F8;border-radius:18px;padding:24px;display:flex;flex-wrap:wrap;gap:22px;align-items:flex-start">
+        <div style="display:flex;flex-direction:column;gap:9px;align-items:flex-start"><div style="height:52px;background:#14181D;color:#fff;border-radius:999px;padding:0 26px;display:flex;align-items:center;gap:9px;font:600 13px 'IBM Plex Sans Arabic'"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>Shop Now</div><div style="font:400 10.5px 'IBM Plex Mono';color:#8A99AB">default</div></div>
+        <div style="display:flex;flex-direction:column;gap:9px;align-items:flex-start"><div style="height:52px;background:#2A323C;color:#fff;border-radius:999px;padding:0 26px;display:flex;align-items:center;font:600 13px 'IBM Plex Sans Arabic';transform:scale(.98)">Shop Now</div><div style="font:400 10.5px 'IBM Plex Mono';color:#8A99AB">pressed</div></div>
+        <div style="display:flex;flex-direction:column;gap:9px;align-items:flex-start"><div style="height:52px;background:#14181D;color:#fff;border-radius:999px;padding:0 26px;display:flex;align-items:center;font:600 13px 'IBM Plex Sans Arabic';outline:3px solid #D9600B;outline-offset:3px">Shop Now</div><div style="font:400 10.5px 'IBM Plex Mono';color:#8A99AB">focused · keyboard / TalkBack</div></div>
+        <div style="display:flex;flex-direction:column;gap:9px;align-items:flex-start"><div style="height:52px;background:#14181D;color:#fff;border-radius:999px;padding:0 26px;display:flex;align-items:center;gap:10px;font:600 13px 'IBM Plex Sans Arabic'"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round"><path d="M12 3a9 9 0 1 0 9 9" opacity=".95"/></svg>Signing in…</div><div style="font:400 10.5px 'IBM Plex Mono';color:#8A99AB">loading · label changes, width holds</div></div>
+        <div style="display:flex;flex-direction:column;gap:9px;align-items:flex-start"><div style="height:52px;background:#DDE1E7;color:#96A1AF;border-radius:999px;padding:0 26px;display:flex;align-items:center;font:600 13px 'IBM Plex Sans Arabic'">Shop Now</div><div style="font:400 10.5px 'IBM Plex Mono';color:#8A99AB">disabled</div></div>
+      </div>
+      <div style="background:#0B0E12;border-radius:18px;padding:24px;display:flex;flex-wrap:wrap;gap:22px;align-items:flex-start">
+        <div style="display:flex;flex-direction:column;gap:9px;align-items:flex-start"><div style="height:52px;background:#F2F5F8;color:#0B0E12;border-radius:999px;padding:0 26px;display:flex;align-items:center;gap:9px;font:600 13px 'IBM Plex Sans Arabic'"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#0B0E12" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>Shop Now</div><div style="font:400 10.5px 'IBM Plex Mono';color:#6E7C8C">default · inverted</div></div>
+        <div style="display:flex;flex-direction:column;gap:9px;align-items:flex-start"><div style="height:52px;background:#C9D2DB;color:#0B0E12;border-radius:999px;padding:0 26px;display:flex;align-items:center;font:600 13px 'IBM Plex Sans Arabic';transform:scale(.98)">Shop Now</div><div style="font:400 10.5px 'IBM Plex Mono';color:#6E7C8C">pressed</div></div>
+        <div style="display:flex;flex-direction:column;gap:9px;align-items:flex-start"><div style="height:52px;background:#F2F5F8;color:#0B0E12;border-radius:999px;padding:0 26px;display:flex;align-items:center;font:600 13px 'IBM Plex Sans Arabic';outline:3px solid #F5852B;outline-offset:3px">Shop Now</div><div style="font:400 10.5px 'IBM Plex Mono';color:#6E7C8C">focused</div></div>
+        <div style="display:flex;flex-direction:column;gap:9px;align-items:flex-start"><div style="height:52px;background:#262E38;color:#5E6B7A;border-radius:999px;padding:0 26px;display:flex;align-items:center;font:600 13px 'IBM Plex Sans Arabic'">Shop Now</div><div style="font:400 10.5px 'IBM Plex Mono';color:#6E7C8C">disabled</div></div>
+      </div>
+    </div>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:26px">
+      <div style="display:flex;flex-direction:column;gap:14px">
+        <div style="font:700 18px/1.3 'IBM Plex Sans Arabic';color:#0E1A2B">Outlined button · <code style="font:500 13px 'IBM Plex Mono';color:#55677D">button/outlined</code></div>
+        <div style="font:400 13.5px/1.6 'IBM Plex Sans Arabic';color:#5A6B80">The second real action — Add to cart, Register as merchant. Same height and radius as primary, 1.5px border, dark label.</div>
+        <div style="background:#F5F6F8;border-radius:18px;padding:22px;display:flex;flex-wrap:wrap;gap:18px">
+          <div style="display:flex;flex-direction:column;gap:9px"><div style="height:52px;background:#fff;color:#0E1A2B;border:1.5px solid #14181D;border-radius:999px;padding:0 24px;display:flex;align-items:center;gap:9px;font:600 13px 'IBM Plex Sans Arabic'"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#0E1A2B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9h18l-1.5 11H4.5Z"/><path d="M3 9 5 4h14l2 5"/></svg>Register as merchant</div><div style="font:400 10.5px 'IBM Plex Mono';color:#8A99AB">default</div></div>
+          <div style="display:flex;flex-direction:column;gap:9px"><div style="height:52px;background:#EDEFF2;color:#0E1A2B;border:1.5px solid #14181D;border-radius:999px;padding:0 24px;display:flex;align-items:center;font:600 13px 'IBM Plex Sans Arabic';transform:scale(.98)">Add to cart</div><div style="font:400 10.5px 'IBM Plex Mono';color:#8A99AB">pressed</div></div>
+          <div style="display:flex;flex-direction:column;gap:9px"><div style="height:52px;background:#fff;color:#AAB4C0;border:1.5px solid #DDE1E7;border-radius:999px;padding:0 24px;display:flex;align-items:center;font:600 13px 'IBM Plex Sans Arabic'">Add to cart</div><div style="font:400 10.5px 'IBM Plex Mono';color:#8A99AB">disabled</div></div>
+        </div>
+        <div style="background:#0B0E12;border-radius:18px;padding:22px;display:flex;flex-wrap:wrap;gap:18px">
+          <div style="display:flex;flex-direction:column;gap:9px"><div style="height:52px;background:transparent;color:#F2F5F8;border:1.5px solid #556270;border-radius:999px;padding:0 24px;display:flex;align-items:center;font:600 13px 'IBM Plex Sans Arabic'">Add to cart</div><div style="font:400 10.5px 'IBM Plex Mono';color:#6E7C8C">default</div></div>
+          <div style="display:flex;flex-direction:column;gap:9px"><div style="height:52px;background:#1F2730;color:#5E6B7A;border:1.5px solid #2A323C;border-radius:999px;padding:0 24px;display:flex;align-items:center;font:600 13px 'IBM Plex Sans Arabic'">Add to cart</div><div style="font:400 10.5px 'IBM Plex Mono';color:#6E7C8C">disabled</div></div>
+        </div>
+      </div>
+
+      <div style="display:flex;flex-direction:column;gap:14px">
+        <div style="font:700 18px/1.3 'IBM Plex Sans Arabic';color:#0E1A2B">Text and destructive · <code style="font:500 13px 'IBM Plex Mono';color:#55677D">button/text</code> · <code style="font:500 13px 'IBM Plex Mono';color:#55677D">button/destructive</code></div>
+        <div style="font:400 13.5px/1.6 'IBM Plex Sans Arabic';color:#5A6B80">Text buttons for reversible, low-stakes taps. Destructive is outlined in error, never a filled red block — it should be findable, not tempting.</div>
+        <div style="background:#F5F6F8;border-radius:18px;padding:22px;display:flex;flex-wrap:wrap;gap:18px;align-items:center">
+          <div style="display:flex;flex-direction:column;gap:9px"><div style="height:48px;display:flex;align-items:center;padding:0 8px;font:600 13px 'IBM Plex Sans Arabic';color:#0E1A2B;border-bottom:1.5px solid #0E1A2B">Forgot password?</div><div style="font:400 10.5px 'IBM Plex Mono';color:#8A99AB">default</div></div>
+          <div style="display:flex;flex-direction:column;gap:9px"><div style="height:48px;display:flex;align-items:center;padding:0 8px;font:600 13px 'IBM Plex Sans Arabic';color:#AAB4C0">Forgot password?</div><div style="font:400 10.5px 'IBM Plex Mono';color:#8A99AB">disabled</div></div>
+          <div style="display:flex;flex-direction:column;gap:9px"><div style="height:48px;background:#fff;color:#B32D1C;border:1.5px solid #E7BDB6;border-radius:999px;padding:0 22px;display:flex;align-items:center;gap:8px;font:600 13px 'IBM Plex Sans Arabic'"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#B32D1C" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M9 7V4h6v3M6 7l1 14h10l1-14"/></svg>Delete account</div><div style="font:400 10.5px 'IBM Plex Mono';color:#8A99AB">destructive</div></div>
+          <div style="display:flex;flex-direction:column;gap:9px"><div style="height:48px;background:#B32D1C;color:#fff;border-radius:999px;padding:0 22px;display:flex;align-items:center;font:600 13px 'IBM Plex Sans Arabic'">Delete account</div><div style="font:400 10.5px 'IBM Plex Mono';color:#8A99AB">destructive · confirm step only</div></div>
+        </div>
+        <div style="background:#0B0E12;border-radius:18px;padding:22px;display:flex;flex-wrap:wrap;gap:18px;align-items:center">
+          <div style="display:flex;flex-direction:column;gap:9px"><div style="height:48px;display:flex;align-items:center;padding:0 8px;font:600 13px 'IBM Plex Sans Arabic';color:#F2F5F8;border-bottom:1.5px solid #F2F5F8">Forgot password?</div><div style="font:400 10.5px 'IBM Plex Mono';color:#6E7C8C">default</div></div>
+          <div style="display:flex;flex-direction:column;gap:9px"><div style="height:48px;background:transparent;color:#FF7A66;border:1.5px solid #6B3A31;border-radius:999px;padding:0 22px;display:flex;align-items:center;gap:8px;font:600 13px 'IBM Plex Sans Arabic'"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#FF7A66" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M9 7V4h6v3M6 7l1 14h10l1-14"/></svg>Delete account</div><div style="font:400 10.5px 'IBM Plex Mono';color:#6E7C8C">destructive</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:26px">
+      <div style="display:flex;flex-direction:column;gap:14px">
+        <div style="font:700 18px/1.3 'IBM Plex Sans Arabic';color:#0E1A2B">Circular icon button · <code style="font:500 13px 'IBM Plex Mono';color:#55677D">button/icon-circle</code></div>
+        <div style="font:400 13.5px/1.6 'IBM Plex Sans Arabic';color:#5A6B80">Back, share, favourite, filter, notifications. 44 visible, 48 tap. Grey circle on white; white circle when it sits on a dark card or a photo. Every one carries an accessibility label — the icon alone is not the name.</div>
+        <div style="background:#F5F6F8;border-radius:18px;padding:22px;display:flex;flex-wrap:wrap;gap:20px">
+          <div style="display:flex;flex-direction:column;gap:9px;align-items:center"><div style="width:44px;height:44px;border-radius:50%;background:#EDEFF2;display:flex;align-items:center;justify-content:center"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#0E1A2B" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg></div><div style="font:400 10.5px 'IBM Plex Mono';color:#8A99AB">default</div></div>
+          <div style="display:flex;flex-direction:column;gap:9px;align-items:center"><div style="width:44px;height:44px;border-radius:50%;background:#DDE1E7;display:flex;align-items:center;justify-content:center;transform:scale(.96)"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#0E1A2B" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg></div><div style="font:400 10.5px 'IBM Plex Mono';color:#8A99AB">pressed</div></div>
+          <div style="display:flex;flex-direction:column;gap:9px;align-items:center"><div style="width:44px;height:44px;border-radius:50%;background:#EDEFF2;display:flex;align-items:center;justify-content:center;outline:3px solid #D9600B;outline-offset:2px"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#0E1A2B" stroke-width="2.2" stroke-linecap="round"><path d="M4 12h16"/></svg></div><div style="font:400 10.5px 'IBM Plex Mono';color:#8A99AB">focused</div></div>
+          <div style="display:flex;flex-direction:column;gap:9px;align-items:center"><div style="width:44px;height:44px;border-radius:50%;background:#F1F3F5;display:flex;align-items:center;justify-content:center"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#C3CAD3" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20s-7-4.4-7-9a4 4 0 0 1 7-2.6A4 4 0 0 1 19 11c0 4.6-7 9-7 9Z"/></svg></div><div style="font:400 10.5px 'IBM Plex Mono';color:#8A99AB">disabled</div></div>
+          <div style="display:flex;flex-direction:column;gap:9px;align-items:center"><div style="width:44px;height:44px;border-radius:50%;background:#EDEFF2;display:flex;align-items:center;justify-content:center;position:relative"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#0E1A2B" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8a6 6 0 1 0-12 0c0 7-2 8-2 8h16s-2-1-2-8Z"/><path d="M10.5 20a2 2 0 0 0 3 0"/></svg><div style="position:absolute;top:6px;right:7px;width:9px;height:9px;border-radius:50%;background:#D9600B;border:2px solid #F5F6F8"></div></div><div style="font:400 10.5px 'IBM Plex Mono';color:#8A99AB">unread dot</div></div>
+          <div style="display:flex;flex-direction:column;gap:9px;align-items:center"><div style="width:44px;height:44px;border-radius:50%;background:#14181D;display:flex;align-items:center;justify-content:center"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round"><path d="M12 20s-7-4.4-7-9a4 4 0 0 1 7-2.6A4 4 0 0 1 19 11c0 4.6-7 9-7 9Z" fill="#fff"/></svg></div><div style="font:400 10.5px 'IBM Plex Mono';color:#8A99AB">selected</div></div>
+        </div>
+        <div style="background:#0B0E12;border-radius:18px;padding:22px;display:flex;flex-wrap:wrap;gap:20px">
+          <div style="display:flex;flex-direction:column;gap:9px;align-items:center"><div style="width:44px;height:44px;border-radius:50%;background:#1F2730;border:1px solid #2F3945;display:flex;align-items:center;justify-content:center"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#F2F5F8" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg></div><div style="font:400 10.5px 'IBM Plex Mono';color:#6E7C8C">default</div></div>
+          <div style="display:flex;flex-direction:column;gap:9px;align-items:center"><div style="width:44px;height:44px;border-radius:50%;background:#F2F5F8;display:flex;align-items:center;justify-content:center"><svg width="19" height="19" viewBox="0 0 24 24" fill="#0B0E12" stroke="#0B0E12" stroke-width="2.2" stroke-linejoin="round"><path d="M12 20s-7-4.4-7-9a4 4 0 0 1 7-2.6A4 4 0 0 1 19 11c0 4.6-7 9-7 9Z"/></svg></div><div style="font:400 10.5px 'IBM Plex Mono';color:#6E7C8C">selected · inverts</div></div>
+          <div style="display:flex;flex-direction:column;gap:9px;align-items:center"><div style="width:44px;height:44px;border-radius:50%;background:#171C23;display:flex;align-items:center;justify-content:center"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#3E4854" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20s-7-4.4-7-9a4 4 0 0 1 7-2.6A4 4 0 0 1 19 11c0 4.6-7 9-7 9Z"/></svg></div><div style="font:400 10.5px 'IBM Plex Mono';color:#6E7C8C">disabled</div></div>
+        </div>
+      </div>
+
+      <div style="display:flex;flex-direction:column;gap:14px">
+        <div style="font:700 18px/1.3 'IBM Plex Sans Arabic';color:#0E1A2B">Corner action button · <code style="font:500 13px 'IBM Plex Mono';color:#55677D">button/corner-action</code></div>
+        <div style="font:400 13.5px/1.6 'IBM Plex Sans Arabic';color:#5A6B80">The small dark rounded square in the bottom trailing corner of a product card. One tap adds to cart. It confirms in place — tick for 1.2s — instead of firing a snackbar for every add.</div>
+        <div style="background:#F5F6F8;border-radius:18px;padding:22px;display:flex;flex-wrap:wrap;gap:20px">
+          <div style="display:flex;flex-direction:column;gap:9px;align-items:center"><div style="width:40px;height:40px;border-radius:14px;background:#14181D;display:flex;align-items:center;justify-content:center"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 7h14l-1.2 12H6.2Z"/><path d="M9 7V5a3 3 0 0 1 6 0v2"/></svg></div><div style="font:400 10.5px 'IBM Plex Mono';color:#8A99AB">default</div></div>
+          <div style="display:flex;flex-direction:column;gap:9px;align-items:center"><div style="width:40px;height:40px;border-radius:14px;background:#2A323C;display:flex;align-items:center;justify-content:center;transform:scale(.94)"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 7h14l-1.2 12H6.2Z"/><path d="M9 7V5a3 3 0 0 1 6 0v2"/></svg></div><div style="font:400 10.5px 'IBM Plex Mono';color:#8A99AB">pressed</div></div>
+          <div style="display:flex;flex-direction:column;gap:9px;align-items:center"><div style="width:40px;height:40px;border-radius:14px;background:#127346;display:flex;align-items:center;justify-content:center"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5 10 17l9-10"/></svg></div><div style="font:400 10.5px 'IBM Plex Mono';color:#8A99AB">added</div></div>
+          <div style="display:flex;flex-direction:column;gap:9px;align-items:center"><div style="width:40px;height:40px;border-radius:14px;background:#14181D;display:flex;align-items:center;justify-content:center"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" opacity=".9"><path d="M12 4a8 8 0 1 0 8 8"/></svg></div><div style="font:400 10.5px 'IBM Plex Mono';color:#8A99AB">loading</div></div>
+          <div style="display:flex;flex-direction:column;gap:9px;align-items:center"><div style="width:40px;height:40px;border-radius:14px;background:#E7EAEE;display:flex;align-items:center;justify-content:center"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#AAB4C0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 7h14l-1.2 12H6.2Z"/><path d="M9 7V5a3 3 0 0 1 6 0v2"/></svg></div><div style="font:400 10.5px 'IBM Plex Mono';color:#8A99AB">disabled · out of stock</div></div>
+          <div style="display:flex;flex-direction:column;gap:9px;align-items:center"><div style="width:40px;height:40px;border-radius:14px;background:#fff;border:1.5px solid #B32D1C;display:flex;align-items:center;justify-content:center"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#B32D1C" stroke-width="2.2" stroke-linecap="round"><path d="M12 7v6M12 16.5v.5"/></svg></div><div style="font:400 10.5px 'IBM Plex Mono';color:#8A99AB">error · tap to retry</div></div>
+        </div>
+        <div style="background:#0B0E12;border-radius:18px;padding:22px;display:flex;flex-wrap:wrap;gap:20px">
+          <div style="display:flex;flex-direction:column;gap:9px;align-items:center"><div style="width:40px;height:40px;border-radius:14px;background:#F2F5F8;display:flex;align-items:center;justify-content:center"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0B0E12" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 7h14l-1.2 12H6.2Z"/><path d="M9 7V5a3 3 0 0 1 6 0v2"/></svg></div><div style="font:400 10.5px 'IBM Plex Mono';color:#6E7C8C">default · inverts</div></div>
+          <div style="display:flex;flex-direction:column;gap:9px;align-items:center"><div style="width:40px;height:40px;border-radius:14px;background:#34C77B;display:flex;align-items:center;justify-content:center"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#08130C" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5 10 17l9-10"/></svg></div><div style="font:400 10.5px 'IBM Plex Mono';color:#6E7C8C">added</div></div>
+          <div style="display:flex;flex-direction:column;gap:9px;align-items:center"><div style="width:40px;height:40px;border-radius:14px;background:#262E38;display:flex;align-items:center;justify-content:center"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#5E6B7A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 7h14l-1.2 12H6.2Z"/><path d="M9 7V5a3 3 0 0 1 6 0v2"/></svg></div><div style="font:400 10.5px 'IBM Plex Mono';color:#6E7C8C">disabled</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div style="background:#fff;border:1px solid #E4E7EC;border-radius:24px;padding:36px 40px 40px;display:flex;flex-direction:column;gap:30px">
+    <div style="display:flex;flex-direction:column;gap:10px">
+      <div style="font:700 11px/1 'IBM Plex Sans Arabic';letter-spacing:.16em;color:#93A1B3">06 — COMPONENTS</div>
+      <div style="font:700 34px/1.1 'IBM Plex Sans Arabic';color:#0E1A2B;letter-spacing:-.025em">Inputs and selection</div>
+      <div style="font:400 16px/1.6 'IBM Plex Sans Arabic';color:#5A6B80;max-width:72ch">Fields are filled, not outlined, at rest — <code style="font:500 13px 'IBM Plex Mono'">surface/sunken</code> with no border. The border only appears on focus and on error, so an errored field is visible from across the screen. Errors sit below the field in words, and the field keeps what the user typed.</div>
+    </div>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:26px">
+      <div style="display:flex;flex-direction:column;gap:14px">
+        <div style="font:700 18px/1.3 'IBM Plex Sans Arabic';color:#0E1A2B">Text input · <code style="font:500 13px 'IBM Plex Mono';color:#55677D">input/text</code></div>
+        <div style="background:#F5F6F8;border-radius:18px;padding:22px;display:flex;flex-direction:column;gap:18px">
+          <div style="display:flex;flex-direction:column;gap:7px"><div style="font:600 12px 'IBM Plex Sans Arabic';color:#0E1A2B">Email</div><div style="height:54px;background:#fff;border-radius:18px;padding:0 18px;display:flex;align-items:center;font:400 14.5px 'IBM Plex Sans Arabic';color:#8A99AB;border:1px solid #E4E7EC">you@example.com</div><div style="font:400 10.5px 'IBM Plex Mono';color:#8A99AB">empty · placeholder</div></div>
+          <div style="display:flex;flex-direction:column;gap:7px"><div style="font:600 12px 'IBM Plex Sans Arabic';color:#0E1A2B">Email</div><div style="height:54px;background:#fff;border-radius:18px;padding:0 18px;display:flex;align-items:center;font:400 14.5px 'IBM Plex Sans Arabic';color:#0E1A2B;border:1.5px solid #14181D">amina.h@gmail.com<span style="width:1.5px;height:20px;background:#D9600B;margin-left:2px"></span></div><div style="font:400 10.5px 'IBM Plex Mono';color:#8A99AB">focused · filled</div></div>
+          <div style="display:flex;flex-direction:column;gap:7px"><div style="font:600 12px 'IBM Plex Sans Arabic';color:#0E1A2B">Password</div><div style="height:54px;background:#fff;border-radius:18px;padding:0 8px 0 18px;display:flex;align-items:center;justify-content:space-between;border:1px solid #E4E7EC"><span style="font:400 14.5px 'IBM Plex Sans Arabic';color:#0E1A2B;letter-spacing:.18em">••••••••</span><div style="width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#55677D" stroke-width="1.9" stroke-linecap="round"><path d="M2 12s3.8-6 10-6 10 6 10 6-3.8 6-10 6S2 12 2 12Z"/><circle cx="12" cy="12" r="2.7"/></svg></div></div><div style="font:400 10.5px 'IBM Plex Mono';color:#8A99AB">with show / hide</div></div>
+          <div style="display:flex;flex-direction:column;gap:7px"><div style="font:600 12px 'IBM Plex Sans Arabic';color:#B32D1C">Password</div><div style="height:54px;background:#FEF6F4;border-radius:18px;padding:0 18px;display:flex;align-items:center;font:400 14.5px 'IBM Plex Sans Arabic';color:#0E1A2B;border:1.5px solid #B32D1C;letter-spacing:.18em">•••••</div><div style="display:flex;align-items:center;gap:6px"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#B32D1C" stroke-width="2.2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 7.5v5M12 16v.5"/></svg><span style="font:400 12px 'IBM Plex Sans Arabic';color:#B32D1C">Password needs at least 8 characters.</span></div><div style="font:400 10.5px 'IBM Plex Mono';color:#8A99AB">error · icon + words, never colour alone</div></div>
+          <div style="display:flex;flex-direction:column;gap:7px"><div style="font:600 12px 'IBM Plex Sans Arabic';color:#AAB4C0">Country</div><div style="height:54px;background:#F1F3F5;border-radius:18px;padding:0 18px;display:flex;align-items:center;font:400 14.5px 'IBM Plex Sans Arabic';color:#AAB4C0;border:1px solid #E7EAEE">Iraq</div><div style="font:400 10.5px 'IBM Plex Mono';color:#8A99AB">disabled</div></div>
+        </div>
+      </div>
+
+      <div style="display:flex;flex-direction:column;gap:14px">
+        <div style="font:700 18px/1.3 'IBM Plex Sans Arabic';color:#0E1A2B">Arabic input, dropdown, search · <code style="font:500 13px 'IBM Plex Mono';color:#55677D">input/select</code> · <code style="font:500 13px 'IBM Plex Mono';color:#55677D">input/search</code></div>
+        <div style="background:#F5F6F8;border-radius:18px;padding:22px;display:flex;flex-direction:column;gap:18px">
+          <div style="display:flex;flex-direction:column;gap:7px" dir="rtl"><div style="font:600 12px 'IBM Plex Sans Arabic';color:#0E1A2B;text-align:right">البريد الإلكتروني</div><div style="height:54px;background:#fff;border-radius:18px;padding:0 18px;display:flex;align-items:center;font:400 14.5px 'IBM Plex Sans Arabic';color:#0E1A2B;border:1.5px solid #14181D;direction:ltr;justify-content:flex-end">amina.h@gmail.com</div><div style="font:400 10.5px 'IBM Plex Mono';color:#8A99AB;text-align:right">RTL: label right, but the email itself stays LTR</div></div>
+          <div style="display:flex;flex-direction:column;gap:7px"><div style="font:600 12px 'IBM Plex Sans Arabic';color:#0E1A2B">City</div><div style="height:54px;background:#fff;border-radius:18px;padding:0 18px;display:flex;align-items:center;justify-content:space-between;border:1px solid #E4E7EC"><span style="font:400 14.5px 'IBM Plex Sans Arabic';color:#0E1A2B">Baghdad</span><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#55677D" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></div><div style="font:400 10.5px 'IBM Plex Mono';color:#8A99AB">dropdown · opens a bottom sheet, not a menu</div></div>
+          <div style="display:flex;gap:10px;align-items:center"><div style="flex:1;height:52px;background:#fff;border-radius:999px;padding:0 20px;display:flex;align-items:center;gap:11px;border:1px solid #E4E7EC"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#8A99AB" stroke-width="2.1" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M16.5 16.5 21 21"/></svg><span style="font:400 14px 'IBM Plex Sans Arabic';color:#8A99AB">Search products and stores</span></div><div style="width:52px;height:52px;border-radius:50%;background:#14181D;display:flex;align-items:center;justify-content:center;flex:none"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.1" stroke-linecap="round"><path d="M4 7h16M7 12h10M10 17h4"/></svg></div></div>
+          <div style="font:400 10.5px 'IBM Plex Mono';color:#8A99AB;margin-top:-10px">search bar · a tappable pill, not a live field. Filter button is a separate 52 circle.</div>
+          <div style="display:flex;gap:10px;align-items:center" dir="rtl"><div style="flex:1;height:52px;background:#fff;border-radius:999px;padding:0 20px;display:flex;align-items:center;gap:11px;border:1px solid #E4E7EC"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#8A99AB" stroke-width="2.1" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M16.5 16.5 21 21"/></svg><span style="font:400 14px 'IBM Plex Sans Arabic';color:#8A99AB">ابحث عن منتجات ومتاجر</span></div><div style="width:52px;height:52px;border-radius:50%;background:#14181D;display:flex;align-items:center;justify-content:center;flex:none"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.1" stroke-linecap="round"><path d="M4 7h16M7 12h10M10 17h4"/></svg></div></div>
+        </div>
+      </div>
+    </div>
+
+    <div style="display:flex;flex-direction:column;gap:14px">
+      <div style="font:700 18px/1.3 'IBM Plex Sans Arabic';color:#0E1A2B">Expanding filter chip · <code style="font:500 13px 'IBM Plex Mono';color:#55677D">chip/filter</code></div>
+      <div style="font:400 13.5px/1.6 'IBM Plex Sans Arabic';color:#5A6B80;max-width:70ch">Unselected chips are icon-only 44 circles. The selected chip expands into a dark pill and reveals its label, so the row stays short and the selection is unmistakable. The expansion animates over 180ms; in RTL the row scrolls from the right and the chip expands leftward.</div>
+      <div style="background:#F5F6F8;border-radius:18px;padding:22px;display:flex;flex-direction:column;gap:18px">
+        <div style="display:flex;gap:10px;align-items:center">
+          <div style="height:44px;background:#14181D;border-radius:999px;padding:0 18px 0 14px;display:flex;align-items:center;gap:8px"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#F5852B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3s5 4 5 9a5 5 0 0 1-10 0c0-2 1-3 1-3s1 1.5 2 1.5S12 6 12 3Z"/></svg><span style="font:600 13px 'IBM Plex Sans Arabic';color:#fff">Popular</span></div>
+          <div style="width:44px;height:44px;border-radius:50%;background:#fff;border:1px solid #E4E7EC;display:flex;align-items:center;justify-content:center"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#0E1A2B" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8h16v10H4zM8 8V6h8v2"/></svg></div>
+          <div style="width:44px;height:44px;border-radius:50%;background:#fff;border:1px solid #E4E7EC;display:flex;align-items:center;justify-content:center"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#0E1A2B" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M7 5h10l2 6-7 8-7-8Z"/></svg></div>
+          <div style="width:44px;height:44px;border-radius:50%;background:#fff;border:1px solid #E4E7EC;display:flex;align-items:center;justify-content:center"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#0E1A2B" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="6" width="16" height="12" rx="3"/><path d="M8 12h3M16 11v2"/></svg></div>
+          <div style="width:44px;height:44px;border-radius:50%;background:#F1F3F5;display:flex;align-items:center;justify-content:center"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#C3CAD3" stroke-width="1.9" stroke-linecap="round"><circle cx="12" cy="12" r="7"/></svg></div>
+          <div style="font:400 10.5px 'IBM Plex Mono';color:#8A99AB;margin-left:8px">selected · unselected ×3 · disabled</div>
+        </div>
+        <div style="display:flex;gap:10px;align-items:center" dir="rtl">
+          <div style="height:44px;background:#14181D;border-radius:999px;padding:0 14px 0 18px;display:flex;align-items:center;gap:8px"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#F5852B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3s5 4 5 9a5 5 0 0 1-10 0c0-2 1-3 1-3s1 1.5 2 1.5S12 6 12 3Z"/></svg><span style="font:600 13px 'IBM Plex Sans Arabic';color:#fff">الأكثر رواجاً</span></div>
+          <div style="width:44px;height:44px;border-radius:50%;background:#fff;border:1px solid #E4E7EC;display:flex;align-items:center;justify-content:center"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#0E1A2B" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8h16v10H4zM8 8V6h8v2"/></svg></div>
+          <div style="width:44px;height:44px;border-radius:50%;background:#fff;border:1px solid #E4E7EC;display:flex;align-items:center;justify-content:center"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#0E1A2B" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M7 5h10l2 6-7 8-7-8Z"/></svg></div>
+          <div style="font:400 10.5px 'IBM Plex Mono';color:#8A99AB;margin-right:8px">RTL · label is longer in Arabic, so the pill sizes to content</div>
+        </div>
+      </div>
+      <div style="background:#0B0E12;border-radius:18px;padding:22px;display:flex;gap:10px;align-items:center">
+        <div style="height:44px;background:#F2F5F8;border-radius:999px;padding:0 18px 0 14px;display:flex;align-items:center;gap:8px"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#C25208" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3s5 4 5 9a5 5 0 0 1-10 0c0-2 1-3 1-3s1 1.5 2 1.5S12 6 12 3Z"/></svg><span style="font:600 13px 'IBM Plex Sans Arabic';color:#0B0E12">Popular</span></div>
+        <div style="width:44px;height:44px;border-radius:50%;background:#1F2730;border:1px solid #2F3945;display:flex;align-items:center;justify-content:center"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#F2F5F8" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8h16v10H4zM8 8V6h8v2"/></svg></div>
+        <div style="width:44px;height:44px;border-radius:50%;background:#1F2730;border:1px solid #2F3945;display:flex;align-items:center;justify-content:center"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#F2F5F8" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M7 5h10l2 6-7 8-7-8Z"/></svg></div>
+        <div style="font:400 10.5px 'IBM Plex Mono';color:#6E7C8C;margin-left:8px">dark · selected chip inverts to light</div>
+      </div>
+    </div>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:26px">
+      <div style="display:flex;flex-direction:column;gap:14px">
+        <div style="font:700 18px/1.3 'IBM Plex Sans Arabic';color:#0E1A2B">Checkbox, radio, switch</div>
+        <div style="background:#F5F6F8;border-radius:18px;padding:22px;display:flex;flex-direction:column;gap:20px">
+          <div style="display:flex;gap:22px;align-items:center">
+            <div style="width:24px;height:24px;border-radius:8px;border:1.8px solid #C3CAD3;background:#fff"></div>
+            <div style="width:24px;height:24px;border-radius:8px;background:#14181D;display:flex;align-items:center;justify-content:center"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5 10 17l9-10"/></svg></div>
+            <div style="width:24px;height:24px;border-radius:8px;background:#14181D;display:flex;align-items:center;justify-content:center"><div style="width:11px;height:2.6px;background:#fff;border-radius:2px"></div></div>
+            <div style="width:24px;height:24px;border-radius:8px;border:1.8px solid #E4E7EC;background:#F1F3F5"></div>
+            <div style="width:24px;height:24px;border-radius:8px;border:1.8px solid #B32D1C;background:#FEF6F4"></div>
+            <div style="font:400 10.5px 'IBM Plex Mono';color:#8A99AB">off · on · mixed · disabled · error</div>
+          </div>
+          <div style="display:flex;gap:22px;align-items:center">
+            <div style="width:24px;height:24px;border-radius:50%;border:1.8px solid #C3CAD3;background:#fff"></div>
+            <div style="width:24px;height:24px;border-radius:50%;border:7px solid #14181D;background:#fff"></div>
+            <div style="width:24px;height:24px;border-radius:50%;border:1.8px solid #E4E7EC;background:#F1F3F5"></div>
+            <div style="width:24px;height:24px;border-radius:50%;border:7px solid #C3CAD3;background:#fff"></div>
+            <div style="font:400 10.5px 'IBM Plex Mono';color:#8A99AB">off · on · disabled off · disabled on</div>
+          </div>
+          <div style="display:flex;gap:22px;align-items:center">
+            <div style="width:50px;height:30px;border-radius:999px;background:#C3CAD3;padding:3px;display:flex"><div style="width:24px;height:24px;border-radius:50%;background:#fff"></div></div>
+            <div style="width:50px;height:30px;border-radius:999px;background:#14181D;padding:3px;display:flex;justify-content:flex-end"><div style="width:24px;height:24px;border-radius:50%;background:#fff"></div></div>
+            <div style="width:50px;height:30px;border-radius:999px;background:#E7EAEE;padding:3px;display:flex"><div style="width:24px;height:24px;border-radius:50%;background:#F7F8FA"></div></div>
+            <div style="width:50px;height:30px;border-radius:999px;background:#14181D;padding:3px;display:flex;justify-content:center;align-items:center"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round" opacity=".9"><path d="M12 4a8 8 0 1 0 8 8"/></svg></div>
+            <div style="font:400 10.5px 'IBM Plex Mono';color:#8A99AB">off · on · disabled · saving</div>
+          </div>
+          <div style="font:400 12.5px/1.6 'IBM Plex Sans Arabic';color:#5A6B80">Switches save immediately and show the spinner in the track; if the save fails the switch snaps back and an inline error appears under the row. Radio and checkbox rows put the control on the leading side — left in English, right in Arabic.</div>
+        </div>
+      </div>
+
+      <div style="display:flex;flex-direction:column;gap:14px">
+        <div style="font:700 18px/1.3 'IBM Plex Sans Arabic';color:#0E1A2B">Rating pill, star row, badges</div>
+        <div style="background:#F5F6F8;border-radius:18px;padding:22px;display:flex;flex-direction:column;gap:18px">
+          <div style="display:flex;gap:14px;align-items:center;flex-wrap:wrap">
+            <div style="height:38px;background:#14181D;border-radius:999px;padding:0 16px;display:flex;align-items:center;gap:8px"><span style="color:#F5852B;font-size:13px;letter-spacing:1px">★★★★★</span><span style="font:600 12px 'IBM Plex Sans Arabic';color:#fff">250 Reviews</span></div>
+            <div style="height:38px;background:#14181D;border-radius:999px;padding:0 16px;display:flex;align-items:center;gap:8px" dir="rtl"><span style="color:#F5852B;font-size:13px;letter-spacing:1px">★★★★★</span><span style="font:600 12px 'IBM Plex Sans Arabic';color:#fff">250 تقييم</span></div>
+            <div style="height:38px;background:#EDEFF2;border-radius:999px;padding:0 16px;display:flex;align-items:center;gap:8px"><span style="color:#C3CAD3;font-size:13px;letter-spacing:1px">★★★★★</span><span style="font:600 12px 'IBM Plex Sans Arabic';color:#8A99AB">No reviews yet</span></div>
+          </div>
+          <div style="display:flex;gap:18px;align-items:center"><span style="color:#F5852B;font-size:12px;letter-spacing:1px">★★★★<span style="color:#D6DBE1">★</span></span><span style="font:600 12px 'IBM Plex Sans Arabic';color:#55677D">4.6</span><span style="font:400 12px 'IBM Plex Sans Arabic';color:#8A99AB">(128)</span><div style="font:400 10.5px 'IBM Plex Mono';color:#8A99AB">star row · card size, always with the numeral</div></div>
+          <div style="display:flex;gap:9px;flex-wrap:wrap">
+            <div style="height:28px;background:#E7F3ED;border-radius:8px;padding:0 10px;display:flex;align-items:center;gap:5px"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#127346" stroke-width="3" stroke-linecap="round"><path d="M5 12.5 10 17l9-10"/></svg><span style="font:600 11.5px 'IBM Plex Sans Arabic';color:#0C5433">Delivered</span></div>
+            <div style="height:28px;background:#FDF3E3;border-radius:8px;padding:0 10px;display:flex;align-items:center;gap:5px"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#9A6208" stroke-width="2.4" stroke-linecap="round"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/></svg><span style="font:600 11.5px 'IBM Plex Sans Arabic';color:#7A4E06">Pending</span></div>
+            <div style="height:28px;background:#E8F0F9;border-radius:8px;padding:0 10px;display:flex;align-items:center;gap:5px"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#1B5FA8" stroke-width="2.2" stroke-linecap="round"><path d="M3 14h13l4-5H7Z"/><circle cx="8" cy="18" r="1.6"/><circle cx="17" cy="18" r="1.6"/></svg><span style="font:600 11.5px 'IBM Plex Sans Arabic';color:#134B85">Shipped</span></div>
+            <div style="height:28px;background:#FBEDEA;border-radius:8px;padding:0 10px;display:flex;align-items:center;gap:5px"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#B32D1C" stroke-width="2.4" stroke-linecap="round"><path d="M7 7l10 10M17 7 7 17"/></svg><span style="font:600 11.5px 'IBM Plex Sans Arabic';color:#8E2415">Cancelled</span></div>
+            <div style="height:28px;background:#EDEFF2;border-radius:8px;padding:0 10px;display:flex;align-items:center;gap:5px"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#55677D" stroke-width="2.4" stroke-linecap="round"><path d="M12 5v14M5 12h14" opacity="0"/><path d="M4 12h16"/></svg><span style="font:600 11.5px 'IBM Plex Sans Arabic';color:#41505F">Out of stock</span></div>
+            <div style="height:28px;background:#14181D;border-radius:8px;padding:0 10px;display:flex;align-items:center"><span style="font:600 11.5px 'IBM Plex Sans Arabic';color:#fff">−25%</span></div>
+          </div>
+          <div style="font:400 12.5px/1.6 'IBM Plex Sans Arabic';color:#5A6B80">Every badge is icon + word. A colour-blind user, or a screenshot printed in black and white, still reads the status.</div>
+        </div>
+      </div>
+    </div>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:26px">
+      <div style="display:flex;flex-direction:column;gap:14px">
+        <div style="font:700 18px/1.3 'IBM Plex Sans Arabic';color:#0E1A2B">Quantity stepper</div>
+        <div style="background:#F5F6F8;border-radius:18px;padding:22px;display:flex;flex-direction:column;gap:16px;align-items:flex-start">
+          <div style="height:44px;background:#fff;border:1px solid #E4E7EC;border-radius:999px;display:flex;align-items:center;padding:0 6px;gap:4px"><div style="width:34px;height:34px;border-radius:50%;background:#EDEFF2;display:flex;align-items:center;justify-content:center;font:600 16px 'IBM Plex Sans Arabic';color:#0E1A2B">−</div><div style="width:34px;text-align:center;font:600 14px 'IBM Plex Sans Arabic';color:#0E1A2B;font-variant-numeric:tabular-nums">1</div><div style="width:34px;height:34px;border-radius:50%;background:#14181D;display:flex;align-items:center;justify-content:center;font:600 16px 'IBM Plex Sans Arabic';color:#fff">+</div></div>
+          <div style="font:400 10.5px 'IBM Plex Mono';color:#8A99AB;margin-top:-8px">at minimum — decrement is greyed, not hidden</div>
+          <div style="height:44px;background:#fff;border:1px solid #E4E7EC;border-radius:999px;display:flex;align-items:center;padding:0 6px;gap:4px"><div style="width:34px;height:34px;border-radius:50%;background:#14181D;display:flex;align-items:center;justify-content:center;font:600 16px 'IBM Plex Sans Arabic';color:#fff">−</div><div style="width:34px;text-align:center;font:600 14px 'IBM Plex Sans Arabic';color:#0E1A2B;font-variant-numeric:tabular-nums">3</div><div style="width:34px;height:34px;border-radius:50%;background:#EDEFF2;display:flex;align-items:center;justify-content:center;font:600 16px 'IBM Plex Sans Arabic';color:#AAB4C0">+</div></div>
+          <div style="font:400 12px/1.5 'IBM Plex Sans Arabic';color:#9A6208">Only 3 left — that is the stock ceiling.</div>
+        </div>
+      </div>
+
+      <div style="display:flex;flex-direction:column;gap:14px">
+        <div style="font:700 18px/1.3 'IBM Plex Sans Arabic';color:#0E1A2B">Colour swatch</div>
+        <div style="background:#F5F6F8;border-radius:18px;padding:22px;display:flex;gap:26px;align-items:flex-start">
+          <div style="display:flex;flex-direction:column;gap:12px">
+            <div style="width:30px;height:30px;border-radius:50%;background:#1B2440;border:2px solid #fff;box-shadow:0 0 0 1px #E4E7EC"></div>
+            <div style="width:30px;height:30px;border-radius:50%;background:#14181D;display:flex;align-items:center;justify-content:center;box-shadow:0 0 0 2px #14181D,0 0 0 4px #fff"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5 10 17l9-10"/></svg></div>
+            <div style="width:30px;height:30px;border-radius:50%;background:#1A56C4;border:2px solid #fff;box-shadow:0 0 0 1px #E4E7EC"></div>
+            <div style="width:30px;height:30px;border-radius:50%;background:#3E8BE8;border:2px solid #fff;box-shadow:0 0 0 1px #E4E7EC;position:relative;opacity:.45"><div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center"><div style="width:34px;height:1.5px;background:#55677D;transform:rotate(-45deg)"></div></div></div>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:8px;font:400 12.5px/1.6 'IBM Plex Sans Arabic';color:#5A6B80"><div><strong style="color:#0E1A2B;font-weight:600">Stacked vertically</strong> beside the image, as in the reference.</div><div>Selected carries a tick, not just a ring. Unavailable is struck through and still tappable — tapping says which size makes it available.</div><div>The colour name is announced to screen readers and shown in the label above.</div></div>
+        </div>
+      </div>
+
+      <div style="display:flex;flex-direction:column;gap:14px">
+        <div style="font:700 18px/1.3 'IBM Plex Sans Arabic';color:#0E1A2B">Size / option selector</div>
+        <div style="background:#F5F6F8;border-radius:18px;padding:22px;display:flex;flex-direction:column;gap:14px">
+          <div style="display:flex;gap:9px">
+            <div style="width:48px;height:48px;border-radius:14px;background:#fff;border:1px solid #E4E7EC;display:flex;align-items:center;justify-content:center;font:600 13px 'IBM Plex Sans Arabic';color:#0E1A2B">S</div>
+            <div style="width:48px;height:48px;border-radius:14px;background:#14181D;display:flex;align-items:center;justify-content:center;font:600 13px 'IBM Plex Sans Arabic';color:#fff">M</div>
+            <div style="width:48px;height:48px;border-radius:14px;background:#fff;border:1px solid #E4E7EC;display:flex;align-items:center;justify-content:center;font:600 13px 'IBM Plex Sans Arabic';color:#0E1A2B">L</div>
+            <div style="width:48px;height:48px;border-radius:14px;background:#F1F3F5;border:1px solid #E7EAEE;display:flex;align-items:center;justify-content:center;font:600 13px 'IBM Plex Sans Arabic';color:#AAB4C0;position:relative;overflow:hidden"><span>XL</span><div style="position:absolute;width:70px;height:1px;background:#C3CAD3;transform:rotate(-45deg)"></div></div>
+            <div style="width:48px;height:48px;border-radius:14px;background:#fff;border:1.5px solid #14181D;display:flex;align-items:center;justify-content:center;font:600 13px 'IBM Plex Sans Arabic';color:#0E1A2B;outline:3px solid #D9600B;outline-offset:2px">XXL</div>
+          </div>
+          <div style="font:400 10.5px 'IBM Plex Mono';color:#8A99AB">unselected · selected · unselected · unavailable · focused</div>
+          <div style="font:400 12.5px/1.6 'IBM Plex Sans Arabic';color:#5A6B80">Unavailable combinations stay visible and struck through. Hiding them makes the user think the product changed.</div>
+          <div style="display:flex;gap:9px"><div style="height:48px;padding:0 16px;border-radius:14px;background:#14181D;display:flex;align-items:center;font:600 13px 'IBM Plex Sans Arabic';color:#fff">128 GB</div><div style="height:48px;padding:0 16px;border-radius:14px;background:#fff;border:1px solid #E4E7EC;display:flex;align-items:center;font:600 13px 'IBM Plex Sans Arabic';color:#0E1A2B">256 GB</div></div>
+          <div style="font:400 10.5px 'IBM Plex Mono';color:#8A99AB">same component, word-length options → pill-width boxes</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div style="background:#fff;border:1px solid #E4E7EC;border-radius:24px;padding:36px 40px 40px;display:flex;flex-direction:column;gap:30px">
+    <div style="display:flex;flex-direction:column;gap:10px">
+      <div style="font:700 11px/1 'IBM Plex Sans Arabic';letter-spacing:.16em;color:#93A1B3">07 — COMPONENTS</div>
+      <div style="font:700 34px/1.1 'IBM Plex Sans Arabic';color:#0E1A2B;letter-spacing:-.025em">Cards, containers, navigation</div>
+      <div style="font:400 16px/1.6 'IBM Plex Sans Arabic';color:#5A6B80;max-width:72ch">Shown at real size on a 390-wide column. Product names are the awkward cases on purpose: two-line Arabic, a missing image, a long store name.</div>
+    </div>
+
+    <div style="display:flex;gap:26px;flex-wrap:wrap;align-items:flex-start">
+      <div style="display:flex;flex-direction:column;gap:12px">
+        <div style="font:700 15px/1.3 'IBM Plex Sans Arabic';color:#0E1A2B">Product card · <code style="font:500 12px 'IBM Plex Mono';color:#55677D">card/product</code></div>
+        <div style="background:#F5F6F8;border-radius:18px;padding:20px;display:flex;gap:12px">
+          <div style="width:172px;background:#fff;border:1px solid #E4E7EC;border-radius:24px;padding:10px;display:flex;flex-direction:column;gap:10px">
+            <div style="position:relative;background:#EDEFF2;border-radius:18px;height:132px;display:flex;align-items:center;justify-content:center">
+              <svg width="66" height="66" viewBox="0 0 24 24" fill="none" stroke="#B8C1CC" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round"><path d="M7 9V7a5 5 0 0 1 10 0v2"/><path d="M4.5 9h15l-1 11a2 2 0 0 1-2 1.8H7.5a2 2 0 0 1-2-1.8Z"/></svg>
+              <div style="position:absolute;top:10px;left:10px;height:24px;background:#14181D;border-radius:8px;padding:0 8px;display:flex;align-items:center;font:600 11px 'IBM Plex Sans Arabic';color:#fff">−25%</div>
+              <div style="position:absolute;top:8px;right:8px;width:30px;height:30px;border-radius:50%;background:#fff;display:flex;align-items:center;justify-content:center"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#0E1A2B" stroke-width="2" stroke-linejoin="round"><path d="M12 20s-7-4.4-7-9a4 4 0 0 1 7-2.6A4 4 0 0 1 19 11c0 4.6-7 9-7 9Z"/></svg></div>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:5px;padding:0 4px">
+              <div style="font:700 13.5px/1.3 'IBM Plex Sans Arabic';color:#0E1A2B">Cotton hoodie, heavy weight</div>
+              <div style="display:flex;align-items:center;gap:5px"><span style="color:#F5852B;font-size:10px;letter-spacing:.5px">★★★★<span style="color:#D6DBE1">★</span></span><span style="font:400 11px 'IBM Plex Sans Arabic';color:#8A99AB">4.6 (128)</span></div>
+              <div style="display:flex;align-items:flex-end;justify-content:space-between;gap:8px;margin-top:2px">
+                <div style="display:flex;flex-direction:column;gap:1px"><span style="font:400 11px 'IBM Plex Sans Arabic';color:#8A99AB;text-decoration:line-through;font-variant-numeric:tabular-nums">180,000</span><span style="font:700 16px/1.1 'IBM Plex Sans Arabic';color:#0E1A2B;letter-spacing:-.02em;font-variant-numeric:tabular-nums">135,000 <span style="font-size:12px;font-weight:600">IQD</span></span></div>
+                <div style="width:40px;height:40px;border-radius:14px;background:#14181D;display:flex;align-items:center;justify-content:center;flex:none"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 7h14l-1.2 12H6.2Z"/><path d="M9 7V5a3 3 0 0 1 6 0v2"/></svg></div>
+              </div>
+            </div>
+          </div>
+          <div style="width:172px;background:#fff;border:1px solid #E4E7EC;border-radius:24px;padding:10px;display:flex;flex-direction:column;gap:10px" dir="rtl">
+            <div style="position:relative;background:#EDEFF2;border-radius:18px;height:132px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px">
+              <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#B8C1CC" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="m3 16 5-4 4 3 3-2 6 4"/><circle cx="8.5" cy="9.5" r="1.3"/></svg>
+              <span style="font:400 10.5px 'IBM Plex Sans Arabic';color:#9AA5B1">لا توجد صورة</span>
+              <div style="position:absolute;top:10px;right:10px;height:24px;background:#EDEFF2;border:1px solid #D6DBE1;border-radius:8px;padding:0 8px;display:flex;align-items:center;gap:4px"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#41505F" stroke-width="3" stroke-linecap="round"><path d="M4 12h16"/></svg><span style="font:600 10.5px 'IBM Plex Sans Arabic';color:#41505F">نفد المخزون</span></div>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:5px;padding:0 4px">
+              <div style="font:700 13.5px/1.42 'IBM Plex Sans Arabic';color:#0E1A2B">طقم أواني طبخ ستانلس ستيل 12 قطعة</div>
+              <div style="display:flex;align-items:center;gap:5px"><span style="color:#D6DBE1;font-size:10px;letter-spacing:.5px">★★★★★</span><span style="font:400 11px 'IBM Plex Sans Arabic';color:#8A99AB">لا تقييمات</span></div>
+              <div style="display:flex;align-items:flex-end;justify-content:space-between;gap:8px;margin-top:2px">
+                <span style="font:700 16px/1.1 'IBM Plex Sans Arabic';color:#55677D;font-variant-numeric:tabular-nums">450,000 <span style="font-size:12px;font-weight:600">د.ع</span></span>
+                <div style="width:40px;height:40px;border-radius:14px;background:#E7EAEE;display:flex;align-items:center;justify-content:center;flex:none"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#AAB4C0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 7h14l-1.2 12H6.2Z"/><path d="M9 7V5a3 3 0 0 1 6 0v2"/></svg></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div style="font:400 12.5px/1.6 'IBM Plex Sans Arabic';color:#5A6B80;max-width:44ch">Name clamps at two lines and the card height is fixed, so a grid never goes ragged. No image → a neutral tile with the words "no image", never a stretched placeholder photo.</div>
+      </div>
+
+      <div style="display:flex;flex-direction:column;gap:12px">
+        <div style="font:700 15px/1.3 'IBM Plex Sans Arabic';color:#0E1A2B">Product row · <code style="font:500 12px 'IBM Plex Mono';color:#55677D">row/product</code></div>
+        <div style="background:#F5F6F8;border-radius:18px;padding:20px;display:flex;flex-direction:column;gap:12px;width:400px">
+          <div style="background:#fff;border:1px solid #E4E7EC;border-radius:20px;padding:12px;display:flex;gap:12px;align-items:center">
+            <div style="width:64px;height:64px;border-radius:16px;background:#EDEFF2;flex:none;display:flex;align-items:center;justify-content:center"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#B8C1CC" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><path d="M7 9V7a5 5 0 0 1 10 0v2"/><path d="M4.5 9h15l-1 11a2 2 0 0 1-2 1.8H7.5a2 2 0 0 1-2-1.8Z"/></svg></div>
+            <div style="flex:1;display:flex;flex-direction:column;gap:3px;min-width:0"><div style="font:700 13.5px/1.3 'IBM Plex Sans Arabic';color:#0E1A2B">Cotton hoodie, heavy weight</div><div style="font:400 11.5px 'IBM Plex Sans Arabic';color:#8A99AB">Black · Size M</div><div style="font:700 14px 'IBM Plex Sans Arabic';color:#0E1A2B;font-variant-numeric:tabular-nums">135,000 IQD</div></div>
+            <div style="display:flex;flex-direction:column;gap:6px;align-items:flex-end;flex:none"><div style="height:34px;background:#F5F6F8;border-radius:999px;display:flex;align-items:center;padding:0 4px;gap:2px"><div style="width:26px;height:26px;border-radius:50%;background:#fff;display:flex;align-items:center;justify-content:center;font:600 13px 'IBM Plex Sans Arabic';color:#0E1A2B">−</div><span style="width:22px;text-align:center;font:600 12.5px 'IBM Plex Sans Arabic';color:#0E1A2B">1</span><div style="width:26px;height:26px;border-radius:50%;background:#14181D;display:flex;align-items:center;justify-content:center;font:600 13px 'IBM Plex Sans Arabic';color:#fff">+</div></div></div>
+          </div>
+          <div style="background:#fff;border:1px solid #E4E7EC;border-radius:20px;padding:12px;display:flex;gap:12px;align-items:center;opacity:.85">
+            <div style="width:64px;height:64px;border-radius:16px;background:#EDEFF2;flex:none;display:flex;align-items:center;justify-content:center;position:relative"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#C3CAD3" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="7" width="16" height="12" rx="3"/></svg></div>
+            <div style="flex:1;display:flex;flex-direction:column;gap:4px;min-width:0"><div style="font:700 13.5px/1.3 'IBM Plex Sans Arabic';color:#55677D">Wireless earbuds, noise cancelling</div><div style="height:24px;background:#EDEFF2;border-radius:8px;padding:0 8px;display:inline-flex;align-items:center;gap:4px;align-self:flex-start"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#41505F" stroke-width="3" stroke-linecap="round"><path d="M4 12h16"/></svg><span style="font:600 10.5px 'IBM Plex Sans Arabic';color:#41505F">Out of stock</span></div></div>
+            <div style="display:flex;gap:6px;flex:none"><div style="width:34px;height:34px;border-radius:50%;background:#F5F6F8;display:flex;align-items:center;justify-content:center"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#55677D" stroke-width="2" stroke-linejoin="round"><path d="M12 20s-7-4.4-7-9a4 4 0 0 1 7-2.6A4 4 0 0 1 19 11c0 4.6-7 9-7 9Z"/></svg></div><div style="width:34px;height:34px;border-radius:50%;background:#F5F6F8;display:flex;align-items:center;justify-content:center"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#B32D1C" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M9 7V4h6v3M6 7l1 14h10l1-14"/></svg></div></div>
+          </div>
+          <div style="font:400 10.5px 'IBM Plex Mono';color:#8A99AB">default · out of stock, with save-for-later and remove</div>
+        </div>
+      </div>
+    </div>
+
+    <div style="display:flex;gap:26px;flex-wrap:wrap;align-items:flex-start">
+      <div style="display:flex;flex-direction:column;gap:12px">
+        <div style="font:700 15px/1.3 'IBM Plex Sans Arabic';color:#0E1A2B">Dark header card · <code style="font:500 12px 'IBM Plex Mono';color:#55677D">card/header-dark</code></div>
+        <div style="background:#F5F6F8;border-radius:18px;padding:0;width:390px;overflow:hidden">
+          <div style="background:#14181D;border-radius:0 0 32px 32px;padding:18px 16px 18px;display:flex;flex-direction:column;gap:16px">
+            <div style="display:flex;align-items:center;gap:11px">
+              <div style="width:42px;height:42px;border-radius:50%;background:#2A323C;display:flex;align-items:center;justify-content:center;font:600 15px 'IBM Plex Sans Arabic';color:#E3E8EE">أ</div>
+              <div style="flex:1;display:flex;flex-direction:column;gap:2px"><div style="font:400 11.5px 'IBM Plex Sans Arabic';color:#9AA7B5">Welcome back</div><div style="font:700 15px 'IBM Plex Sans Arabic';color:#fff">Amina Hussein</div></div>
+              <div style="width:38px;height:38px;border-radius:50%;background:#2A323C;display:flex;align-items:center;justify-content:center"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linejoin="round"><path d="M12 20s-7-4.4-7-9a4 4 0 0 1 7-2.6A4 4 0 0 1 19 11c0 4.6-7 9-7 9Z"/></svg></div>
+              <div style="width:38px;height:38px;border-radius:50%;background:#2A323C;display:flex;align-items:center;justify-content:center;position:relative"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8a6 6 0 1 0-12 0c0 7-2 8-2 8h16s-2-1-2-8Z"/><path d="M10.5 20a2 2 0 0 0 3 0"/></svg><div style="position:absolute;top:5px;right:6px;width:9px;height:9px;border-radius:50%;background:#F5852B;border:2px solid #14181D"></div></div>
+            </div>
+            <div style="background:#1F2730;border-radius:24px;padding:16px;display:flex;gap:12px;align-items:center">
+              <div style="flex:1;display:flex;flex-direction:column;gap:9px"><div style="font:400 11px 'IBM Plex Sans Arabic';color:#9AA7B5">Introducing</div><div style="font:700 19px/1.2 'IBM Plex Sans Arabic';color:#fff;letter-spacing:-.02em">Furniture week<br>up to 40% off</div><div style="height:38px;background:#fff;border-radius:999px;padding:0 18px;display:inline-flex;align-items:center;gap:7px;align-self:flex-start;font:600 12px 'IBM Plex Sans Arabic';color:#14181D">Shop Now<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#14181D" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg></div></div>
+              <div style="width:92px;height:96px;border-radius:18px;background:#2A323C;display:flex;align-items:center;justify-content:center;flex:none"><svg width="46" height="46" viewBox="0 0 24 24" fill="none" stroke="#6E7C8C" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 11V8a2 2 0 0 1 4 0v3h8V8a2 2 0 0 1 4 0v3"/><path d="M3 11h18v6H3zM5 17v2M19 17v2"/></svg></div>
+            </div>
+            <div style="display:flex;gap:5px;justify-content:center"><div style="width:16px;height:5px;border-radius:3px;background:#fff"></div><div style="width:5px;height:5px;border-radius:3px;background:#4A545F"></div><div style="width:5px;height:5px;border-radius:3px;background:#4A545F"></div><div style="width:5px;height:5px;border-radius:3px;background:#4A545F"></div></div>
+          </div>
+          <div style="padding:16px;display:flex;flex-direction:column;gap:6px"><div style="font:400 10.5px 'IBM Plex Mono';color:#8A99AB">The card owns the status bar area too — it runs to the top edge of the screen.</div></div>
+        </div>
+      </div>
+
+      <div style="display:flex;flex-direction:column;gap:12px;flex:1;min-width:400px">
+        <div style="font:700 15px/1.3 'IBM Plex Sans Arabic';color:#0E1A2B">Floating pill navigation · <code style="font:500 12px 'IBM Plex Mono';color:#55677D">nav/pill</code></div>
+        <div style="font:400 12.5px/1.6 'IBM Plex Sans Arabic';color:#5A6B80">Height 64, side margin 20, bottom margin 16 above the safe area, radius full. The active tab is a white pill holding icon + label; everything else is an icon in a 48 tap circle. A badge sits on the icon's trailing-top corner with a 2px ring in the bar colour so it reads as separate from the icon — inside the active white pill the badge flips to dark fill.</div>
+        <div style="background:#F5F6F8;border-radius:18px;padding:22px 16px;display:flex;flex-direction:column;gap:16px">
+          <div style="background:#14181D;border-radius:999px;height:64px;display:flex;align-items:center;justify-content:space-between;padding:0 8px;box-shadow:0 8px 24px rgba(14,26,43,.18)">
+            <div style="height:48px;background:#fff;border-radius:999px;padding:0 18px;display:flex;align-items:center;gap:8px"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#14181D" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><path d="M4 11 12 4l8 7"/><path d="M6 10v10h12V10"/></svg><span style="font:600 12.5px 'IBM Plex Sans Arabic';color:#14181D">Home</span></div>
+            <div style="width:48px;height:48px;display:flex;align-items:center;justify-content:center"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#9AA7B5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="7" height="7" rx="2"/><rect x="13" y="4" width="7" height="7" rx="2"/><rect x="4" y="13" width="7" height="7" rx="2"/><rect x="13" y="13" width="7" height="7" rx="2"/></svg></div>
+            <div style="width:48px;height:48px;display:flex;align-items:center;justify-content:center;position:relative"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#9AA7B5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 7h14l-1.3 12H6.3Z"/><path d="M9 7V5a3 3 0 0 1 6 0v2"/></svg><div style="position:absolute;top:5px;right:4px;min-width:18px;height:18px;border-radius:999px;background:#D9600B;border:2px solid #14181D;display:flex;align-items:center;justify-content:center;padding:0 4px;font:700 11px 'IBM Plex Sans Arabic';color:#14181D">3</div></div>
+            <div style="width:48px;height:48px;display:flex;align-items:center;justify-content:center"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#9AA7B5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 5h14v16l-7-3-7 3Z"/><path d="M9 10h6M9 14h4"/></svg></div>
+            <div style="width:48px;height:48px;display:flex;align-items:center;justify-content:center"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#9AA7B5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8.5" r="3.6"/><path d="M5 20c1.2-3.6 4-5 7-5s5.8 1.4 7 5"/></svg></div>
+          </div>
+          <div style="background:#14181D;border-radius:999px;height:64px;display:flex;align-items:center;justify-content:space-between;padding:0 8px" dir="rtl">
+            <div style="width:48px;height:48px;display:flex;align-items:center;justify-content:center"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#9AA7B5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 11 12 4l8 7"/><path d="M6 10v10h12V10"/></svg></div>
+            <div style="width:48px;height:48px;display:flex;align-items:center;justify-content:center"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#9AA7B5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="7" height="7" rx="2"/><rect x="13" y="4" width="7" height="7" rx="2"/><rect x="4" y="13" width="7" height="7" rx="2"/><rect x="13" y="13" width="7" height="7" rx="2"/></svg></div>
+            <div style="height:48px;background:#fff;border-radius:999px;padding:0 18px;display:flex;align-items:center;gap:8px;position:relative"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#14181D" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><path d="M5 7h14l-1.3 12H6.3Z"/><path d="M9 7V5a3 3 0 0 1 6 0v2"/></svg><span style="font:600 12.5px 'IBM Plex Sans Arabic';color:#14181D">السلة</span><div style="position:absolute;top:2px;left:10px;min-width:18px;height:18px;border-radius:999px;background:#14181D;border:2px solid #fff;display:flex;align-items:center;justify-content:center;padding:0 4px;font:600 10px 'IBM Plex Sans Arabic';color:#fff">3</div></div>
+            <div style="width:48px;height:48px;display:flex;align-items:center;justify-content:center"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#9AA7B5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 5h14v16l-7-3-7 3Z"/></svg></div>
+            <div style="width:48px;height:48px;display:flex;align-items:center;justify-content:center"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#9AA7B5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8.5" r="3.6"/><path d="M5 20c1.2-3.6 4-5 7-5s5.8 1.4 7 5"/></svg></div>
+          </div>
+          <div style="font:400 10.5px 'IBM Plex Mono';color:#8A99AB;margin-top:-6px">customer LTR · customer RTL with cart active and a badge inside the white pill</div>
+          <div style="background:#0B0E12;border-radius:14px;padding:16px 10px"><div style="background:#1F2730;border:1px solid #39434F;border-radius:999px;height:64px;display:flex;align-items:center;justify-content:space-between;padding:0 8px;box-shadow:0 8px 24px rgba(0,0,0,.6)">
+            <div style="height:48px;background:#fff;border-radius:999px;padding:0 18px;display:flex;align-items:center;gap:8px"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#14181D" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="7" height="7" rx="2"/><rect x="13" y="4" width="7" height="7" rx="2"/><rect x="4" y="13" width="7" height="7" rx="2"/><rect x="13" y="13" width="7" height="7" rx="2"/></svg><span style="font:600 12.5px 'IBM Plex Sans Arabic';color:#14181D">Dashboard</span></div>
+            <div style="width:48px;height:48px;display:flex;align-items:center;justify-content:center"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#9AA7B5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8h16v11H4z"/><path d="M8 8V6h8v2"/></svg></div>
+            <div style="width:48px;height:48px;display:flex;align-items:center;justify-content:center;position:relative"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#9AA7B5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 5h14v16l-7-3-7 3Z"/></svg><div style="position:absolute;top:5px;right:4px;min-width:18px;height:18px;border-radius:999px;background:#F5852B;border:2px solid #1F2730;display:flex;align-items:center;justify-content:center;padding:0 4px;font:600 10px 'IBM Plex Sans Arabic';color:#1A0D02">12</div></div>
+            <div style="width:48px;height:48px;display:flex;align-items:center;justify-content:center"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#9AA7B5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19V9M10 19V5M16 19v-7M22 19H2"/></svg></div>
+            <div style="width:48px;height:48px;display:flex;align-items:center;justify-content:center"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#9AA7B5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9h16l-1 11H5Z"/><path d="M4 9 6 4h12l2 5"/></svg></div>
+          </div></div>
+          <div style="font:400 10.5px 'IBM Plex Mono';color:#8A99AB;margin-top:-6px">merchant, dark theme · Dashboard, Products, Orders, Analytics, Store</div>
+        </div>
+      </div>
+    </div>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:26px">
+      <div style="display:flex;flex-direction:column;gap:12px">
+        <div style="font:700 15px/1.3 'IBM Plex Sans Arabic';color:#0E1A2B">App bar and section header</div>
+        <div style="background:#F5F6F8;border-radius:18px;padding:20px;display:flex;flex-direction:column;gap:16px">
+          <div style="background:#fff;border-radius:18px;padding:12px 14px;display:flex;align-items:center;gap:12px"><div style="width:44px;height:44px;border-radius:50%;background:#EDEFF2;display:flex;align-items:center;justify-content:center"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#0E1A2B" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg></div><div style="flex:1;text-align:center;font:700 16px 'IBM Plex Sans Arabic';color:#0E1A2B">Order details</div><div style="width:44px;height:44px;border-radius:50%;background:#EDEFF2;display:flex;align-items:center;justify-content:center"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#0E1A2B" stroke-width="2.2" stroke-linecap="round"><circle cx="12" cy="5.5" r="1.4"/><circle cx="12" cy="12" r="1.4"/><circle cx="12" cy="18.5" r="1.4"/></svg></div></div>
+          <div style="background:#fff;border-radius:18px;padding:12px 14px;display:flex;align-items:center;gap:12px" dir="rtl"><div style="width:44px;height:44px;border-radius:50%;background:#EDEFF2;display:flex;align-items:center;justify-content:center"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#0E1A2B" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg></div><div style="flex:1;text-align:center;font:700 16px 'IBM Plex Sans Arabic';color:#0E1A2B">تفاصيل الطلب</div><div style="width:44px;height:44px;border-radius:50%;background:#EDEFF2;display:flex;align-items:center;justify-content:center"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#0E1A2B" stroke-width="2.2" stroke-linecap="round"><circle cx="12" cy="5.5" r="1.4"/><circle cx="12" cy="12" r="1.4"/><circle cx="12" cy="18.5" r="1.4"/></svg></div></div>
+          <div style="font:400 10.5px 'IBM Plex Mono';color:#8A99AB;margin-top:-8px">the back chevron flips direction — it points at the edge the user came from</div>
+          <div style="display:flex;align-items:baseline;justify-content:space-between;padding:0 4px"><div style="font:700 19px 'IBM Plex Sans Arabic';color:#0E1A2B;letter-spacing:-.02em">Top picks nearby</div><div style="display:flex;align-items:center;gap:5px;font:600 12.5px 'IBM Plex Sans Arabic';color:#55677D">See all<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#55677D" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg></div></div>
+          <div style="display:flex;align-items:baseline;justify-content:space-between;padding:0 4px" dir="rtl"><div style="font:700 19px 'IBM Plex Sans Arabic';color:#0E1A2B">اختيارات قريبة منك</div><div style="display:flex;align-items:center;gap:5px;font:600 12.5px 'IBM Plex Sans Arabic';color:#55677D">عرض الكل<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#55677D" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg></div></div>
+        </div>
+      </div>
+
+      <div style="display:flex;flex-direction:column;gap:12px">
+        <div style="font:700 15px/1.3 'IBM Plex Sans Arabic';color:#0E1A2B">Bottom sheet and dialog</div>
+        <div style="background:#F5F6F8;border-radius:18px;padding:20px;display:flex;gap:16px;align-items:flex-start">
+          <div style="width:220px;background:#fff;border-radius:32px 32px 18px 18px;padding:12px 16px 16px;display:flex;flex-direction:column;gap:12px;box-shadow:0 -8px 24px rgba(14,26,43,.10)">
+            <div style="width:36px;height:4px;border-radius:2px;background:#DDE1E7;align-self:center"></div>
+            <div style="font:700 16px 'IBM Plex Sans Arabic';color:#0E1A2B">Choose a city</div>
+            <div style="font:400 12.5px/1.5 'IBM Plex Sans Arabic';color:#5A6B80">Delivery times and fees change by city.</div>
+            <div style="display:flex;flex-direction:column;gap:2px;font:400 13.5px 'IBM Plex Sans Arabic';color:#0E1A2B"><div style="padding:11px 0">Baghdad</div><div style="padding:11px 0;display:flex;justify-content:space-between">Basra<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#14181D" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5 10 17l9-10"/></svg></div><div style="padding:11px 0">Erbil</div></div>
+          </div>
+          <div style="width:220px;background:#fff;border-radius:24px;padding:20px;display:flex;flex-direction:column;gap:10px;box-shadow:0 12px 32px rgba(14,26,43,.16)">
+            <div style="width:40px;height:40px;border-radius:14px;background:#FBEDEA;display:flex;align-items:center;justify-content:center"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#B32D1C" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M9 7V4h6v3M6 7l1 14h10l1-14"/></svg></div>
+            <div style="font:700 16px/1.3 'IBM Plex Sans Arabic';color:#0E1A2B">Delete your account?</div>
+            <div style="font:400 12.5px/1.55 'IBM Plex Sans Arabic';color:#5A6B80">Your orders, addresses and wishlist are removed. This cannot be undone.</div>
+            <div style="display:flex;flex-direction:column;gap:8px;margin-top:4px"><div style="height:46px;background:#B32D1C;border-radius:999px;display:flex;align-items:center;justify-content:center;font:600 13px 'IBM Plex Sans Arabic';color:#fff">Delete account</div><div style="height:46px;background:#fff;border:1.5px solid #14181D;border-radius:999px;display:flex;align-items:center;justify-content:center;font:600 13px 'IBM Plex Sans Arabic';color:#0E1A2B">Keep my account</div></div>
+          </div>
+        </div>
+        <div style="font:400 12.5px/1.6 'IBM Plex Sans Arabic';color:#5A6B80">Destructive dialogs name the consequence in the body and put the safe choice second but visually equal. Neither button is pre-focused.</div>
+      </div>
+    </div>
+  </div>
+
+  <div style="background:#fff;border:1px solid #E4E7EC;border-radius:24px;padding:36px 40px 40px;display:flex;flex-direction:column;gap:30px">
+    <div style="display:flex;flex-direction:column;gap:10px">
+      <div style="font:700 11px/1 'IBM Plex Sans Arabic';letter-spacing:.16em;color:#93A1B3">08 — COMPONENTS</div>
+      <div style="font:700 34px/1.1 'IBM Plex Sans Arabic';color:#0E1A2B;letter-spacing:-.025em">Feedback and shared states</div>
+      <div style="font:400 16px/1.6 'IBM Plex Sans Arabic';color:#5A6B80;max-width:72ch">Designed once, used on every screen. Snackbars sit <strong style="color:#0E1A2B;font-weight:600">above</strong> the floating nav — bottom offset 96, not 16 — so the bar never hides them.</div>
+    </div>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:26px">
+      <div style="display:flex;flex-direction:column;gap:12px">
+        <div style="font:700 15px/1.3 'IBM Plex Sans Arabic';color:#0E1A2B">Snackbars and offline banner</div>
+        <div style="background:#F5F6F8;border-radius:18px;padding:20px;display:flex;flex-direction:column;gap:12px">
+          <div style="background:#14181D;border-radius:18px;padding:13px 14px;display:flex;align-items:center;gap:11px"><div style="width:26px;height:26px;border-radius:9px;background:#127346;display:flex;align-items:center;justify-content:center;flex:none"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5 10 17l9-10"/></svg></div><div style="flex:1;font:400 13px/1.4 'IBM Plex Sans Arabic';color:#fff">Added to your cart.</div><div style="font:600 12.5px 'IBM Plex Sans Arabic';color:#F5852B">View</div></div>
+          <div style="background:#14181D;border-radius:18px;padding:13px 14px;display:flex;align-items:center;gap:11px"><div style="width:26px;height:26px;border-radius:9px;background:#B32D1C;display:flex;align-items:center;justify-content:center;flex:none"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.8" stroke-linecap="round"><path d="M12 7v6M12 16.5v.5"/></svg></div><div style="flex:1;font:400 13px/1.4 'IBM Plex Sans Arabic';color:#fff">Couldn't add that item. Try again.</div><div style="font:600 12.5px 'IBM Plex Sans Arabic';color:#F5852B">Retry</div></div>
+          <div style="background:#14181D;border-radius:18px;padding:13px 14px;display:flex;align-items:center;gap:11px" dir="rtl"><div style="width:26px;height:26px;border-radius:9px;background:#1B5FA8;display:flex;align-items:center;justify-content:center;flex:none"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round"><path d="M12 11v6M12 7.5v.5"/></svg></div><div style="flex:1;font:400 13px/1.5 'IBM Plex Sans Arabic';color:#fff">حُفظ المنتج في المفضلة.</div><div style="font:600 12.5px 'IBM Plex Sans Arabic';color:#F5852B">تراجع</div></div>
+          <div style="background:#41505F;border-radius:999px;padding:9px 16px;display:flex;align-items:center;gap:9px;align-self:center"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"><path d="M3 8c5-4 13-4 18 0M6.5 12c3.2-2.6 7.8-2.6 11 0M10 16c1.2-1 2.8-1 4 0"/><path d="M4 4l16 16"/></svg><span style="font:600 12px 'IBM Plex Sans Arabic';color:#fff">No connection — showing saved items</span></div>
+          <div style="font:400 10.5px 'IBM Plex Mono';color:#8A99AB">success · error · info RTL · offline banner, pinned under the app bar</div>
+        </div>
+      </div>
+
+      <div style="display:flex;flex-direction:column;gap:12px">
+        <div style="font:700 15px/1.3 'IBM Plex Sans Arabic';color:#0E1A2B">Skeletons · <code style="font:500 12px 'IBM Plex Mono';color:#55677D">skeleton/list · grid · detail</code></div>
+        <div style="background:#F5F6F8;border-radius:18px;padding:20px;display:flex;gap:14px">
+          <div style="flex:1;display:flex;flex-direction:column;gap:10px">
+            <div style="display:flex;gap:10px;align-items:center"><div style="width:52px;height:52px;border-radius:16px;background:#E2E6EB"></div><div style="flex:1;display:flex;flex-direction:column;gap:6px"><div style="height:11px;border-radius:6px;background:#E2E6EB;width:85%"></div><div style="height:9px;border-radius:6px;background:#E8EBEF;width:50%"></div></div></div>
+            <div style="display:flex;gap:10px;align-items:center"><div style="width:52px;height:52px;border-radius:16px;background:#E2E6EB"></div><div style="flex:1;display:flex;flex-direction:column;gap:6px"><div style="height:11px;border-radius:6px;background:#E2E6EB;width:70%"></div><div style="height:9px;border-radius:6px;background:#E8EBEF;width:40%"></div></div></div>
+            <div style="display:flex;gap:10px;align-items:center"><div style="width:52px;height:52px;border-radius:16px;background:#E2E6EB"></div><div style="flex:1;display:flex;flex-direction:column;gap:6px"><div style="height:11px;border-radius:6px;background:#E2E6EB;width:78%"></div><div style="height:9px;border-radius:6px;background:#E8EBEF;width:46%"></div></div></div>
+            <div style="font:400 10.5px 'IBM Plex Mono';color:#8A99AB">list</div>
+          </div>
+          <div style="flex:1;display:grid;grid-template-columns:1fr 1fr;gap:10px;align-content:start">
+            <div style="display:flex;flex-direction:column;gap:6px"><div style="height:74px;border-radius:16px;background:#E2E6EB"></div><div style="height:9px;border-radius:5px;background:#E8EBEF"></div><div style="height:9px;border-radius:5px;background:#E8EBEF;width:55%"></div></div>
+            <div style="display:flex;flex-direction:column;gap:6px"><div style="height:74px;border-radius:16px;background:#E2E6EB"></div><div style="height:9px;border-radius:5px;background:#E8EBEF"></div><div style="height:9px;border-radius:5px;background:#E8EBEF;width:55%"></div></div>
+            <div style="display:flex;flex-direction:column;gap:6px"><div style="height:74px;border-radius:16px;background:#E2E6EB"></div><div style="height:9px;border-radius:5px;background:#E8EBEF"></div><div style="height:9px;border-radius:5px;background:#E8EBEF;width:55%"></div></div>
+            <div style="display:flex;flex-direction:column;gap:6px"><div style="height:74px;border-radius:16px;background:#E2E6EB"></div><div style="height:9px;border-radius:5px;background:#E8EBEF"></div><div style="height:9px;border-radius:5px;background:#E8EBEF;width:55%"></div></div>
+            <div style="font:400 10.5px 'IBM Plex Mono';color:#8A99AB;grid-column:span 2">grid</div>
+          </div>
+        </div>
+        <div style="font:400 12.5px/1.6 'IBM Plex Sans Arabic';color:#5A6B80">Skeletons take the exact shape of the content that replaces them, so nothing jumps. A 1.2s shimmer sweeps in the reading direction — left to right in English, right to left in Arabic. After 8 seconds the skeleton becomes the error state; it never spins forever.</div>
+      </div>
+    </div>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:26px">
+      <div style="display:flex;flex-direction:column;gap:12px">
+        <div style="font:700 15px/1.3 'IBM Plex Sans Arabic';color:#0E1A2B">Empty state</div>
+        <div style="background:#F5F6F8;border-radius:18px;padding:34px 20px;display:flex;flex-direction:column;align-items:center;gap:12px;text-align:center">
+          <div style="width:76px;height:76px;border-radius:26px;background:#EDEFF2;display:flex;align-items:center;justify-content:center"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#9AA5B1" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 7h14l-1.3 12H6.3Z"/><path d="M9 7V5a3 3 0 0 1 6 0v2"/></svg></div>
+          <div style="font:700 17px 'IBM Plex Sans Arabic';color:#0E1A2B">Your cart is empty</div>
+          <div style="font:400 13.5px/1.55 'IBM Plex Sans Arabic';color:#5A6B80;max-width:30ch">Items you add from any store will appear here, grouped by seller.</div>
+          <div style="height:48px;background:#14181D;border-radius:999px;padding:0 24px;display:flex;align-items:center;font:600 13px 'IBM Plex Sans Arabic';color:#fff;margin-top:4px">Start shopping</div>
+        </div>
+      </div>
+
+      <div style="display:flex;flex-direction:column;gap:12px">
+        <div style="font:700 15px/1.3 'IBM Plex Sans Arabic';color:#0E1A2B">Error — full page</div>
+        <div style="background:#F5F6F8;border-radius:18px;padding:34px 20px;display:flex;flex-direction:column;align-items:center;gap:12px;text-align:center">
+          <div style="width:76px;height:76px;border-radius:26px;background:#EDEFF2;display:flex;align-items:center;justify-content:center"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#9AA5B1" stroke-width="1.5" stroke-linecap="round"><path d="M3 8c5-4 13-4 18 0M6.5 12c3.2-2.6 7.8-2.6 11 0M10 16c1.2-1 2.8-1 4 0M12 20v.5"/><path d="M4 4l16 16"/></svg></div>
+          <div style="font:700 17px 'IBM Plex Sans Arabic';color:#0E1A2B">Can't reach Saba</div>
+          <div style="font:400 13.5px/1.55 'IBM Plex Sans Arabic';color:#5A6B80;max-width:30ch">Check your connection and try again. Nothing you did was lost.</div>
+          <div style="height:48px;background:#14181D;border-radius:999px;padding:0 24px;display:flex;align-items:center;gap:8px;font:600 13px 'IBM Plex Sans Arabic';color:#fff;margin-top:4px"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 12a8 8 0 1 1-2.6-5.9"/><path d="M20 4v4h-4"/></svg>Retry</div>
+        </div>
+        <div style="font:400 12.5px/1.6 'IBM Plex Sans Arabic';color:#5A6B80">Calm, not alarmed. No red, no warning triangle — a weak signal is not an error the user caused.</div>
+      </div>
+
+      <div style="display:flex;flex-direction:column;gap:12px">
+        <div style="font:700 15px/1.3 'IBM Plex Sans Arabic';color:#0E1A2B">Inline error, load more, pull to refresh</div>
+        <div style="background:#F5F6F8;border-radius:18px;padding:20px;display:flex;flex-direction:column;gap:14px">
+          <div style="background:#FEF6F4;border:1px solid #F0CFC8;border-radius:18px;padding:13px 14px;display:flex;gap:10px;align-items:flex-start"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#B32D1C" stroke-width="2.2" stroke-linecap="round" style="flex:none;margin-top:1px"><circle cx="12" cy="12" r="9"/><path d="M12 7.5v5M12 16v.5"/></svg><div style="display:flex;flex-direction:column;gap:2px"><div style="font:700 13px 'IBM Plex Sans Arabic';color:#8E2415">That email or password is wrong</div><div style="font:400 12.5px/1.5 'IBM Plex Sans Arabic';color:#7A3228">Check them and try again, or reset your password.</div></div></div>
+          <div style="display:flex;flex-direction:column;gap:10px;align-items:center"><div style="display:flex;align-items:center;gap:9px;font:600 12.5px 'IBM Plex Sans Arabic';color:#55677D"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#55677D" stroke-width="2.4" stroke-linecap="round" opacity=".9"><path d="M12 4a8 8 0 1 0 8 8"/></svg>Loading more</div><div style="height:44px;background:#fff;border:1px solid #E4E7EC;border-radius:999px;padding:0 18px;display:flex;align-items:center;gap:8px;font:600 12.5px 'IBM Plex Sans Arabic';color:#0E1A2B"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#0E1A2B" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 12a8 8 0 1 1-2.6-5.9"/><path d="M20 4v4h-4"/></svg>Couldn't load more — tap to retry</div><div style="font:400 12px 'IBM Plex Sans Arabic';color:#8A99AB">You've reached the end</div></div>
+          <div style="display:flex;align-items:center;gap:10px;justify-content:center;padding-top:4px"><div style="width:34px;height:34px;border-radius:50%;background:#fff;border:1px solid #E4E7EC;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 10px rgba(14,26,43,.08)"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0E1A2B" stroke-width="2.2" stroke-linecap="round"><path d="M12 5v9M8 10l4 4 4-4"/></svg></div><span style="font:400 11.5px 'IBM Plex Sans Arabic';color:#8A99AB">pull to refresh — the spinner floats over the dark header card</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div style="background:#0E1A2B;border-radius:24px;padding:36px 40px 40px;display:flex;flex-direction:column;gap:26px">
+    <div style="display:flex;flex-direction:column;gap:10px">
+      <div style="font:700 11px/1 'IBM Plex Sans Arabic';letter-spacing:.16em;color:#7086A0">09 — WRITING</div>
+      <div style="font:700 34px/1.1 'IBM Plex Sans Arabic';color:#fff;letter-spacing:-.025em">Short bold title, one plain sentence</div>
+      <div style="font:400 16px/1.6 'IBM Plex Sans Arabic';color:#A9BACB;max-width:72ch">Every choice, setting, option and empty state is written the same way: a title of two to four words, then one sentence saying what happens when the user taps it. No marketing, no jargon, no second sentence. The Arabic is written natively, not translated word for word.</div>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px">
+      <div style="background:#fff;border-radius:20px;padding:16px;display:flex;flex-direction:column;gap:12px">
+        <div style="display:flex;gap:14px;align-items:center"><div style="width:56px;height:56px;border-radius:18px;background:#D9600B;display:flex;align-items:center;justify-content:center;flex:none"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M5 8h14l-1.2 12H6.2Z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg></div><div style="flex:1;display:flex;flex-direction:column;gap:3px"><div style="font:700 17px/1.25 'IBM Plex Sans Arabic';color:#0E1A2B">I'm a customer</div><div style="font:400 13.5px/1.5 'IBM Plex Sans Arabic';color:#55677D">Browse stores and buy safely with escrow.</div></div><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#AAB4C0" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg></div>
+        <div style="display:flex;gap:14px;align-items:center"><div style="width:56px;height:56px;border-radius:18px;background:#D9600B;display:flex;align-items:center;justify-content:center;flex:none"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10h16v10H4z"/><path d="M4 10 6 5h12l2 5"/><path d="M9 20v-5h6v5"/></svg></div><div style="flex:1;display:flex;flex-direction:column;gap:3px"><div style="font:700 17px/1.25 'IBM Plex Sans Arabic';color:#0E1A2B">I'm a merchant</div><div style="font:400 13.5px/1.5 'IBM Plex Sans Arabic';color:#55677D">Open a store, list products and reach buyers near you.</div></div><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#AAB4C0" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg></div>
+      </div>
+      <div style="background:#fff;border-radius:20px;padding:16px;display:flex;flex-direction:column;gap:12px" dir="rtl">
+        <div style="display:flex;gap:14px;align-items:center"><div style="width:56px;height:56px;border-radius:18px;background:#D9600B;display:flex;align-items:center;justify-content:center;flex:none"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M5 8h14l-1.2 12H6.2Z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg></div><div style="flex:1;display:flex;flex-direction:column;gap:3px"><div style="font:700 17px/1.37 'IBM Plex Sans Arabic';color:#0E1A2B">أنا عميل</div><div style="font:400 13.5px/1.62 'IBM Plex Sans Arabic';color:#55677D">تصفّح المتاجر واشترِ بأمان عبر الضمان.</div></div><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#AAB4C0" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg></div>
+        <div style="display:flex;gap:14px;align-items:center"><div style="width:56px;height:56px;border-radius:18px;background:#D9600B;display:flex;align-items:center;justify-content:center;flex:none"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10h16v10H4z"/><path d="M4 10 6 5h12l2 5"/><path d="M9 20v-5h6v5"/></svg></div><div style="flex:1;display:flex;flex-direction:column;gap:3px"><div style="font:700 17px/1.37 'IBM Plex Sans Arabic';color:#0E1A2B">أنا تاجر</div><div style="font:400 13.5px/1.62 'IBM Plex Sans Arabic';color:#55677D">افتح متجراً واعرض منتجاتك ووصّلها لمشترين قريبين منك.</div></div><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#AAB4C0" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg></div>
+      </div>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px">
+      <div style="border:1px solid #2A3B50;border-radius:18px;padding:18px 20px;display:flex;flex-direction:column;gap:10px"><div style="font:700 14px 'IBM Plex Sans Arabic';color:#7FD3A6">Write this</div><div style="font:400 13.5px/1.7 'IBM Plex Sans Arabic';color:#D6E0EA">“Only 3 left” · “Your store is under review. We check documents within two working days.” · “Saved for later. It moves back to your cart when you tap it.”</div></div>
+      <div style="border:1px solid #2A3B50;border-radius:18px;padding:18px 20px;display:flex;flex-direction:column;gap:10px"><div style="font:700 14px 'IBM Plex Sans Arabic';color:#FF9E8C">Not this</div><div style="font:400 13.5px/1.7 'IBM Plex Sans Arabic';color:#9FB1C4">“Hurry — almost gone!” · “Verification pending.” · “Item successfully moved to the saved items list.”</div></div>
+    </div>
+  </div>
+
+  <div style="background:#fff;border:1px solid #E4E7EC;border-radius:24px;padding:36px 40px 40px;display:flex;flex-direction:column;gap:24px">
+    <div style="display:flex;flex-direction:column;gap:10px">
+      <div style="font:700 11px/1 'IBM Plex Sans Arabic';letter-spacing:.16em;color:#93A1B3">10 — HANDOFF</div>
+      <div style="font:700 34px/1.1 'IBM Plex Sans Arabic';color:#0E1A2B;letter-spacing:-.025em">Token list</div>
+      <div style="font:400 16px/1.6 'IBM Plex Sans Arabic';color:#5A6B80;max-width:72ch">Implement these names verbatim. Two values per colour token: light / dark. Tokens marked ⇄ swap roles between themes rather than shifting shade.</div>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:28px;font:400 12.5px/2 'IBM Plex Mono';color:#41505F">
+      <div style="display:flex;flex-direction:column">
+        <div style="font:600 11px/2.4 'IBM Plex Mono';color:#93A1B3;letter-spacing:.1em">COLOUR</div>
+        <div>color/bg/page</div><div>color/surface</div><div>color/surface/sunken</div><div>color/surface/dark ⇄</div><div>color/border</div><div>color/border/strong</div><div>color/primary ⇄</div><div>color/on-primary ⇄</div><div>color/accent</div><div>color/accent/soft</div><div>color/text/primary</div><div>color/text/secondary</div><div>color/text/muted</div><div>color/text/on-dark</div><div>color/overlay/scrim</div>
+        <div style="font:600 11px/2.4 'IBM Plex Mono';color:#93A1B3;letter-spacing:.1em;margin-top:14px">SEMANTIC</div>
+        <div>semantic/success · /soft</div><div>semantic/warning · /soft</div><div>semantic/error · /soft</div><div>semantic/info · /soft</div><div>stock/in</div><div>stock/low</div><div>stock/out</div>
+      </div>
+      <div style="display:flex;flex-direction:column">
+        <div style="font:600 11px/2.4 'IBM Plex Mono';color:#93A1B3;letter-spacing:.1em">TYPE</div>
+        <div>type/display · 34/700/1.08</div><div>type/heading · 26/700/1.15</div><div>type/subtitle · 16/400/1.50</div><div>type/card-title · 18/700/1.25</div><div>type/body · 14.5/400/1.55</div><div>type/price · 22/700/1.10</div><div>type/label · 13/600/1.30</div><div>type/caption · 12/400/1.40</div><div>type/caption-sm · 11.5/400/1.35</div><div>type/line-height/ar-delta · +0.12</div>
+        <div style="font:600 11px/2.4 'IBM Plex Mono';color:#93A1B3;letter-spacing:.1em;margin-top:14px">SPACE</div>
+        <div>space/xs · 4</div><div>space/sm · 8</div><div>space/md · 12</div><div>space/lg · 16</div><div>space/xl · 24</div><div>space/section-gap · 32</div><div>space/2xl · 48</div><div>space/screen-gutter · 16</div><div>space/nav-safe · 104</div>
+        <div style="font:600 11px/2.4 'IBM Plex Mono';color:#93A1B3;letter-spacing:.1em;margin-top:14px">RADIUS</div>
+        <div>radius/xs · 8</div><div>radius/action · 14</div><div>radius/input · 18</div><div>radius/card · 24</div><div>radius/sheet · 32</div><div>radius/pill · 999</div>
+      </div>
+      <div style="display:flex;flex-direction:column">
+        <div style="font:600 11px/2.4 'IBM Plex Mono';color:#93A1B3;letter-spacing:.1em">COMPONENT</div>
+        <div>button/primary/height · 52</div><div>button/icon-circle/size · 44</div><div>button/corner-action/size · 40</div><div>input/height · 54</div><div>chip/filter/height · 44</div><div>nav/pill/height · 64</div><div>nav/pill/inset-x · 20</div><div>nav/pill/inset-bottom · 16</div><div>nav/pill/active/height · 48</div><div>nav/badge/size · 18</div><div>card/product/radius · 24</div><div>card/product/image-ratio · 4:3</div><div>card/header-dark/radius-bottom · 32</div><div>sheet/handle · 36×4</div><div>snackbar/inset-bottom · 96</div><div>tap/min · 48</div>
+        <div style="font:600 11px/2.4 'IBM Plex Mono';color:#93A1B3;letter-spacing:.1em;margin-top:14px">ELEVATION · MOTION</div>
+        <div>elevation/float · 0 8 24 / 10%</div><div>elevation/dialog · 0 12 32 / 16%</div><div>motion/press · 120ms · scale .98</div><div>motion/chip-expand · 180ms</div><div>motion/sheet · 240ms</div><div>motion/skeleton · 1200ms</div>
+      </div>
+    </div>
+    <div style="background:#F5F6F8;border-radius:18px;padding:20px 22px;display:flex;flex-direction:column;gap:8px">
+      <div style="font:700 15px 'IBM Plex Sans Arabic';color:#0E1A2B">Next pass</div>
+      <div style="font:400 13.5px/1.7 'IBM Plex Sans Arabic';color:#5A6B80;max-width:90ch">The ten screens, at 390×844, each in English LTR and Arabic RTL side by side, light and dark — plus the per-screen RTL notes and the tappable customer flow (Home → Product → Cart → Checkout). Tell me which screen to start with, or I'll start with Home and Product detail since they set the rhythm everything else follows.</div>
+    </div>
+  </div>
+
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1400,&quot;height&quot;:1000}}"></script>
+</body>
+</html>

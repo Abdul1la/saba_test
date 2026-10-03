@@ -1,0 +1,173 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+
+/* shadcn components carry dark: classes. Without this they would follow the
+   OS setting; the panel is light-only for now (TODO.md). */
+@custom-variant dark (&:is(.dark *));
+
+/* The mobile app's own font files (mobile/assets/fonts), served from
+   public/fonts so the panel makes no outside requests. */
+@font-face { font-family: "IBM Plex Sans Arabic"; font-weight: 400; font-display: swap; src: url("/fonts/IBMPlexSansArabic-Regular.ttf") format("truetype"); }
+@font-face { font-family: "IBM Plex Sans Arabic"; font-weight: 500; font-display: swap; src: url("/fonts/IBMPlexSansArabic-Medium.ttf") format("truetype"); }
+@font-face { font-family: "IBM Plex Sans Arabic"; font-weight: 600; font-display: swap; src: url("/fonts/IBMPlexSansArabic-SemiBold.ttf") format("truetype"); }
+@font-face { font-family: "IBM Plex Sans Arabic"; font-weight: 700; font-display: swap; src: url("/fonts/IBMPlexSansArabic-Bold.ttf") format("truetype"); }
+@font-face { font-family: "DM Serif Display"; font-weight: 400; font-display: swap; src: url("/fonts/DMSerifDisplay-Regular.ttf") format("truetype"); }
+@font-face { font-family: "Amiri"; font-weight: 700; font-display: swap; src: url("/fonts/Amiri-Bold.ttf") format("truetype"); }
+
+@theme inline {
+  --font-sans: var(--app-sans);
+  --font-serif: var(--app-serif);
+  --font-heading: var(--app-serif);
+  /* Big figures stay in DM Serif in both languages: digits are Western. */
+  --font-num: "DM Serif Display", Georgia, serif;
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  --color-navy: var(--navy);
+  --color-navy-soft: var(--navy-soft);
+  --color-primary-pressed: var(--primary-pressed);
+  --color-accent-soft: var(--accent-soft);
+  --color-lavender: var(--lavender);
+  --color-surface-dark: var(--surface-dark);
+  --color-bg-page: var(--bg-page);
+  --color-heat: var(--heat);
+  --color-logo: var(--logo);
+  --color-border-strong: var(--border-strong);
+  --color-soft: var(--soft);
+  --color-faint: var(--faint);
+  --color-ok: var(--ok);
+  --color-ok-soft: var(--ok-soft);
+  --color-wait: var(--wait);
+  --color-wait-soft: var(--wait-soft);
+  --color-bad: var(--bad);
+  --color-bad-soft: var(--bad-soft);
+  --color-go: var(--go);
+  --color-go-soft: var(--go-soft);
+  --color-off: var(--off);
+  --color-off-soft: var(--off-soft);
+
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+  --radius-3xl: calc(var(--radius) * 2.2);
+}
+
+/* Colours are the mobile app's (mobile/lib/core/theme/app_colors.dart and
+   DESIGN_CHANGES.md "Colours"), named as it names them, in kebab case:
+   primaryPressed is --primary-pressed. */
+/* As the app does (app_typography.dart): Plex Sans Arabic for all body text,
+   DM Serif Display for English headings and Amiri Bold for Arabic ones, each
+   standing behind the other for a name typed in the other alphabet. */
+:root {
+  --app-sans: "IBM Plex Sans Arabic", ui-sans-serif, system-ui, sans-serif;
+  --app-serif: "DM Serif Display", "Amiri", "IBM Plex Sans Arabic", Georgia, serif;
+
+  /* The app's textPrimary. */
+  --navy: #1c2536;
+  --navy-soft: #1a2940;
+  /* The purple palette. White text on --primary is 6.0:1 and on
+     --primary-pressed 7.3:1. --lavender (the app's `selected`) takes navy
+     text only: white on it is 2.1:1 and purple 2.9:1. On --surface-dark,
+     purple is 2.6:1, so things there use --lavender (7.5:1) or --heat
+     (7.3:1) instead. --heat is a fill with navy on it (7.3:1), never text
+     on a light page (2.1:1). */
+  --primary-pressed: #6b2fc9;
+  --accent-soft: #f3ecff;
+  --lavender: #cca3ff;
+  --surface-dark: #1c2536;
+  --bg-page: #faf8f5;
+  --heat: #f0a22e;
+  /* The logo's own purple (saba_test/logo), not the button purple. On the
+     page it is 7.0:1. */
+  --logo: #6b3fa0;
+  /* The app's surfaceSunken: input fills and neutral tiles. */
+  --soft: #f1eee9;
+  --border-strong: #d3ccc2;
+  /* The app's textMuted is #8a99ab, 2.9:1 on white: too light for words.
+     This is that grey darkened until it passes 4.5:1 on white (5.3), the
+     page (5.0) and an input fill (4.6). */
+  --faint: #626d79;
+
+  --ok: #127346;
+  --ok-soft: #e7f3ed;
+  --wait: #a84c08;
+  --wait-soft: #fdefe3;
+  --bad: #b32d1c;
+  --bad-soft: #fbedea;
+  --go: #1b5fa8;
+  --go-soft: #e8f0f9;
+  --off: #55677d;
+  --off-soft: #edeff2;
+
+  --background: #ffffff;
+  --foreground: #1c2536;
+  --card: #ffffff;
+  --card-foreground: #1c2536;
+  --popover: #ffffff;
+  --popover-foreground: #1c2536;
+  --primary: #7b3fd4;
+  --primary-foreground: #ffffff;
+  --secondary: #f1eee9;
+  --secondary-foreground: #1c2536;
+  --muted: #f1eee9;
+  --muted-foreground: #55677d;
+  /* shadcn's name for the hover tint in menus: the app's accentSoft. (The
+     app's own `accent` is the purple, --primary here.) */
+  --accent: var(--accent-soft);
+  --accent-foreground: #1c2536;
+  --destructive: #b32d1c;
+  --border: #e8e3dc;
+  --input: #e8e3dc;
+  --ring: #7b3fd4;
+  --radius: 0.75rem;
+}
+
+html[dir="rtl"] {
+  --app-serif: "Amiri", "DM Serif Display", "IBM Plex Sans Arabic", Georgia, serif;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  html {
+    @apply font-sans antialiased;
+  }
+  body {
+    @apply bg-bg-page text-foreground;
+  }
+  ::selection {
+    background: var(--lavender);
+    color: var(--navy);
+  }
+  /* Amiri is drawn bold and runs taller than Plex (app_typography.dart). */
+  [dir="rtl"] .font-serif {
+    font-weight: 700;
+    line-height: 1.45;
+    font-synthesis: none;
+  }
+  /* Arabic runs taller: +0.12 line height, as in the app. */
+  [dir="rtl"] body {
+    line-height: 1.62;
+  }
+}

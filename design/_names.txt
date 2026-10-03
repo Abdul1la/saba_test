@@ -1,0 +1,12 @@
+2 | SABA — PHASE 2 · SCREENS / Home
+196 | Prices keep Western digits / , only the currency mark changes to د.ع, and it trails the number in both directions. / SABA — PHASE 2 · SCREENS / Produc
+385 | The spec table flips its columns / , label trailing, value leading — but values that are inherently LTR (80% cotton, 480 gsm, model numbers) keep thei
+562 | RTL: / the coupon chip's remove × moves to the trailing side, the discount value keeps its LTR minus, and the Apply pill sits at the left end of the r
+592 | 2 Sep · Baghdad Wear / Cancelled / Refunded to your card on 3 Sep. / 3 / Orders
+708 | العربية / Arabic / English / الإنجليزية / You can change this later in Account.
+780 | Sign out is the only red item / and it lives at the bottom of a list, with no confirmation dialog — signing back in is cheap. Deleting the account is 
+799 | 1,205 items / Tools / 918 items / Browse / 3
+838 | Basra only / Nothing matches all three / There are 24 leather armchairs on Saba, but none under 150,000 in Basra. / Remove the price filter · 6 result
+890 | The pay button repeats the amount / , and the line under it says when money moves. On cash on delivery it says nothing is charged now; on card it woul
+956 | Confirm / Decline / Declining asks you for a reason and refunds the customer at once. Every decline counts against your store rating. / Orders / 7
+989 | 96,000 / IQD / Hidden / Products / 7

@@ -1,0 +1,28 @@
+color/bg/page              #F5F6F8
+color/surface              #FFFFFF
+color/surface/sunken       #EDEFF2
+color/surface/dark         #14181D
+color/border               #E4E7EC
+color/primary              #14181D
+color/text/primary         #0E1A2B · 15.8:1
+color/text/secondary       #55677D · 5.6:1
+color/text/muted           #8A99AB · 3.0:1 ✳
+color/accent               #D9600B · 4.6:1
+color/accent/soft          #FDF1E7
+color/on-primary           #FFFFFF
+color/bg/page              #0B0E12
+color/surface              #151A21
+color/surface/sunken       #10151A
+color/surface/dark         #1F2730 ↑
+color/border               #2A323C
+color/primary ⇄            #F2F5F8
+color/text/primary         #F2F5F8 · 16.1:1
+color/text/secondary       #A2B0C0 · 7.4:1
+color/text/muted           #6E7C8C
+color/accent               #F5852B · 7.9:1
+color/accent/soft          #2B1B0E
+color/on-primary ⇄         #0B0E12
+semantic/success           #127346 / #34C77B
+semantic/warning           #9A6208 / #E8A33D
+semantic/error             #B32D1C / #FF7A66
+semantic/info              #1B5FA8 / #6BA9E8

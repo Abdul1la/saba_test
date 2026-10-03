@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- The logo's purple (AppPalette.brand): the launch screen, and the
+         layer behind the launcher icon's bag. Flutter's splash screen is the
+         same purple, so one follows the other without a cut. -->
+    <color name="saba_launch_background">#6B3FA0</color>
+    <color name="ic_launcher_background">#6B3FA0</color>
+</resources>

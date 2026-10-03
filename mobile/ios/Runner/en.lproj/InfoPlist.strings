@@ -1,0 +1,3 @@
+/* The words iOS shows when Saba asks for the camera or the photos. */
+"NSCameraUsageDescription" = "Saba uses the camera so you can take pictures of your products and your store's logo.";
+"NSPhotoLibraryUsageDescription" = "Saba opens your photos so you can choose pictures of your products and your store's logo.";

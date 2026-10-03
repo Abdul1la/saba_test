@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Android 12 replaced the window background with its own splash screen,
+         which ignores `windowBackground` and draws the launcher icon. Without
+         this the dark colour above is never seen. -->
+    <style name="LaunchTheme" parent="@android:style/Theme.DeviceDefault.DayNight">
+        <item name="android:windowSplashScreenBackground">@color/saba_launch_background</item>
+        <item name="android:windowSplashScreenAnimatedIcon">@drawable/saba_splash_mark</item>
+        <!-- DeviceDefault.DayNight carries an action bar, and without these two
+             lines every screen on Android 12+ sat under a native bar showing
+             the package name. The base styles use NoTitleBar; this matches. -->
+        <item name="android:windowActionBar">false</item>
+        <item name="android:windowNoTitle">true</item>
+    </style>
+    <style name="NormalTheme" parent="@android:style/Theme.DeviceDefault.DayNight">
+        <item name="android:windowBackground">?android:colorBackground</item>
+        <!-- DeviceDefault.DayNight carries an action bar, and without these two
+             lines every screen on Android 12+ sat under a native bar showing
+             the package name. The base styles use NoTitleBar; this matches. -->
+        <item name="android:windowActionBar">false</item>
+        <item name="android:windowNoTitle">true</item>
+    </style>
+</resources>

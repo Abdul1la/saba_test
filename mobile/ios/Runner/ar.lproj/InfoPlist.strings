@@ -1,0 +1,3 @@
+/* The words iOS shows when Saba asks for the camera or the photos. */
+"NSCameraUsageDescription" = "تستخدم سبأ الكاميرا لتلتقط صور منتجاتك وشعار متجرك.";
+"NSPhotoLibraryUsageDescription" = "تفتح سبأ صورك لتختار منها صور منتجاتك وشعار متجرك.";

@@ -1,0 +1,775 @@
+SABA — PHASE 3 · FORMS AND SHEETS
+Merchant product form
+The densest screen in the app, and the one that decides whether the system holds. Eleven input groups, a media tray, and a variant matrix that can reach forty rows. The strategy is
+progressive disclosure by section
+: the form is a stack of white cards, each one a closed question; nothing is nested more than two levels; and the variant matrix is grouped by the first option so twenty rows arrive as four groups.
+Field rhythm
+Label 12/600 above · input 54 · helper or error 12/400 below ·
+space/lg 16
+between fields,
+space/xl 24
+between cards. No floating labels — Arabic ascenders collide with them.
+Compact fields
+Inside the matrix, inputs drop to 44 high and
+radius/action 14
+. That is the floor — the row itself stays 48+ and the whole row is the tap target for expanding.
+Required vs optional
+Optional fields are marked, not required ones. On a form where nine of eleven fields are mandatory, marking the exceptions is less noise and reads faster.
+Validation timing
+On blur for a field the user has left, never while typing. On submit, the page scrolls to the first error and a summary card names every one.
+EN · LIGHT
+empty · new product
+9:41
+New product
+Save
+Photos and video
+Add photo
+Up to 8 photos
+Square, at least 800×800. The first one is your cover.
+Add a video
+· optional, 60s
+Basics
+Product name
+e.g. Two-seat sofa, linen
+Say what it is before you say how good it is.
+Description
+0 / 600
+Size, material, what is included.
+Category
+Choose a category
+The category decides which details you are asked for next.
+Price and stock
+Price
+0
+IQD
+Stock
+0
+SKU
+optional
+AR-0000
+Generate
+This product has variants
+Different colours or sizes, each with its own price and stock.
+Draft
+Publish
+EN · LIGHT
+filled · media + category attributes
+9:41
+Edit product
+Save
+Photos and video
+5 of 8
+Cover
+Hold and drag to reorder. The first photo is the cover everywhere it appears.
+sofa-walkthrough.mp4
+0:42 · 18 MB
+Basics
+Product name
+Two-seat sofa, linen
+Description
+214 / 600
+Solid beech frame with linen upholstery. Seats two adults comfortably. Cushion covers unzip for washing. Delivered assembled inside Baghdad.
+Category
+Furniture
+›
+Sofas
+Sofa details
+These fields come from the Sofas category. Changing category replaces them.
+From category
+Material
+Linen
+Seats
+1
+2
+3
+4+
+Width
+168
+cm
+Depth
+88
+cm
+Assembly required
+Shown on the product page
+Draft
+Publish
+EN · LIGHT
+variant matrix · 4 × 5 = 20 rows
+9:41
+Edit product
+Save
+Options
+Colour
+Sand
+Charcoal
+Navy
+Olive
++ Add
+Size
+2-seat
+3-seat
+Corner
+Chaise
+Ottoman
++ Add
+Add another option
+Variants
+20 combinations · 2 need a price
+Set for all
+Apply to all
+Price
+IQD
+Stock
+Apply
+Sand
+5 sizes · 41 in stock
+2-seat
+SF-SND-2
+1,250,000
+12
+3-seat
+SF-SND-3
+1,480,000
+9
+Corner
+SF-SND-C
+2,100,000
+4
+Chaise
+SF-SND-H
+1,760,000
+16
+Ottoman
+SF-SND-O
+320,000
+0
+Ottoman is at zero, so buyers cannot pick it.
+Charcoal
+5 sizes · 28 in stock
+Navy
+2 need a price
+Olive
+5 sizes · 0 in stock
+Groups collapse by colour so twenty rows arrive as four. SKUs are generated from the option names and can be tapped to edit.
+Draft
+Publish
+EN · LIGHT · INVALID
+after Publish
+9:41
+New product
+Save
+Three things to fix before this can be published
+Product name is empty
+Add at least one photo
+2 variants have no price
+Nothing you typed was lost. Saving as a draft works even with these.
+Photos and video
+Add photo
+A product needs at least one photo.
+Basics
+Product name
+e.g. Two-seat sofa, linen
+Give the product a name.
+Description
+648 / 600
+Solid beech frame with linen upholstery, seats two adults comfortably, cushion covers unzip for washing, delivered assembled inside Baghdad, available in four colours and five configurations, made to order in fourteen days…
+48 characters over. Nothing was cut.
+Category
+Furniture
+›
+Sofas
+Variants · Navy
+2 need a price
+Corner
+SF-NVY-C
+Price
+6
+Chaise
+SF-NVY-H
+Price
+3
+Every variant needs a price, or remove it from the options above.
+Copy the Sand prices into Navy
+Draft
+Publish
+EN · DARK
+variant matrix, two groups open
+9:41
+Edit product
+Save
+Variants
+20 combinations · all priced
+Set for all
+Apply to all
+1,250,000
+IQD
+Stock
+Apply
+Sand
+5 sizes · 41 in stock
+2-seat
+SF-SND-2
+1,250,000
+12
+3-seat
+SF-SND-3
+1,480,000
+9
+Corner
+SF-SND-C
+2,100,000
+4
+Chaise
+SF-SND-H
+1,760,000
+16
+Ottoman
+SF-SND-O
+320,000
+0
+Charcoal
+5 sizes · 28 in stock
+2-seat
+SF-CHR-2
+1,250,000
+8
+3-seat
+SF-CHR-3
+1,480,000
+11
+Corner
+SF-CHR-C
+2,100,000
+5
+Chaise
+SF-CHR-H
+1,760,000
+4
+Navy
+5 sizes · 22 in stock
+Olive
+5 sizes · 0 in stock
+Draft
+Publish
+AR · LIGHT
+معبّأ · الأساسيات والمتغيرات
+9:41
+تعديل المنتج
+حفظ
+الصور والفيديو
+3 من 8
+الغلاف
+اضغط مطوّلاً واسحب لإعادة الترتيب. الصورة الأولى هي الغلاف.
+الأساسيات
+اسم المنتج
+كنبة مقعدين قماش كتان
+الوصف
+198 / 600
+هيكل خشب زان مع تنجيد كتان. تتسع لشخصين براحة. أغطية الوسائد تُفتح بسحّاب للغسل. تُسلَّم مركّبة داخل بغداد.
+الفئة
+أثاث
+‹
+كنب
+الفئة تحدّد التفاصيل التي سنطلبها بعد ذلك.
+تفاصيل الكنب
+هذه الحقول تأتي من فئة الكنب.
+من الفئة
+عدد المقاعد
+1
+2
+3
++4
+العرض
+168
+سم
+العمق
+88
+سم
+المتغيرات
+20 تركيبة · كلها مسعّرة
+تعيين للكل
+رملي
+5 قياسات · 41 متوفرة
+مقعدان
+SF-SND-2
+1,250,000
+12
+3 مقاعد
+SF-SND-3
+1,480,000
+9
+زاوية
+SF-SND-C
+2,100,000
+4
+فحمي
+5 قياسات · 28 متوفرة
+مسودة
+نشر
+EN · LIGHT · SUBMITTING
+uploads still running
+9:41
+New product
+Save
+Photos and video
+Basics
+Product name
+Two-seat sofa, linen
+Category
+Furniture › Sofas
+Publishing your product
+Details and 20 variants saved
+Uploading photos
+3 of 5
+Video
+waiting
+You can leave this screen. Uploads finish in the background and we will tell you when the product is live.
+Draft
+Publishing…
+EN · LIGHT · SERVER ERROR
+one field rejected
+9:41
+New product
+Save
+We could not publish — one SKU is already taken
+Everything else saved as a draft. Change the SKU below and publish again.
+Variants · Sand
+4 of 5 saved
+2-seat
+SF-SND-2
+1,250,000
+12
+3-seat
+1,480,000
+9
+SKU
+SF-SND-3
+SF-SND-3 already belongs to “Three-seat sofa, cotton” in your store.
+Use SF-SND-3B
+See that product
+Corner
+SF-SND-C
+2,100,000
+4
+The server rejected one field. Only that field is marked — the rest of the form is untouched and still saved.
+Draft
+Publish again
+Product form — what the density test showed
+The 54px field and 24px radius survive, the card radius does not scale down.
+Eleven groups at
+radius/card 24
+read as a stack, not as clutter, because the gap between cards (24) is larger than the gap inside them (16). That ratio is the whole trick.
+Matrix rows needed a second size of input.
+54 does not fit three fields on 390. A compact 44 /
+radius/action 14
+variant is now part of the system, restricted to table rows where the row itself is the 48 target.
+Twenty rows are shown as four groups.
+Collapsed groups carry a summary that is worth reading on its own — “5 sizes · 0 in stock” — so the merchant can act without expanding. The group with an error is the one that opens.
+Bulk editing comes before per-row editing.
+“Apply to all” sits above the groups, because a merchant with twenty variants almost always sets one price and then corrects three.
+Category-dependent fields are labelled as such.
+A “From category” tag and a warning that changing category replaces them — otherwise merchants lose ten minutes of typing and blame the app.
+Errors are stated three times, deliberately.
+A summary at the top with jump links, the section border, and the field itself. On a form this long, one of the three is always off screen.
+Submitting does not block the screen with a spinner.
+A progress card lists what is done, what is uploading and what is queued, and says the merchant may leave. Photo upload over a patchy connection is the slow part, not the save.
+A server error marks one field, not the form.
+The record is kept as a draft, the rejected SKU is named against the product that already owns it, and a one-tap alternative is offered. Every other row shows a quiet “4 of 5 saved”.
+Arabic costs about 8% more vertical space
+at these line heights and no field needed re-sizing — but SKUs, dimensions and counters stay LTR inside RTL rows, and the category breadcrumb flips its chevron.
+What I would change before build:
+the description counter should turn amber at 90%, not red at 101%, and the variant group summary should name the failing rows rather than counting them once there are more than two.
+SABA — PHASE 3 · FORMS AND SHEETS
+Filter sheet
+A sheet, not a page, so the results stay behind it and the user never loses their place. The
+result count lives in the apply button
+and updates with every choice — a filter you cannot evaluate before applying is a guess. Facet counts come from the server, so the sheet owns a loading state and a failure state too.
+EN · LIGHT
+empty · nothing chosen
+9:41
+Filters
+Clear all
+Price
+Min
+IQD
+Max
+IQD
+Under 100k
+100–500k
+Over 500k
+City
+Baghdad
+412
+Basra
+86
+Erbil
+54
+Mosul
+31
+Rating
+★
+4.5+
+★
+4.0+
+★
+3.0+
+Delivery
+Free delivery
+128
+Arrives within 3 days
+304
+In stock only
+541
+Sort by
+Most relevant
+Price, low to high
+Newest
+Reset
+Show all 583 results
+EN · LIGHT · FILLED + INVALID
+min above max
+Filters
+· 4 on
+Clear all
+Price
+500,000
+IQD
+150,000
+IQD
+The lowest price is above the highest.
+Swap them
+City
+Baghdad
+412
+Basra
+86
+Erbil
+54
+Mosul
+0
+Mosul has nothing matching your other filters, so it cannot be picked.
+Rating
+★
+4.5+
+★
+4.0+
+★
+3.0+
+Delivery
+Free delivery
+128
+Arrives within 3 days
+304
+Reset
+Show results
+Fix the price range to see results.
+EN · DARK · LOADING
+counts still arriving
+Filters
+Clear all
+Price
+Min
+IQD
+Max
+IQD
+City
+Baghdad
+Basra
+Erbil
+Mosul
+Counting how many match…
+Rating
+★
+4.5+
+★
+4.0+
+Delivery
+Free delivery
+In stock only
+You can choose filters while the counts load. Nothing is blocked.
+Reset
+Counting results…
+AR · LIGHT · SERVER ERROR
+تعذّر تحميل المدن
+الفلاتر
+· 2 مفعّلة
+مسح الكل
+السعر
+50,000
+د.ع
+500,000
+د.ع
+المدينة
+تعذّر تحميل قائمة المدن
+بقية الفلاتر تعمل. يمكنك المتابعة بدون تحديد مدينة.
+إعادة المحاولة
+التقييم
+★
+4.5+
+★
+4.0+
+★
+3.0+
+التوصيل
+توصيل مجاني
+128
+متوفر فقط
+541
+إعادة ضبط
+عرض 214 نتيجة
+Filter sheet — decisions
+The count is the button label.
+“Show all 583 results” becomes “Show 214 results” as choices are made. The user commits to a number, not to a hope.
+Facet counts sit beside every option
+, and a zero-count option is disabled with a sentence explaining why — that is what stops the dead-end result screen from ever being reached.
+Invalid input disables the apply button and says so under it.
+A greyed button with no explanation is the most common form failure; the reason sits directly beneath, not at the top of a scrolled sheet.
+The fix is offered as a button.
+“Swap them” is one tap and it is right next to the error. Telling the user what is wrong without offering the correction is only half the job.
+Loading counts does not block choosing.
+Numbers arrive as small skeleton pills inside the chips they belong to; the chips stay tappable and the button says what it is waiting for.
+One facet failing does not fail the sheet.
+The city group is replaced in place by its own error card with its own retry, the other groups keep working, and the apply button still carries a real count.
+SABA — PHASE 3 · FORMS AND SHEETS
+Review writing
+The only screen where the app asks for something instead of giving it, so it has to be cheap to finish.
+One tap is a complete review.
+The stars are the whole required form; everything under them is optional and says so. Tapping a star reveals quick tags drawn from that rating, which turns a blank page into a two-tap answer.
+EN · LIGHT
+empty · nothing rated
+9:41
+Write a review
+Cotton hoodie, heavy weight
+Black · M · delivered 12 Sep
+How was it?
+★
+★
+★
+★
+★
+Tap a star. That alone is enough to post.
+Add detail
+optional
+What should the next buyer know?
+Add photos
+Post as Amina H.
+Untick to appear as a verified buyer.
+Post review
+EN · LIGHT
+filled · 4 stars, tags revealed
+9:41
+Write a review
+Cotton hoodie, heavy weight
+Black · M · delivered 12 Sep
+How was it?
+★
+★
+★
+★
+★
+Good
+What was good?
+Good quality
+True to size
+Fast delivery
+Worth the price
+Matches the photos
+Add detail
+86 / 500
+Warm and heavy, exactly as described. Slightly big on the shoulders so size down.
+Post as Amina H.
+Untick to appear as a verified buyer.
+Post review
+AR · DARK · INVALID
+نص بلا تقييم
+9:41
+اكتب مراجعة
+اختر عدد النجوم أولاً
+كلامك محفوظ. نحتاج تقييماً بالنجوم لنشره.
+هودي قطني ثقيل بقلنسوة
+أسود · M · سُلّم في 12 أيلول
+كيف كان المنتج؟
+★
+★
+★
+★
+★
+اضغط على نجمة
+تفاصيل إضافية
+92 / 500
+دافئ وثقيل تماماً كما هو موصوف. واسع قليلاً عند الكتفين، اختر قياساً أصغر.
+انشر باسم أمينة ح.
+ألغِ التحديد لتظهر كمشترٍ موثّق.
+نشر المراجعة
+EN · LIGHT · SUBMITTING
+then server error on the photo
+9:41
+Write a review
+Your review posted — the photo did not
+The file is 14 MB and the limit is 8 MB. Your stars and text are already live.
+Posted
+★
+★
+★
+★
+★
+Warm and heavy, exactly as described. Slightly big on the shoulders so size down.
+Visible on the product page now. You can edit it for 24 hours.
+Photo
+Not uploaded
+IMG_2841.heic
+14.2 MB · limit 8 MB
+Shrink and retry
+Choose another
+Earlier: posting your review
+Rating and text
+done
+Photo 1 of 1
+failed
+Parts of a submission succeed independently. The review was never held hostage to the photo.
+Skip photo
+Done
+Review writing — decisions
+Everything below the stars is dimmed until a star is tapped.
+Not disabled — dimmed and still readable, so the user can see what is coming and knows the cost of continuing before they commit.
+The tags are generated by the rating.
+Four stars asks “what was good?”; two would ask what went wrong, with a different tag set. Writing prose is the fallback, not the expectation.
+The star row is 36px with 10px gaps
+— well past the 44 tap floor including padding, and large enough to hit while holding a phone one-handed on the street.
+Invalid means one thing only: no rating.
+The message says the text is kept, because the fear at that moment is losing what was typed, not the rule that was broken.
+Submission is split, and so is failure.
+The review posts, the photo fails, and the screen reports both truthfully rather than rolling back a success to keep the error message simple.
+The failure states the numbers
+— 14.2 MB against an 8 MB limit — and offers to shrink the file rather than asking the user to go and do it. “Skip photo” is a legitimate exit, not a punishment.
+SABA — PHASE 3 · FORMS AND SHEETS
+Address entry
+Iraqi addresses are landmark-based, not street-numbered. A form built on “street, number, postcode” produces addresses no driver can use. So the structure is
+city, area, then a free-text landmark line that is required and explained
+, with a pin on a map as the ground truth. The phone number is the field a driver actually depends on, so it is validated hardest.
+EN · LIGHT
+empty · location not set
+9:41
+New address
+Set your location
+Drivers use the pin first and the written address second.
+Use my location
+Drop a pin
+City
+Choose
+Area
+Pick a city
+Nearest landmark
+e.g. behind Al-Wathiq square, next to the pharmacy
+This is how drivers find you. Be specific.
+Building
+—
+Flat
+optional
+—
+Phone for the driver
++964
+770 000 0000
+Label
+Home
+Work
+Other
+Make this my default
+Used for every new order
+Save address
+AR · LIGHT
+معبّأ · الدبوس مضبوط
+9:41
+تعديل العنوان
+حرّك الخريطة لضبط الدبوس
+المدينة
+بغداد
+المنطقة
+الكرادة
+أقرب نقطة دالة
+خلف ساحة الواثق، بجانب صيدلية النور، الشارع المقابل للمخبز
+هكذا يجدك السائق. كن دقيقاً.
+البناية
+12
+الشقة
+اختياري
+3
+هاتف للسائق
++964
+770 145 8820
+التسمية
+المنزل
+العمل
+أخرى
+اجعله العنوان الافتراضي
+يُستخدم لكل طلب جديد
+حفظ العنوان
+EN · DARK · INVALID
+two fields, after Save
+9:41
+New address
+Two things to fix
+The landmark is too vague
+Phone number is 9 digits, not 10
+Pin set in Karrada
+City
+Baghdad
+Area
+Karrada
+Nearest landmark
+near the shop
+Name something a driver can find at night — a square, a mosque, a named shop.
+Phone for the driver
++964
+770 145 882
+Iraqi mobile numbers have 10 digits after +964. One is missing.
+Save address
+EN · LIGHT · SUBMITTING → ERROR
+area rejected by the server
+9:41
+New address
+We do not deliver to Al-Dora yet
+Your address is saved. You can still use it for pickup orders, or pick a nearby area we cover.
+City
+Baghdad
+Area
+Al-Dora
+Areas we cover nearby
+Al-Saydiya
+Al-Jihad
+Karrada
+Tell us if we are wrong — coverage changes weekly.
+Nearest landmark
+Behind Al-Wathiq square, next to Al-Noor pharmacy
+Phone for the driver
++964
+770 145 8820
+Saved to your addresses
+Marked “pickup only” until we cover Al-Dora. We will message you when that changes.
+Keep it
+Change the area
+Address entry — decisions
+The landmark field is required and has the largest input on the screen.
+In Iraq it carries more delivery information than any structured field, so it is sized like the important thing it is and its helper text says why.
+The map is the first thing, not a decoration at the end.
+Two ways in — use my location, or drop a pin — and the empty state says plainly that drivers read the pin before the words.
+Area is disabled until a city is chosen
+and says so in the field, rather than presenting an empty dropdown that appears broken.
+The phone is LTR in both languages
+, split as +964 · number with a divider, validated on digit count, and the error names the rule (“10 digits after +964. One is missing.”) instead of saying “invalid”.
+“Too vague” is a real validation.
+A landmark of three words gets pushed back with an example of what would work — the alternative is a driver phoning the customer, which costs far more than a second of friction here.
+The server error keeps the record.
+An uncovered area does not discard the address: it saves as pickup-only, offers three covered neighbours as one-tap swaps, and ticks the fields that did pass so the user sees what survived.
+Phase 3 complete — what the density test proved
+Merchant product form · 8 frames
+Filter sheet · 4
+Review writing · 4
+Address entry · 4
+20 frames total
+EN + AR · light + dark
+The scale held with two additions: a
+compact 44px input at radius 14
+for table rows, and
+type/caption-sm 11.5px
+as the hard floor — nothing in the app goes below it, including SKUs. The 16-inside / 24-between card rhythm is what keeps an eleven-section form readable, and it should be written into the system as a rule rather than a habit. Every screen in the app now exists. Next pass: the tappable customer path — Home → Product → Cart → Checkout.

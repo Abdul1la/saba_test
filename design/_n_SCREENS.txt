@@ -1,0 +1,8 @@
+SCREENS:
+  line 2 -> Home
+  line 195 -> Product detail
+  line 384 -> Cart
+  line 561 -> Orders and order detail
+  line 694 -> Entry: splash, role, sign in
+  line 779 -> Categories, search, checkout
+  line 889 -> Merchant

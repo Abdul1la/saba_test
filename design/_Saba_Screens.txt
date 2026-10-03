@@ -1,0 +1,1047 @@
+SABA — PHASE 2 · SCREENS
+Home
+Customer tab 1. Every section below the chip row is server-driven — title, optional “See all”, then a body that is one of seven types. The order can change and any section can be absent; the screen is a stack of independent blocks with
+space/section-gap
+between them, so no combination breaks it. Frames scroll — drag inside one.
+EN · LIGHT
+signed in
+9:41
+A
+Welcome back
+Amina Hussein
+Introducing
+Furniture week
+up to 40% off
+Shop Now
+Search products and stores
+Popular
+Flash sale
+02:14:09
+See all
+−25%
+Cotton hoodie, heavy weight
+★★★★
+★
+4.6 (128)
+180,000
+135,000
+IQD
+−12%
+Smartphone 128 GB, dual SIM
+★★★★★
+4.9 (2,041)
+925,000
+814,000
+IQD
+Top picks nearby
+See all
+Two-seat sofa, linen
+★★★★
+★
+4.4 (61)
+1,250,000
+IQD
+No image
+Only 3 left
+Stainless steel cookware set, 12 pieces
+★★★★★
+No reviews
+450,000
+IQD
+Stores near you
+See all
+Al-Rasheed Home Furniture
+★
+4.8
+· Karrada
+Tech Point
+★
+4.5
+· Mansour
+Home
+3
+AR · LIGHT
+مسجّل الدخول
+9:41
+أ
+أهلاً بعودتك
+أمينة حسين
+جديدنا
+أسبوع الأثاث
+خصم حتى 40%
+تسوّق الآن
+ابحث عن منتجات ومتاجر
+الأكثر رواجاً
+عروض سريعة
+02:14:09
+عرض الكل
+−25%
+هودي قطني ثقيل بقلنسوة
+★★★★
+★
+4.6 (128)
+180,000
+135,000
+د.ع
+−12%
+هاتف ذكي 128 غيغابايت بشريحتين
+★★★★★
+4.9 (2,041)
+925,000
+814,000
+د.ع
+اختيارات قريبة منك
+عرض الكل
+كنبة مقعدين قماش كتان
+★★★★
+★
+4.4 (61)
+1,250,000
+د.ع
+لا توجد صورة
+بقي 3 فقط
+طقم أواني طبخ ستانلس ستيل 12 قطعة
+★★★★★
+لا تقييمات
+450,000
+د.ع
+متاجر قريبة منك
+عرض الكل
+مفروشات الرشيد للمنزل
+★
+4.8
+· الكرادة
+تك بوينت
+★
+4.5
+· المنصور
+الرئيسية
+3
+EN · DARK
+header card rises, nav lifts
+9:41
+A
+Welcome back
+Amina Hussein
+Introducing
+Furniture week
+up to 40% off
+Shop Now
+Search products and stores
+Popular
+Flash sale
+02:14:09
+See all
+−25%
+Cotton hoodie, heavy weight
+★★★★
+★
+4.6 (128)
+180,000
+135,000
+IQD
+−12%
+Smartphone 128 GB, dual SIM
+★★★★★
+4.9 (2,041)
+925,000
+814,000
+IQD
+Top picks nearby
+See all
+Two-seat sofa, linen
+★★★★
+★
+4.4 (61)
+1,250,000
+IQD
+No image
+Only 3 left
+Stainless steel cookware set, 12 pieces
+★★★★★
+No reviews
+450,000
+IQD
+Stores near you
+See all
+Al-Rasheed Home Furniture
+★
+4.8
+· Karrada
+Tech Point
+★
+4.5
+· Mansour
+Home
+3
+EN · LIGHT · LOADING
+skeleton, first paint
+9:41
+Home
+RTL notes — beyond mirroring
+The countdown stays LTR.
+02:14:09 is a clock, not a sentence. It keeps its direction inside an RTL row, otherwise the hours and seconds swap places.
+Discount badges stay LTR.
+“−25%” with the minus leading; in an RTL box the sign would otherwise render after the number.
+Carousels scroll from the right
+and the first card sits against the right gutter. The section's trailing padding moves with it, so the last card still peeks.
+Arabic titles need the taller line height.
+Card titles run to two lines more often, so the card body is sized for two lines in both languages and never reflows between them.
+The notification dot and the wishlist heart swap corners
+— the dot sits on the icon's trailing-top, which is the left side in Arabic.
+Prices keep Western digits
+, only the currency mark changes to د.ع, and it trails the number in both directions.
+SABA — PHASE 2 · SCREENS
+Product detail
+The longest screen in the app, so it is cut into five bands with a change of background between them: the image stage, the decision block (price, stock, options), the seller, the facts, then the rails. The sticky buy bar sits above the floating nav — the nav hides on this screen while the bar is shown, so the two never stack.
+EN · LIGHT
+in stock, on sale
+9:41
+★★★★
+★
+4.6
+250 reviews
+Cotton hoodie, heavy weight
+Brushed inside · 480 gsm
+−
+1
++
+135,000
+IQD
+180,000
+−25%
+In stock
+· ships in 2–4 days
+Size
+Size guide
+S
+M
+L
+XL
+XXL
+XL is out in black. It is available in navy.
+Sold by
+Al-Rasheed Home Furniture
+★
+4.8 · 1,240 orders
+Description
+A heavy cotton hoodie with a brushed inside, a lined hood and a front pocket. Cut relaxed, so take one size down for a closer fit.
+Read more
+Specifications
+Material
+80% cotton, 20% polyester
+Weight
+480 gsm
+Fit
+Relaxed
+Made in
+Türkiye
+Warranty
+6 months from the seller
+Returns
+14 days, unworn
+Shipping
+5,000 IQD in Baghdad
+Ratings and reviews
+250 buyers rated this 4.7 out of 5.
+Questions and answers
+Ask the seller. Most reply within a day.
+Frequently bought together
+Joggers, same fabric
+95,000
+IQD
+Cotton cap
+22,000
+IQD
+Total
+135,000
+Add to cart
+Buy Now
+AR · LIGHT
+متوفر، عليه خصم
+9:41
+★★★★
+★
+٤٫٦
+٢٥٠ تقييم
+هودي قطني ثقيل بقلنسوة
+مبطّن من الداخل · 480 غم/م²
+−
+1
++
+135,000
+د.ع
+180,000
+−25%
+متوفر
+· يصل خلال 2–4 أيام
+القياس
+دليل القياسات
+S
+M
+L
+XL
+XXL
+قياس XL غير متوفر بالأسود، وهو متوفر بالكحلي.
+يباع بواسطة
+مفروشات الرشيد للمنزل
+★
+4.8 · 1,240 طلب
+الوصف
+هودي من قطن ثقيل، مبطّن من الداخل، بقلنسوة مبطنة وجيب أمامي. القَصّة واسعة، فاختر قياساً أصغر إن أردته ضيقاً.
+اقرأ المزيد
+المواصفات
+الخامة
+80% قطن، 20% بوليستر
+الوزن
+480 غم/م²
+القَصّة
+واسعة
+بلد الصنع
+تركيا
+الضمان
+6 أشهر من البائع
+الإرجاع
+14 يوماً، غير مستخدم
+التوصيل
+5,000 د.ع داخل بغداد
+التقييمات والمراجعات
+قيّمه 250 مشترياً بـ 4.7 من 5.
+الأسئلة والأجوبة
+اسأل البائع. أغلب البائعين يردّون خلال يوم.
+يُشترى عادةً معه
+بنطال رياضي بنفس الخامة
+95,000
+د.ع
+قبعة قطنية
+22,000
+د.ع
+الإجمالي
+135,000
+أضف للسلة
+اشترِ الآن
+EN · DARK
+out of stock variant
+9:41
+★★★★
+★
+4.6
+250 reviews
+Cotton hoodie, heavy weight
+Brushed inside · 480 gsm
+−
+1
++
+135,000
+IQD
+180,000
+Out of stock
+This seller has none left. Get a message when it is back, or see the same item from other sellers.
+Size
+S
+M
+L
+XL
+XXL
+Every size is out with this seller. Sizes stay visible so you can see what existed.
+Sold by
+Al-Rasheed Home Furniture
+★
+4.8 · 1,240 orders
+Description
+A heavy cotton hoodie with a brushed inside, a lined hood and a front pocket. Cut relaxed, so take one size down for a closer fit.
+Same item, other sellers
+Baghdad Wear
+★
+4.6
+142,000
+IQD
+View
+Mosul Textile House
+★
+4.3
+128,000
+IQD
+View
+Was
+135,000
+Notify me
+Other sellers
+Product detail — decisions and RTL notes
+The nav hides here.
+The sticky buy bar replaces it, so there is only ever one floating element at the bottom. The bar is a rounded sheet edge, not a pill, which tells you it belongs to the page and not to the app.
+The rating pill straddles the seam
+between the image stage and the white body — it is the hinge between looking and deciding, and it is tappable straight through to reviews.
+Out of stock keeps the whole page.
+Price, sizes and specs all stay, struck through where they no longer apply. The bottom bar changes job: Notify me, and Other sellers — the multi-vendor escape hatch.
+Swatches stay on the leading side
+of the image — left in English, right in Arabic — so the thumb that scrolls the gallery is not the thumb that picks the colour.
+Size boxes never mirror their content.
+S, M, L, XL are Latin letters in both languages; the row order flips, but the letters do not, and the row still reads small to large from the leading edge.
+The spec table flips its columns
+, label trailing, value leading — but values that are inherently LTR (80% cotton, 480 gsm, model numbers) keep their own direction inside the cell.
+SABA — PHASE 2 · SCREENS
+Cart
+Customer tab 3. The cart is not one order — it is one order per seller, each shipping separately and charging its own delivery. So the grouping is not a heading, it is a container: each merchant owns a card with its own header, its own items and its own subtotal line. The grand total at the bottom is the only number that spans sellers, and it says so.
+EN · LIGHT
+two sellers, one out of stock
+9:41
+My cart
+3 items from 2 stores. Each store ships on its own.
+Al-Rasheed Home Furniture
+Two-seat sofa, linen
+Sand · 2 seats
+1,250,000
+−
+1
++
+Save for later
+Remove
+Side table, solid oak
+Out of stock — not charged
+Save for later
+Remove
+Store subtotal
+1,250,000
+Shipping from Karrada
+15,000
+Tech Point
+Smartphone 128 GB, dual SIM
+Midnight · 128 GB
+814,000
+−
+2
++
+Store subtotal
+1,628,000
+Shipping from Mansour
+Free over 500,000
+Coupon code
+Apply
+SABA10 · −10%
+Subtotal, 2 stores
+2,878,000
+Shipping
+15,000
+Discount, SABA10
+−287,800
+Tax
+0
+Total
+Paid once, split between stores
+2,605,200
+IQD
+Proceed to checkout
+Cart
+3
+AR · LIGHT
+متجران، صنف نفد
+9:41
+سلتي
+3 أصناف من متجرين. كل متجر يشحن على حدة.
+مفروشات الرشيد للمنزل
+كنبة مقعدين قماش كتان
+رملي · مقعدان
+1,250,000
+−
+1
++
+احفظه لاحقاً
+احذف
+طاولة جانبية خشب بلوط
+نفد المخزون — لن يُحتسب
+احفظه لاحقاً
+احذف
+مجموع المتجر
+1,250,000
+توصيل من الكرادة
+15,000
+تك بوينت
+هاتف ذكي 128 غيغابايت بشريحتين
+أسود ليلي · 128 غيغا
+814,000
+−
+2
++
+مجموع المتجر
+1,628,000
+توصيل من المنصور
+مجاني فوق 500,000
+رمز الخصم
+تطبيق
+SABA10 · −10%
+المجموع، متجران
+2,878,000
+التوصيل
+15,000
+الخصم، SABA10
+−287,800
+الضريبة
+0
+الإجمالي
+يُدفع مرة واحدة ويُوزّع على المتاجر
+2,605,200
+د.ع
+متابعة الدفع
+السلة
+3
+EN · DARK
+same cart
+9:41
+My cart
+3 items from 2 stores. Each store ships on its own.
+Al-Rasheed Home Furniture
+Two-seat sofa, linen
+Sand · 2 seats
+1,250,000
+−
+1
++
+Side table, solid oak
+Out of stock — not charged
+Store subtotal
+1,250,000
+Shipping from Karrada
+15,000
+Tech Point
+Smartphone 128 GB, dual SIM
+Midnight · 128 GB
+814,000
+−
+2
++
+Store subtotal
+1,628,000
+Shipping from Mansour
+Free over 500,000
+Subtotal, 2 stores
+2,878,000
+Shipping
+15,000
+Discount, SABA10
+−287,800
+Total
+Paid once, split between stores
+2,605,200
+IQD
+Proceed to checkout
+Cart
+3
+EN · LIGHT · EMPTY
+with saved items
+9:41
+My cart
+Your cart is empty
+Items you add from any store will appear here, grouped by seller.
+Start shopping
+Saved for later
+Cotton hoodie, heavy weight
+135,000
+IQD
+Move to cart
+Cotton cap
+22,000
+IQD
+Move to cart
+Cart
+Cart — decisions and RTL notes
+The seller header is a filled bar, not a label.
+A grey strip across the top of the card, with the store logo and a chevron into the store. It is the only place in the app where a card has a coloured header, which is what makes the grouping impossible to skim past.
+Each card carries its own subtotal and shipping
+in a tinted footer. The grand total repeats “2 stores” in the label and says the payment is made once and split, which is the question customers actually ask.
+Out of stock rows stay in place
+, marked “not charged”, so the total is explicable. Removing them silently is how a customer loses track of what they asked for.
+Two stacked bottom elements here
+— the checkout pill sits above the nav, both inside a gradient fade so the list visibly continues underneath. Scroll padding is 180, not 104.
+The empty cart still offers saved items
+, so the state is a place to act, not a dead end.
+RTL:
+the coupon chip's remove × moves to the trailing side, the discount value keeps its LTR minus, and the Apply pill sits at the left end of the row — the row order flips but the field is always the wide one.
+SABA — PHASE 2 · SCREENS
+Orders and order detail
+Customer tab 4. The list answers “where is my stuff”, the detail answers “what happens next”. The timeline is the centrepiece: completed steps are filled and dated, the current step is a ring with a label in the present tense, upcoming steps are hollow and undated. When an order stops, the timeline stops with it and says why rather than showing seven steps that will never complete.
+EN · LIGHT
+orders list
+9:41
+My orders
+An order is split per store, so one purchase can appear twice.
+All
+Active
+Delivered
+Cancelled
+Returns
+SB-24817
+14 Sep · Tech Point
+Out for delivery
++2
+Total
+1,643,000
+Track order
+SB-24790
+9 Sep · Al-Rasheed Home Furniture
+Delivered
+Total
+1,265,000
+Request return
+Buy again
+SB-24702
+2 Sep · Baghdad Wear
+Cancelled
+Refunded to your card on 3 Sep.
+3
+Orders
+EN · LIGHT
+order detail · in progress
+9:41
+Order SB-24817
+Arriving today
+Out for delivery
+Tech Point
+Placed
+14 Sep, 10:22
+Confirmed by the store
+14 Sep, 11:04
+Packed and shipped
+15 Sep, 08:40
+Out for delivery now
+Hussein is carrying 4 stops before yours. He will call before arriving.
+Delivered
+Expected today, before 6pm
+Smartphone 128 GB, dual SIM
+Midnight · 2 × 814,000
+1,628,000
+Home · Amina Hussein
+Karrada, near Al-Wathiq square, building 12, flat 3 · 0770 000 0000
+Cash on delivery
+Pay the driver
+Items
+1,628,000
+Delivery
+15,000
+Total
+1,643,000
+IQD
+Download invoice
+Contact the store
+Cancelling is no longer possible once an order is out for delivery. Refuse it at the door and it returns to the store.
+AR · LIGHT
+تفاصيل الطلب
+9:41
+الطلب SB-24817
+يصل اليوم
+خرج للتوصيل
+تك بوينت
+تم الطلب
+14 أيلول، 10:22
+أكّده المتجر
+14 أيلول، 11:04
+جُهّز وشُحن
+15 أيلول، 08:40
+خرج للتوصيل الآن
+أمام حسين 4 عناوين قبلك. سيتصل بك قبل الوصول.
+تم التسليم
+متوقع اليوم قبل السادسة مساءً
+هاتف ذكي 128 غيغابايت بشريحتين
+أسود ليلي · 2 × 814,000
+1,628,000
+المنزل · أمينة حسين
+الكرادة، قرب ساحة الواثق، بناية 12، شقة 3 · 0770 000 0000
+الدفع عند الاستلام
+ادفع للسائق
+الأصناف
+1,628,000
+التوصيل
+15,000
+الإجمالي
+1,643,000
+د.ع
+تحميل الفاتورة
+تواصل مع المتجر
+لا يمكن الإلغاء بعد خروج الطلب للتوصيل. ارفض الاستلام عند الباب فيعود إلى المتجر.
+EN · DARK
+cancelled by the store
+9:41
+Order SB-24702
+This order stopped
+Cancelled by the store
+Cancelled
+Placed
+2 Sep, 19:12
+Cancelled on 3 Sep, 09:30
+The store ran out of the item before packing it. Nothing was shipped.
+Refunded in full
+198,000 IQD went back to your card on 3 Sep. Banks take up to 5 days to show it.
+Cotton hoodie, heavy weight
+Black · M · 1 item
+198,000
+Find it from another seller
+Contact support
+Cancellations by a store count against its rating.
+Orders — decisions and RTL notes
+The timeline lives inside a dark card
+, the same card as Home and Account. It is the one object on the screen that should feel like the app talking to you, and it makes the status readable in one glance before any scrolling.
+Seven statuses, five rows.
+Confirmed and Processing collapse into one line, Packed and Shipped into another, because the customer cannot act on the difference. The full seven stay in the data and in the merchant view.
+The current step is a ring, not a fill
+, and its copy is the only present-tense line on the screen — plus the one detail that answers “how long” (“4 stops before yours”).
+Cancelled truncates the timeline
+at the step that failed, states the reason in plain words, and pairs it with the refund fact. Then it offers the multi-vendor move: the same item from another seller.
+Actions appear only when allowed.
+No greyed-out Cancel on a shipped order — instead a sentence saying what to do at the door.
+RTL:
+the timeline rail moves to the right edge and the dot-to-text gap mirrors; dates stay in the Arabic month name but the numerals and times stay Western; order numbers (SB-24817) are LTR tokens inside RTL text.
+SABA — PHASE 2 · SCREENS
+Entry: splash, role, sign in
+The first thirty seconds. Language is chosen on the splash, before anything else, because getting an Arabic speaker into an English app is the fastest way to lose them. Role is chosen second and is not permanent — a customer can open a store later from Account, and the app says so on the card rather than hiding it.
+SPLASH
+language first
+9:41
+س
+Saba
+· سبأ
+Iraq's marketplace. Many stores, one cart.
+CHOOSE YOUR LANGUAGE · اختر لغتك
+العربية
+Arabic
+English
+الإنجليزية
+You can change this later in Account.
+EN · LIGHT
+role selection
+9:41
+How will you
+use Saba?
+You can always add a store later.
+I'm a customer
+Browse stores and buy safely with escrow.
+I'm a merchant
+Open a store, list products and reach buyers near you.
+Drivers do not sign up here. The admin adds them and sends their login.
+Continue
+Already have an account?
+Sign in
+AR · LIGHT
+تسجيل الدخول · خطأ
+9:41
+أهلاً بعودتك
+سجّل الدخول لمتابعة طلباتك.
+البريد الإلكتروني
+amina.h@gmail.com
+كلمة المرور
+•••••••
+البريد أو كلمة المرور غير صحيحة
+تحقّق منهما وحاول مجدداً، أو أعد تعيين كلمة المرور.
+نسيت كلمة المرور؟
+تسجيل الدخول
+أو
+المتابعة برقم الهاتف
+ليس لديك حساب؟
+أنشئ حساباً
+EN · DARK
+account
+9:41
+A
+Amina Hussein
+amina.h@gmail.com
+Edit
+SHOPPING
+Wishlist
+12
+Addresses
+2 saved
+Payment methods
+PREFERENCES
+Language
+English
+Dark mode
+Notifications
+Open a store
+Sell on Saba with the same account.
+Help and support
+Sign out
+Saba 1.0.0 · Baghdad
+3
+Account
+Entry and account — decisions
+Language is the splash's only job.
+Each option is labelled in both scripts — العربية / Arabic — so neither speaker has to recognise a foreign word to find their own. Nothing else competes for the tap.
+The driver role is explained, not offered.
+A sentence on the role screen says drivers are added by the admin, which stops people hunting for a missing sign-up.
+The sign-in error keeps the typed email
+and never says which of the two fields was wrong — it names the pair and offers the reset in the same breath.
+Phone sign-in sits below the divider
+, not above. Email is primary for now; if the Iraqi user base leans on phone numbers, swapping the two is a one-line change and the layout holds.
+"Open a store" is the one accented row in Account
+— orange tile, its own card, outside the grouped lists. It is the bridge between the two apps, and the role choice at sign-up is never a locked door.
+Sign out is the only red item
+and it lives at the bottom of a list, with no confirmation dialog — signing back in is cheap. Deleting the account is inside Help and support, where it needs a dialog.
+SABA — PHASE 2 · SCREENS
+Categories, search, checkout
+Browse is a directory, not a feed: a flat grid of categories that gets out of the way. Results carry the filter state visibly, because a user who forgets a filter is on blames the catalogue. Checkout is three steps on one screen, and it never asks for anything it can infer.
+EN · LIGHT
+categories
+9:41
+Browse
+Search products and stores
+Furniture
+1,840 items
+Electronics
+3,106 items
+Clothing
+5,492 items
+Home &amp; kitchen
+2,733 items
+Health &amp; beauty
+1,205 items
+Tools
+918 items
+Browse
+3
+EN · LIGHT
+results, filters on
+9:41
+hoodie
+2
+Under 150,000
+Baghdad only
+Clear all
+68
+results
+Price, low to high
+Zip hoodie, fleece lined
+Baghdad Wear
+88,000
+IQD
+−25%
+Cotton hoodie, heavy weight
+Al-Rasheed Home
+135,000
+IQD
+Oversized hoodie, unisex
+Mosul Textile House
+142,000
+IQD
+Sherpa hoodie, winter
+Baghdad Wear
+149,000
+IQD
+Filters · 2
+EN · LIGHT · NO RESULTS
+filters are the cause
+9:41
+leather armchair
+Under 150,000
+Basra only
+Nothing matches all three
+There are 24 leather armchairs on Saba, but none under 150,000 in Basra.
+Remove the price filter · 6 results
+Search all of Iraq · 24 results
+EN · LIGHT
+checkout
+9:41
+Checkout
+1
+Deliver to
+Change
+Home · Amina Hussein
+Karrada, near Al-Wathiq square, building 12, flat 3 · 0770 000 0000
+2
+Delivery, 2 stores
+Al-Rasheed Home Furniture
+15,000
+Arrives 22–24 Sep · own driver
+Tech Point
+Free
+Arrives tomorrow · Saba delivery
+Two deliveries, two arrival times. You pay once.
+3
+Payment
+Cash on delivery
+Pay each driver at the door
+Card · 4821
+Held in escrow until delivery
+Zain Cash
+Items
+2,878,000
+Delivery
+15,000
+Discount, SABA10
+−287,800
+Total
+2,605,200
+IQD
+Place order · 2,605,200 IQD
+You pay each driver on arrival. Nothing is charged now.
+Browse and checkout — decisions
+Active filters are chips at the top, not a number on a button.
+Each one is removable where it is visible. The floating Filters pill only opens the sheet; it never becomes the only evidence that filters exist.
+The no-results screen names the cause and counts the fix.
+“24 exist, none under 150,000 in Basra”, then two buttons that each say how many results they would return. A dead end becomes two live paths.
+The results grid shows the store name
+under every product. On a multi-vendor marketplace, who is selling is part of the price.
+Checkout is numbered, not paged.
+Three cards on one scroll, each with a step number — the customer sees the whole commitment before the button, which is what stops abandonment on a high-value cart.
+Per-store delivery is shown as separate arrival dates
+, one row per seller, and the sentence “two deliveries, two arrival times, you pay once” appears before the payment step rather than after the complaint.
+The pay button repeats the amount
+, and the line under it says when money moves. On cash on delivery it says nothing is charged now; on card it would say the amount is held in escrow until delivery.
+SABA — PHASE 2 · SCREENS
+Merchant
+A different app inside the same shell — same tokens, same nav component, different tabs. The merchant's screen is a work queue, not a storefront: what needs doing sits above what has been done. Numbers are stated with their comparison, because a figure with nothing to measure against is decoration.
+EN · LIGHT
+dashboard
+9:41
+Al-Rasheed Home Furniture
+Store open · Karrada
+Revenue this month
+18,420,000
+IQD
++12%
+Last month, same 19 days: 16,450,000
+11 Sep
+19 Sep
+Needs you today
+7 orders to confirm
+Oldest has been waiting 3 hours
+4 products out of stock
+They stay listed but cannot be bought
+2 return requests
+Reply within 48 hours
+Orders this month
+142
++18 vs last month
+Store rating
+4.8
+★
+from 1,240 orders
+Cancelled by you
+3.1%
+Above the 2% target
+Payout, 25 Sep
+4,180,000
+after 5% commission
+Dashboard
+7
+EN · LIGHT
+order queue
+9:41
+Orders
+To confirm
+7
+Preparing · 12
+Shipped · 31
+Done
+SB-24903
+Amina H. · Karrada · 2 items
+Waiting 3h
+Two-seat sofa, linen · Sand
+×1
+Side table, solid oak
+×1
+Cash on delivery
+1,415,000
+Confirm
+Decline
+SB-24901
+Yusuf A. · Mansour · 1 item
+Waiting 40m
+Dining chair, walnut
+×4
+Card · held in escrow
+720,000
+Confirm
+Decline
+Declining asks you for a reason and refunds the customer at once. Every decline counts against your store rating.
+Orders
+7
+EN · DARK
+products, inline stock
+9:41
+Products
+Add
+Search your products
+All · 86
+Low stock · 6
+Out · 4
+Hidden
+Two-seat sofa, linen
+1,250,000
+IQD
+18 in stock
+−
++
+Side table, solid oak
+185,000
+IQD
+3 left
+−
++
+Floor lamp, brass
+240,000
+IQD
+Out of stock
+Restock
+Wall mirror, round
+96,000
+IQD
+Hidden
+Products
+7
+AR · LIGHT
+لوحة التاجر
+9:41
+مفروشات الرشيد للمنزل
+المتجر مفتوح · الكرادة
+إيرادات هذا الشهر
+18,420,000
+د.ع
++12%
+الشهر الماضي، نفس الـ 19 يوماً: 16,450,000
+11 Sep
+19 Sep
+يحتاج انتباهك اليوم
+7 طلبات بانتظار التأكيد
+أقدمها ينتظر منذ 3 ساعات
+4 منتجات نفدت
+تبقى معروضة لكن لا يمكن شراؤها
+طلبا إرجاع
+يجب الرد خلال 48 ساعة
+طلبات هذا الشهر
+142
++18 عن الشهر الماضي
+تقييم المتجر
+4.8
+★
+من 1,240 طلباً
+ألغيتها بنفسك
+3.1%
+أعلى من هدف 2%
+التحويل، 25 أيلول
+4,180,000
+بعد عمولة 5%
+اللوحة
+7
+Merchant — decisions
+“Needs you today” outranks the numbers.
+Revenue sits in the header because it is the reason to open the app; the work queue sits first in the body because it is the reason to keep it open. The most urgent row is the only outlined card.
+Every metric carries its comparison.
++12% against the same 19 days last month, 3.1% against a 2% target, payout stated after commission. No number appears alone.
+Confirm and Decline are not equals.
+Confirm is the wide filled pill, Decline is a narrow bordered one in error ink. Declining opens a reason sheet, and the card says out loud that declines count against the rating.
+Stock is edited in the list
+with a −/+ stepper on the row. Restocking four products should not cost four screens; only a real edit opens the product form.
+Out of stock and Hidden are different states.
+Out of stock is visible to buyers and shows a Restock button; hidden is dimmed with a struck eye and is invisible to buyers. Merchants conflate these constantly, so the list distinguishes them by treatment, not by wording alone.
+RTL:
+the revenue sparkline keeps its LTR direction — time runs left to right in a chart in both languages — while every label, row and badge around it mirrors. Percentages keep the sign leading.
+Phase 2 complete — what exists now
+Home · 4 states
+Product detail · 3 states
+Cart · 4 states
+Orders and order detail · 4
+Splash, role, sign in · 3
+Account · 1
+Categories and search · 3
+Checkout · 1
+Merchant · 4
+27 frames across ten screens, English and Arabic, light and dark, each with the awkward state it will actually meet — no image, out of stock, no results, cancelled, offline. Not yet drawn: the filter sheet, the review-writing flow, address entry, the merchant product form, and the admin panel. Say which of those matters next, or I can turn the customer path — Home, Product, Cart, Checkout — into a tappable prototype.
