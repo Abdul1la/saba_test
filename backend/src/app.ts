@@ -15,7 +15,7 @@ import type { Api } from './http/route.js'
 import { fcmPush, logPush, usePush, type SendPush } from './lib/push.js'
 import { RateLimiter } from './lib/rate-limit.js'
 import { logSms, otpiqSms, type SendSms } from './lib/sms.js'
-import { mediaStoreOf, UPLOADS_PATH, type MediaStore } from './lib/storage.js'
+import { IMAGE_KEY, imageTypeOf, mediaStoreOf, UPLOADS_PATH, type MediaStore } from './lib/storage.js'
 import { createTokens, type Tokens } from './lib/tokens.js'
 import { accountRoutes } from './modules/account.js'
 import { adminCatalogRoutes } from './modules/admin-catalog.js'
@@ -99,6 +99,21 @@ export function createApp({ config, pool, logger, sms, push, media }: AppDeps): 
   if (config.media.storage === 'disk') {
     app.use(`${UPLOADS_PATH}/images`, express.static(`${config.mediaDir}/images`, { index: false, dotfiles: 'deny', immutable: true, maxAge: '365d' }))
   }
+  // A private bucket (Railway's can't be public): the API reads images/ from it and serves them here.
+  const store = media ?? mediaStoreOf(config)
+  if (config.media.storage === 's3' && !config.media.publicRead) {
+    app.get(`${UPLOADS_PATH}/images/:year/:month/:file`, (req, res, next) => {
+      const key = `images/${req.params.year}/${req.params.month}/${req.params.file}`
+      if (!IMAGE_KEY.test(key)) return next()
+      store.read(key).then(
+        (bytes) => {
+          if (!bytes) return next()
+          res.set({ 'content-type': imageTypeOf(bytes) ?? 'application/octet-stream', 'cache-control': 'public, max-age=31536000, immutable' }).send(bytes)
+        },
+        next,
+      )
+    })
+  }
   // The pages the app stores link to: public, both languages (BACKEND_PLAN.md §2.0, §12).
   app.get('/delete-account', (_req, res) => res.sendFile(DELETE_ACCOUNT_PAGE))
   app.get('/privacy', (_req, res) => res.sendFile(PRIVACY_PAGE))
@@ -111,7 +126,7 @@ export function createApp({ config, pool, logger, sms, push, media }: AppDeps): 
     pool,
     tokens,
     sms: sms ?? (config.sms.provider === 'otpiq' ? otpiqSms({ ...config.sms, logger }) : logSms(logger)),
-    media: media ?? mediaStoreOf(config),
+    media: store,
     signInLimiter: new RateLimiter(SIGN_IN.tries, SIGN_IN.windowSeconds),
   }
   const api: Api = {

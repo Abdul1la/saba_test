@@ -60,6 +60,11 @@ const schema = z.object({
   S3_BUCKET: z.string().optional().transform((value) => value || undefined),
   S3_ACCESS_KEY_ID: z.string().optional().transform((value) => value || undefined),
   S3_SECRET_ACCESS_KEY: z.string().optional().transform((value) => value || undefined),
+  // true (default): each photo is public in the bucket and loaded from
+  // MEDIA_BASE_URL (its CDN). false: the bucket is private (Railway's buckets
+  // can't be public), so the API itself serves images/ at /uploads/images,
+  // reading them from the bucket; MEDIA_BASE_URL may then be left empty.
+  S3_PUBLIC_READ: bool.default(true),
   MEDIA_BASE_URL: z
     .string()
     .regex(/^https?:\/\/[^\s]+[^/]$/, 'must be an http(s) address without a trailing /')
@@ -127,7 +132,9 @@ export interface Config {
   mediaDir: string
   mediaBaseUrl: string | undefined
   /** Where uploads are kept: the disk folder above, or an S3 bucket (its keys never logged). */
-  media: { storage: 'disk' } | { storage: 's3'; endpoint: string; region: string; bucket: string; accessKeyId: string; secretAccessKey: string }
+  media:
+    | { storage: 'disk' }
+    | { storage: 's3'; endpoint: string; region: string; bucket: string; accessKeyId: string; secretAccessKey: string; publicRead: boolean }
   sms: { provider: 'log' } | { provider: 'otpiq'; apiKey: string; channel: (typeof OTPIQ_CHANNELS)[number]; senderId: string | undefined; baseUrl: string }
   /** Whether sign-up needs an SMS code (PHONE_VERIFICATION). */
   phoneVerification: 'on' | 'off'
@@ -187,9 +194,16 @@ export function loadConfig(env: NodeJS.ProcessEnv = process.env): Config {
     )
   }
   if (values.MEDIA_STORAGE === 's3') {
-    const missing = (['S3_ENDPOINT', 'S3_REGION', 'S3_BUCKET', 'S3_ACCESS_KEY_ID', 'S3_SECRET_ACCESS_KEY', 'MEDIA_BASE_URL'] as const).filter(
-      (name) => !values[name],
-    )
+    const needed: ('S3_ENDPOINT' | 'S3_REGION' | 'S3_BUCKET' | 'S3_ACCESS_KEY_ID' | 'S3_SECRET_ACCESS_KEY' | 'MEDIA_BASE_URL')[] = [
+      'S3_ENDPOINT',
+      'S3_REGION',
+      'S3_BUCKET',
+      'S3_ACCESS_KEY_ID',
+      'S3_SECRET_ACCESS_KEY',
+    ]
+    // A private bucket's photos are served by this API: their address is its own.
+    if (values.S3_PUBLIC_READ) needed.push('MEDIA_BASE_URL')
+    const missing = needed.filter((name) => !values[name])
     if (missing.length > 0) {
       throw new ConfigError(`Invalid configuration:\n  ${missing.map((name) => `${name}: required when MEDIA_STORAGE is s3`).join('\n  ')}`)
     }
@@ -223,6 +237,7 @@ export function loadConfig(env: NodeJS.ProcessEnv = process.env): Config {
             bucket: values.S3_BUCKET!,
             accessKeyId: values.S3_ACCESS_KEY_ID!,
             secretAccessKey: values.S3_SECRET_ACCESS_KEY!,
+            publicRead: values.S3_PUBLIC_READ,
           }
         : { storage: 'disk' },
     sms:

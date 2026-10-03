@@ -52,6 +52,8 @@ export interface S3Options {
   bucket: string
   accessKeyId: string
   secretAccessKey: string
+  /** false: a private bucket (Railway): no ACL is sent, and the API serves images/ itself (app.ts). */
+  publicRead?: boolean
 }
 
 /**
@@ -68,9 +70,11 @@ export function s3Store(options: S3Options): MediaStore {
         method: 'PUT',
         body: new Uint8Array(bytes),
         headers:
-          visibility === 'public'
-            ? { 'content-type': contentType, 'cache-control': 'public, max-age=31536000, immutable', 'x-amz-acl': 'public-read' }
-            : { 'content-type': contentType, 'x-amz-acl': 'private' },
+          options.publicRead === false
+            ? { 'content-type': contentType, ...(visibility === 'public' && { 'cache-control': 'public, max-age=31536000, immutable' }) }
+            : visibility === 'public'
+              ? { 'content-type': contentType, 'cache-control': 'public, max-age=31536000, immutable', 'x-amz-acl': 'public-read' }
+              : { 'content-type': contentType, 'x-amz-acl': 'private' },
       })
       if (!response.ok) throw new Error(`object storage refused the upload: ${response.status}`)
     },
@@ -86,6 +90,9 @@ export function s3Store(options: S3Options): MediaStore {
     },
   }
 }
+
+/** A public photo's key (images/…), as /uploads links carry it. */
+export const IMAGE_KEY = /^images\/\d{4}\/\d{2}\/[0-9a-f]{32}\.(jpg|png|webp)$/
 
 /** The store the settings name. */
 export function mediaStoreOf(config: Pick<Config, 'media' | 'mediaDir'>): MediaStore {
@@ -199,5 +206,5 @@ export function keyOf(url: string, mediaBaseUrl: string | undefined): string | n
     if (!pathname.startsWith(`${UPLOADS_PATH}/`)) return null
     pathname = pathname.slice(UPLOADS_PATH.length + 1)
   }
-  return /^images\/\d{4}\/\d{2}\/[0-9a-f]{32}\.(jpg|png|webp)$/.test(pathname) ? pathname : null
+  return IMAGE_KEY.test(pathname) ? pathname : null
 }

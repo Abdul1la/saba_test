@@ -190,7 +190,12 @@ test("photos: the disk while developing; object storage required in production, 
     bucket: 'saba-media',
     accessKeyId: 'DO00EXAMPLEKEY',
     secretAccessKey: 'spaces-secret-for-tests-0000',
+    publicRead: true,
   })
+  // A private bucket (Railway): no MEDIA_BASE_URL needed, the API serves the photos.
+  const privateBucket = loadConfig({ ...production, ...s3, S3_PUBLIC_READ: 'false', MEDIA_BASE_URL: '' })
+  assert.equal(privateBucket.media.storage === 's3' && privateBucket.media.publicRead, false)
+  assert.equal(privateBucket.mediaBaseUrl, undefined)
   for (const name of ['S3_ENDPOINT', 'S3_REGION', 'S3_BUCKET', 'S3_ACCESS_KEY_ID', 'S3_SECRET_ACCESS_KEY', 'MEDIA_BASE_URL']) {
     assert.throws(
       () => loadConfig({ ...minimal, ...s3, [name]: undefined }),
