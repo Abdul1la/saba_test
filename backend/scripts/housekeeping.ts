@@ -8,6 +8,7 @@ import { textSender } from '../src/lib/sms.js'
 import { mediaStoreOf } from '../src/lib/storage.js'
 import { deleteRemovedChatPhotos } from '../src/modules/account.js'
 import { finishStoreDeletions } from '../src/modules/store-deletion.js'
+import { autoDeliver } from '../src/modules/store-orders.js'
 
 loadEnvFile()
 try {
@@ -23,6 +24,8 @@ try {
     console.log(`Deleted ${stores} stores whose owners asked.`)
     const photos = await deleteRemovedChatPhotos(pool, mediaStoreOf(config))
     console.log(`Deleted ${photos} removed chat photos.`)
+    const auto = await autoDeliver(pool)
+    console.log(`Marked ${auto.delivered} parts delivered that stores left on their way (${auto.failed} failed, tried again next run).`)
   } finally {
     await pool.end()
   }

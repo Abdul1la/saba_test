@@ -8,7 +8,9 @@ import '../../../../core/router/app_routes.dart';
 import '../../../../core/theme/app_dimensions.dart';
 import '../../../../core/theme/saba_icons.dart';
 import '../../../../core/utils/context_extensions.dart';
+import '../../../../core/utils/formatters.dart';
 import '../../../../core/widgets/app_button.dart';
+import '../../../../core/widgets/app_network_image.dart';
 import '../../../../core/widgets/async_state_view.dart';
 import '../../../../core/widgets/filter_chip_row.dart';
 import '../../../../core/widgets/paged_list_view.dart';
@@ -17,6 +19,8 @@ import '../../../../core/widgets/skeletons.dart';
 import '../../../../core/widgets/state_views.dart';
 import '../../../../core/widgets/status_badge.dart';
 import '../../../orders/presentation/widgets/order_card.dart';
+import '../../../returns/domain/entities.dart';
+import '../../../returns/presentation/widgets/return_status_chip.dart';
 import '../../domain/entities.dart';
 import '../merchant_order_actions.dart';
 import '../merchant_providers.dart';
@@ -58,7 +62,14 @@ final List<_Bucket> _buckets = <_Bucket>[
     'CANCELLED',
     'REFUSED',
   ]),
+  // What shoppers sent back. A return lived only inside its order's screen,
+  // and nothing in this list said one was waiting, so stores never answered
+  // them. Its number counts the ones waiting for the store.
+  _Bucket((context) => context.l10n.returns, const <String>[_returnsBucket]),
 ];
+
+/// The returns tab's key, and the server's count of returns waiting for the store.
+const String _returnsBucket = 'RETURNS';
 
 class MerchantOrdersScreen extends ConsumerStatefulWidget {
   const MerchantOrdersScreen({super.key, this.initialStatus});
@@ -118,7 +129,11 @@ class _MerchantOrdersScreenState extends ConsumerState<MerchantOrdersScreen> {
             onSelected: (index) => setState(() => _selected = index),
           ),
           const SizedBox(height: AppSpacing.md + 2),
-          Expanded(child: _OrderList(bucket: _buckets[_selected])),
+          Expanded(
+            child: _buckets[_selected].statuses.contains(_returnsBucket)
+                ? const _ReturnList()
+                : _OrderList(bucket: _buckets[_selected]),
+          ),
           // Only under the bucket that can decline. What a Decline costs -
           // an immediate refund and a mark against the store - is said
           // before it is pressed, not discovered afterwards.
@@ -343,6 +358,213 @@ class _WaitingBadge extends StatelessWidget {
       // Past a day unanswered, it stops being a note and becomes a problem.
       tone: elapsed.inHours >= 24 ? StatusTone.negative : StatusTone.caution,
       compact: true,
+    );
+  }
+}
+
+/// The store's returns, newest first. Each opens its order, where the
+/// answer buttons are: approve or decline, then "cash handed back".
+class _ReturnList extends ConsumerWidget {
+  const _ReturnList();
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final l10n = context.l10n;
+    final state = ref.watch(merchantReturnsProvider);
+    final notifier = ref.read(merchantReturnsProvider.notifier);
+
+    return AsyncStateView<PagedState<MerchantReturnRow>>(
+      value: state,
+      onRetry: () => ref.invalidate(merchantReturnsProvider),
+      loadingBuilder: (_) => const ListSkeleton(itemHeight: 120),
+      builder: (paged) => PagedListView<MerchantReturnRow>(
+        state: paged,
+        padding: EdgeInsets.fromLTRB(
+          AppSpacing.screenGutter,
+          0,
+          AppSpacing.screenGutter,
+          SabaNavBar.clearance(context),
+        ),
+        separatorHeight: AppSpacing.md,
+        onLoadMore: notifier.loadMore,
+        onRefresh: notifier.refresh,
+        onRetryLoadMore: notifier.retryLoadMore,
+        emptyState: EmptyStateView(
+          title: l10n.emptyStoreReturns,
+          message: l10n.emptyStoreReturnsMessage,
+          icon: SabaIcons.refresh,
+        ),
+        itemBuilder: (context, row, _) => _StoreReturnCard(
+          row: row,
+          onOpen: () =>
+              context.push(AppRoutes.merchantOrderDetailPath(row.storeOrderId)),
+        ),
+      ),
+    );
+  }
+}
+
+/// One return, as the shopper's list shows it, plus who sent it and, while
+/// it waits on the store, what the store has to do next.
+class _StoreReturnCard extends StatelessWidget {
+  const _StoreReturnCard({required this.row, required this.onOpen});
+
+  final MerchantReturnRow row;
+  final VoidCallback onOpen;
+
+  @override
+  Widget build(BuildContext context) {
+    final l10n = context.l10n;
+    final market = context.market;
+    final locale = l10n.locale.toLanguageTag();
+    final request = row.request;
+    final radius = BorderRadius.circular(AppRadius.card);
+    final next = switch (request.status) {
+      ReturnStatus.requested => l10n.returnNeedsAnswer,
+      ReturnStatus.approved => l10n.returnNeedsCash,
+      _ => null,
+    };
+
+    return Material(
+      color: context.colors.surface,
+      borderRadius: radius,
+      child: InkWell(
+        onTap: onOpen,
+        borderRadius: radius,
+        child: Container(
+          padding: const EdgeInsets.all(AppSpacing.md + 2),
+          decoration: BoxDecoration(
+            // A return waiting on the store stands out from the answered ones.
+            border: Border.all(
+              color: next == null ? market.border : market.warning,
+            ),
+            borderRadius: radius,
+          ),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  AppNetworkImage(
+                    url: request.previewImageUrl,
+                    width: 64,
+                    height: 64,
+                    radius: AppRadius.md,
+                    fallbackIcon: SabaIcons.box,
+                  ),
+                  const SizedBox(width: AppSpacing.md + 2),
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Row(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Expanded(
+                              child: Text(
+                                request.orderNumber,
+                                maxLines: 1,
+                                overflow: TextOverflow.ellipsis,
+                                style: context.textStyles.titleMedium
+                                    ?.copyWith(fontSize: 14.5),
+                              ),
+                            ),
+                            const SizedBox(width: AppSpacing.sm),
+                            ReturnStatusChip(
+                              status: request.status,
+                              compact: true,
+                            ),
+                          ],
+                        ),
+                        const SizedBox(height: AppSpacing.xxs),
+                        Text(
+                          [
+                            if (row.customerName case final name?
+                                when name.isNotEmpty)
+                              name,
+                            Formatters.date(request.requestedAt, locale: locale),
+                            l10n.counted(request.itemCount, CountNoun.item),
+                          ].join('  ·  '),
+                          maxLines: 2,
+                          overflow: TextOverflow.ellipsis,
+                          style: context.textStyles.labelSmall,
+                        ),
+                        // What the store hands back in cash. A declined return
+                        // hands back nothing, so it shows no amount.
+                        if (request.status != ReturnStatus.rejected &&
+                            request.refundAmount != null) ...[
+                          const SizedBox(height: AppSpacing.sm),
+                          Row(
+                            children: [
+                              Expanded(
+                                child: Text(
+                                  l10n.refundAmount,
+                                  maxLines: 1,
+                                  overflow: TextOverflow.ellipsis,
+                                  style: context.textStyles.labelSmall,
+                                ),
+                              ),
+                              const SizedBox(width: AppSpacing.sm),
+                              Text(
+                                Formatters.money(
+                                  request.refundAmount!,
+                                  locale: locale,
+                                  currencyCode: request.currencyCode,
+                                ),
+                                style: context.textStyles.titleMedium
+                                    ?.copyWith(fontSize: 15),
+                              ),
+                            ],
+                          ),
+                        ],
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+              if (next != null) ...[
+                const SizedBox(height: AppSpacing.md),
+                Container(
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: AppSpacing.md,
+                    vertical: AppSpacing.sm + 2,
+                  ),
+                  decoration: BoxDecoration(
+                    color: market.warningSoft,
+                    borderRadius: BorderRadius.circular(AppRadius.md),
+                  ),
+                  child: Row(
+                    children: [
+                      SabaIcon(
+                        SabaIcons.info,
+                        size: AppSizes.iconSm,
+                        color: market.warning,
+                      ),
+                      const SizedBox(width: AppSpacing.sm),
+                      Expanded(
+                        child: Text(
+                          next,
+                          style: context.textStyles.labelMedium?.copyWith(
+                            fontWeight: FontWeight.w600,
+                          ),
+                        ),
+                      ),
+                      SabaIcon(
+                        context.isRtl
+                            ? SabaIcons.chevronLeft
+                            : SabaIcons.chevronRight,
+                        size: AppSizes.iconSm,
+                        color: market.textMuted,
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            ],
+          ),
+        ),
+      ),
     );
   }
 }

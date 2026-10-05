@@ -219,6 +219,8 @@ const PublicStore = z
     governorate: z.enum(GOVERNORATES),
     country: z.string(),
     businessAddress: z.string().nullable(),
+    /** The owner's number, for shoppers to call the store (the user's call, 2026-10-05). */
+    phone: z.string().nullable(),
     delivery: StoreDelivery.optional(),
     isOpen: z.boolean(),
   })
@@ -430,6 +432,7 @@ export function storeRoutes(api: Api, ctx: Context): void {
         governorate: row.governorate,
         country: row.country,
         businessAddress: inLang(req.lang, row.business_address, row.business_address_ar),
+        phone: row.owner_phone,
         ...(delivery && { delivery }),
         isOpen: row.is_open === 1,
       }

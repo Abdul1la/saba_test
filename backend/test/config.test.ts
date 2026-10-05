@@ -93,6 +93,21 @@ test('push never stops a start: the log while developing, Firebase from its file
     privateKey: key,
     tokenUrl: 'https://oauth2.googleapis.com/token',
   })
+  // A host with no files (Railway): the same file in a variable, as JSON or in base64.
+  const json = JSON.stringify({ project_id: 'saba-app', client_email: 'push@saba-app.iam.gserviceaccount.com', private_key: key })
+  for (const inline of [json, Buffer.from(json).toString('base64')]) {
+    assert.deepEqual(loadConfig({ ...production, PUSH_PROVIDER: 'fcm', FCM_SERVICE_ACCOUNT_JSON: inline }).push, {
+      provider: 'fcm',
+      projectId: 'saba-app',
+      clientEmail: 'push@saba-app.iam.gserviceaccount.com',
+      privateKey: key,
+      tokenUrl: 'https://oauth2.googleapis.com/token',
+    })
+  }
+  assert.deepEqual(loadConfig({ ...production, PUSH_PROVIDER: 'fcm', FCM_SERVICE_ACCOUNT_JSON: 'not-a-key' }).push, {
+    provider: 'off',
+    why: 'FCM_SERVICE_ACCOUNT_JSON is not a Firebase service-account file (its JSON, or that in base64)',
+  })
   // SMS stays required: a code sent nowhere is a real failure.
   assert.throws(() => loadConfig({ ...production, SMS_PROVIDER: 'log' }), /SMS_PROVIDER: must be otpiq in production/)
 })

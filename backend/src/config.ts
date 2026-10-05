@@ -105,6 +105,12 @@ const schema = z.object({
     .string()
     .optional()
     .transform((value) => value || undefined),
+  // The same file's contents, for a host with no files of its own (Railway):
+  // the JSON itself, or it in base64. Used when FCM_SERVICE_ACCOUNT_FILE is not set.
+  FCM_SERVICE_ACCOUNT_JSON: z
+    .string()
+    .optional()
+    .transform((value) => value?.trim() || undefined),
   LOG_LEVEL: z.enum(['fatal', 'error', 'warn', 'info', 'debug', 'trace', 'silent']).default('info'),
   DOCS_ENABLED: bool.optional(),
   // How many proxies stand in front of the server. Behind a host's HTTPS proxy
@@ -250,7 +256,7 @@ export function loadConfig(env: NodeJS.ProcessEnv = process.env): Config {
             baseUrl: values.OTPIQ_BASE_URL,
           }
         : { provider: 'log' },
-    push: pushOf(values.PUSH_PROVIDER, values.FCM_SERVICE_ACCOUNT_FILE, production),
+    push: pushOf(values.PUSH_PROVIDER, values.FCM_SERVICE_ACCOUNT_FILE, values.FCM_SERVICE_ACCOUNT_JSON, production),
     corsOrigins: values.CORS_ORIGINS,
     logLevel: values.LOG_LEVEL,
     docsEnabled: values.DOCS_ENABLED ?? !production,
@@ -264,15 +270,25 @@ export function loadConfig(env: NodeJS.ProcessEnv = process.env): Config {
  * a failure the way a code sent nowhere is. Firebase's service-account file
  * gives the project, the account and its private key; nothing of it is logged.
  */
-function pushOf(provider: 'log' | 'fcm' | undefined, file: string | undefined, production: boolean): Config['push'] {
+function pushOf(
+  provider: 'log' | 'fcm' | undefined,
+  file: string | undefined,
+  inline: string | undefined,
+  production: boolean,
+): Config['push'] {
   if (provider === undefined) {
     return production ? { provider: 'off', why: 'PUSH_PROVIDER is not set' } : { provider: 'log' }
   }
   // What would be sent, in a production log, reaches no phone: off instead.
   if (provider === 'log') return production ? { provider: 'off', why: 'PUSH_PROVIDER=log is for development' } : { provider: 'log' }
-  if (!file) return { provider: 'off', why: 'FCM_SERVICE_ACCOUNT_FILE is not set' }
+  if (!file && !inline) return { provider: 'off', why: 'FCM_SERVICE_ACCOUNT_FILE is not set' }
   try {
-    const account = JSON.parse(readFileSync(file, 'utf8')) as Record<string, unknown>
+    const contents = file
+      ? readFileSync(file, 'utf8')
+      : inline!.startsWith('{')
+        ? inline!
+        : Buffer.from(inline!, 'base64').toString('utf8')
+    const account = JSON.parse(contents) as Record<string, unknown>
     const text = (key: string) => (typeof account[key] === 'string' && account[key] ? (account[key] as string) : null)
     const projectId = text('project_id')
     const clientEmail = text('client_email')
@@ -280,7 +296,12 @@ function pushOf(provider: 'log' | 'fcm' | undefined, file: string | undefined, p
     if (!projectId || !clientEmail || !privateKey?.includes('PRIVATE KEY')) throw new Error('not a service account')
     return { provider: 'fcm', projectId, clientEmail, privateKey, tokenUrl: text('token_uri') ?? 'https://oauth2.googleapis.com/token' }
   } catch {
-    return { provider: 'off', why: 'FCM_SERVICE_ACCOUNT_FILE is not a readable Firebase service-account file' }
+    return {
+      provider: 'off',
+      why: file
+        ? 'FCM_SERVICE_ACCOUNT_FILE is not a readable Firebase service-account file'
+        : 'FCM_SERVICE_ACCOUNT_JSON is not a Firebase service-account file (its JSON, or that in base64)',
+    }
   }
 }
 

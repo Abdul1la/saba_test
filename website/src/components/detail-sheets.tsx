@@ -1,6 +1,6 @@
 import { useState, type ReactNode } from 'react'
 import { Link } from 'react-router'
-import { Ban, ChevronLeft, ChevronRight, CircleX, Clock, EyeOff, Lock, Mail, Phone, ReceiptText, Star, Tag, Trash2, Truck, UserX } from 'lucide-react'
+import { Ban, ChevronLeft, ChevronRight, CircleX, Clock, EyeOff, Lock, Mail, Phone, ReceiptText, Star, Tag, Trash2, Truck, UserX, Zap } from 'lucide-react'
 import { ProductActions, StoreActions } from '@/components/actions'
 import { CustomerDetail } from '@/components/customer-sheet'
 import { BillsDetail } from '@/components/finance-sheet'
@@ -704,6 +704,12 @@ function OrderDetail({ id }: { id: string }) {
                   <Clock className="size-3.5" />
                   {dateTime(step.occurredAt, lang)}
                 </p>
+                {step.noteCode === 'AUTO_DELIVERED' && (
+                  <p className="mt-1.5 inline-flex items-start gap-1.5 rounded-lg bg-soft px-2.5 py-1.5 text-[13px] leading-snug text-navy">
+                    <Zap className="mt-0.5 size-3.5 shrink-0 text-primary" />
+                    {t.order.autoDelivered}
+                  </p>
+                )}
               </li>
             ))}
           </ol>

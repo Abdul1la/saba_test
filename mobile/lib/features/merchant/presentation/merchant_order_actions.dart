@@ -345,13 +345,11 @@ class _CourierSheetState extends State<_CourierSheet> {
     final l10n = context.l10n;
 
     return SafeArea(
+      // The keyboard's room is the sheet's own (AppDialogs.bottomSheet).
+      // Added here too, it counted twice: the sheet rose by two keyboards and
+      // its title and fields went off the top of the screen.
       child: Padding(
-        padding: EdgeInsets.fromLTRB(
-          AppSpacing.lg,
-          AppSpacing.lg,
-          AppSpacing.lg,
-          AppSpacing.lg + MediaQuery.viewInsetsOf(context).bottom,
-        ),
+        padding: const EdgeInsets.all(AppSpacing.lg),
         child: Form(
           key: _formKey,
           child: SingleChildScrollView(

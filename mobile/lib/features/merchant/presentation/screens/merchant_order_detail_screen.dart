@@ -128,6 +128,17 @@ class _BodyState extends ConsumerState<_Body> {
               ),
               const SizedBox(height: AppSpacing.lg),
 
+              // On its way: the day Saba marks it delivered if the store
+              // forgets, said before it happens rather than discovered after.
+              if (row.autoDeliverAt case final at?) ...[
+                _AutoDeliverNote(
+                  text: l10n.autoDeliverOn(
+                    Formatters.date(at.toLocal(), locale: locale),
+                  ),
+                ),
+                const SizedBox(height: AppSpacing.md),
+              ],
+
               // Where it goes and who receives it. Two facts a packing slip
               // cannot be written without, and neither was anywhere in the
               // app before this screen existed.
@@ -299,6 +310,38 @@ class _BodyState extends ConsumerState<_Body> {
             ),
           ),
       ],
+    );
+  }
+}
+
+/// "Not marked Delivered by Thu 9 Oct? Saba marks it delivered then."
+class _AutoDeliverNote extends StatelessWidget {
+  const _AutoDeliverNote({required this.text});
+
+  final String text;
+
+  @override
+  Widget build(BuildContext context) {
+    final market = context.market;
+    return Container(
+      padding: const EdgeInsets.all(AppSpacing.md),
+      decoration: BoxDecoration(
+        color: market.infoSoft,
+        borderRadius: BorderRadius.circular(AppRadius.md),
+      ),
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          SabaIcon(SabaIcons.truck, size: AppSizes.iconSm, color: market.info),
+          const SizedBox(width: AppSpacing.sm),
+          Expanded(
+            child: Text(
+              text,
+              style: context.textStyles.bodySmall?.copyWith(height: 1.4),
+            ),
+          ),
+        ],
+      ),
     );
   }
 }

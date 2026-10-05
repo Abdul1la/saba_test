@@ -9,6 +9,7 @@ import { textSender } from './lib/sms.js'
 import { mediaStoreOf } from './lib/storage.js'
 import { deleteRemovedChatPhotos } from './modules/account.js'
 import { finishStoreDeletions } from './modules/store-deletion.js'
+import { autoDeliver } from './modules/store-orders.js'
 import { HOUSEKEEPING } from './rules.js'
 
 loadEnvFile()
@@ -30,7 +31,7 @@ const server = app.listen(config.port, () => {
   if (config.push.provider === 'off') {
     logger.warn(
       { why: config.push.why },
-      'Push notifications are OFF: no phone gets a push. Set PUSH_PROVIDER=fcm and FCM_SERVICE_ACCOUNT_FILE to turn them on.',
+      'Push notifications are OFF: no phone gets a push. Set PUSH_PROVIDER=fcm and FCM_SERVICE_ACCOUNT_FILE (or FCM_SERVICE_ACCOUNT_JSON) to turn them on.',
     )
   }
   if (config.phoneVerification === 'off') {
@@ -47,6 +48,8 @@ const tidy = () =>
       ...deleted,
       stores: await finishStoreDeletions({ pool, media: mediaStoreOf(config), sendText, logger }),
       chatPhotos: await deleteRemovedChatPhotos(pool, mediaStoreOf(config)),
+      // Parts a store left "on its way" for AUTO_DELIVER_DAYS: delivered for it.
+      autoDelivered: await autoDeliver(pool),
     }))
     .then(
       (deleted) => logger.info(deleted, 'housekeeping'),

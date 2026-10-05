@@ -1,5 +1,6 @@
-import { ClipboardCheck, Hourglass, Package, PackageCheck, Store, Timer } from 'lucide-react'
-import { ProductActions, StoreActions } from '@/components/actions'
+import { useState } from 'react'
+import { ClipboardCheck, Hourglass, Package, PackageCheck, Store, Timer, Zap } from 'lucide-react'
+import { ProductActions, StoreActions, useRun } from '@/components/actions'
 import {
   ContentCard,
   EmptyState,
@@ -18,8 +19,10 @@ import {
   td,
   th,
 } from '@/components/blocks'
+import { Switch } from '@/components/form'
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table'
 import { getQueue, type Queue } from '@/data/queue'
+import { changeSettings, getSettings } from '@/data/settings'
 import { ago, isLate, money, phone } from '@/lib/format'
 import { useI18n } from '@/lib/i18n'
 import { useSheet, useUrlFilters } from '@/lib/url-state'
@@ -121,7 +124,7 @@ export function QueuePage() {
         )}
 
         {show !== 'stores' && (
-          <ContentCard icon={Package} title={t.queue.productsTitle} description={t.queue.productsText}>
+          <ContentCard icon={Package} title={t.queue.productsTitle} description={t.queue.productsText} actions={<AutoApprove />}>
             {queue.error ? (
               <ErrorState error={queue.error} onRetry={queue.retry} />
             ) : !data ? (
@@ -135,6 +138,39 @@ export function QueuePage() {
         )}
       </div>
     </>
+  )
+}
+
+/** Saba's switch: on, a store's new or changed product skips this queue and goes live at once. */
+function AutoApprove() {
+  const { t } = useI18n()
+  const settings = useQuery(getSettings, 'settings')
+  const run = useRun()
+  const [busy, setBusy] = useState(false)
+  const on = settings.data?.autoApproveProducts
+  // Not known yet, or not answered: no switch rather than a wrong one.
+  if (on === undefined) return null
+  const turn = async (next: boolean) => {
+    setBusy(true)
+    await run(() => changeSettings({ autoApproveProducts: next }), next ? t.queue.autoApproveTurnedOn : t.queue.autoApproveTurnedOff)
+    setBusy(false)
+  }
+  return (
+    <div
+      className={cn(
+        'flex w-full max-w-[420px] items-center gap-3 rounded-2xl border px-4 py-3 transition-colors sm:w-auto',
+        on ? 'border-primary/30 bg-primary/5' : 'border-border bg-soft',
+      )}
+    >
+      <span className={cn('grid size-9 shrink-0 place-items-center rounded-xl', on ? 'bg-primary text-white' : 'bg-card text-muted-foreground')}>
+        <Zap className="size-4" strokeWidth={2} />
+      </span>
+      <span className="min-w-0 flex-1">
+        <span className="block text-[14px] font-semibold text-navy">{t.queue.autoApprove}</span>
+        <span className="block text-[13px] leading-snug text-muted-foreground">{on ? t.queue.autoApproveOn : t.queue.autoApproveOff}</span>
+      </span>
+      <Switch on={on} label={t.queue.autoApprove} disabled={busy || settings.loading} onChange={turn} />
+    </div>
   )
 }
 

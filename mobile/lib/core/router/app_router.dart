@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
@@ -65,6 +67,14 @@ final pendingDeepLinkProvider = Provider<PendingDeepLink>(
   (ref) => PendingDeepLink(),
 );
 
+/// How long the splash stays at least on a cold start (the user's call,
+/// 2026-10-05). It went by in a frame once the session resolved, and a first
+/// launch never showed it at all: it went straight to the language page.
+/// The session is checked meanwhile, so a slow check adds nothing to it.
+/// Zero in tests (test/flutter_test_config.dart): they start at once, as before.
+@visibleForTesting
+Duration splashMinimum = const Duration(milliseconds: 1500);
+
 /// Rebuilds the router's redirect whenever the session changes, without
 /// recreating the router itself (which would lose navigation history).
 class _AuthRefreshNotifier extends ChangeNotifier {
@@ -77,13 +87,25 @@ final appRouterProvider = Provider<GoRouter>((ref) {
   // `listen` rather than `watch`: the provider body must not re-run, or the
   // whole navigation stack would be rebuilt on every sign-in.
   ref.listen(authControllerProvider, (_, _) => refreshNotifier.ping());
+
+  // The splash's own time, then the redirect looks again (cancelled first,
+  // so it never pings a disposed notifier).
+  var splashDone = splashMinimum == Duration.zero;
+  if (!splashDone) {
+    final splashTimer = Timer(splashMinimum, () {
+      splashDone = true;
+      refreshNotifier.ping();
+    });
+    ref.onDispose(splashTimer.cancel);
+  }
   ref.onDispose(refreshNotifier.dispose);
 
   return GoRouter(
     navigatorKey: _rootNavigatorKey,
     initialLocation: AppRoutes.splash,
     refreshListenable: refreshNotifier,
-    redirect: (context, state) => _redirect(ref, state),
+    redirect: (context, state) =>
+        _redirect(ref, state, splashDone: splashDone),
     // An address the app does not have - one taken out for v1 like
     // /compare, or a mistyped one - lands on Home (a store's owner goes on
     // to their dashboard from there). It said "You do not have permission
@@ -446,11 +468,16 @@ final appRouterProvider = Provider<GoRouter>((ref) {
 /// Returning a path redirects; returning null allows. This mirrors the
 /// backend's rules so the UI stays coherent, but it is the backend that
 /// actually enforces them (specification sections 51 and 58).
-String? _redirect(Ref ref, GoRouterState state) {
+String? _redirect(Ref ref, GoRouterState state, {required bool splashDone}) {
   // G15 - a link arrives as `saba://search?q=...`, which has no path the
   // router can match. Rewrite it before anything else looks at the location.
   final normalized = normalizeDeepLink(state.uri);
   if (normalized != null) return normalized;
+
+  // The splash first, on every cold start and the first one too, for at
+  // least [splashMinimum]. A link that opened the app is kept (below) and
+  // followed once it is done.
+  if (!splashDone && state.matchedLocation == AppRoutes.splash) return null;
 
   final auth = ref.read(authControllerProvider);
   final pending = ref.read(pendingDeepLinkProvider);

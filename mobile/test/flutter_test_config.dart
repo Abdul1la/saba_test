@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:saba_marketplace/core/config/app_config.dart';
+import 'package:saba_marketplace/core/router/app_router.dart';
 
 /// Loaded by `flutter test` before every test file. The suite runs against
 /// the demo server, which the app itself no longer does by default; a run
@@ -10,5 +11,7 @@ Future<void> testExecutable(FutureOr<void> Function() testMain) async {
   AppConfig.demoForTests =
       !const bool.hasEnvironment('USE_MOCK_DATA') ||
       const bool.fromEnvironment('USE_MOCK_DATA');
+  // The splash's minimum time is for people; a test moves on at once.
+  splashMinimum = Duration.zero;
   await testMain();
 }

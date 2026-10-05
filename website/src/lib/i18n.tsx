@@ -235,6 +235,11 @@ const en = {
     emptyStoresText: 'Every new store has an answer.',
     emptyProducts: 'No products waiting for approval',
     emptyProductsText: 'Every product sent for review has an answer.',
+    autoApprove: 'Approve products automatically',
+    autoApproveOn: 'On: new and changed products go live at once.',
+    autoApproveOff: 'Off: each new product waits here for you.',
+    autoApproveTurnedOn: 'New products now go live at once',
+    autoApproveTurnedOff: 'New products now wait for your approval',
   },
 
   stores: {
@@ -756,6 +761,7 @@ const en = {
     driver: 'Driver',
     noCourier: 'The store names its driver when it ships the order.',
     history: 'History',
+    autoDelivered: 'Automatic: on its way for 5 days without "Delivered", so Saba marked it delivered',
     placed: 'Placed',
   },
 }
@@ -993,6 +999,11 @@ const ar: Strings = {
     emptyStoresText: 'كل متجر جديد حصل على جواب.',
     emptyProducts: 'لا منتجات بانتظار الموافقة',
     emptyProductsText: 'كل منتج أُرسل للمراجعة حصل على جواب.',
+    autoApprove: 'اعتماد المنتجات تلقائياً',
+    autoApproveOn: 'مفعّل: المنتجات الجديدة والمعدّلة تظهر في السوق فوراً.',
+    autoApproveOff: 'متوقف: كل منتج جديد ينتظر موافقتك هنا.',
+    autoApproveTurnedOn: 'المنتجات الجديدة تظهر الآن فوراً',
+    autoApproveTurnedOff: 'المنتجات الجديدة تنتظر موافقتك الآن',
   },
 
   stores: {
@@ -1513,6 +1524,7 @@ const ar: Strings = {
     driver: 'السائق',
     noCourier: 'يذكر المتجر سائقه عند شحن الطلب.',
     history: 'السجل',
+    autoDelivered: 'تلقائي: بقي في الطريق 5 أيام دون «تم التسليم»، فسجّلته سبأ كمُسلَّم',
     placed: 'تم الطلب',
   },
 }

@@ -171,6 +171,14 @@ class MerchantMappers {
           Json.objects(json, const ['items', 'lines']),
           orderItem,
         ),
+        autoDeliverAt: Json.date(json, const ['autoDeliverAt']),
+      );
+
+  static MerchantReturnRow returnRow(Map<String, dynamic> json) =>
+      MerchantReturnRow(
+        request: ReturnMappers.summary(json),
+        storeOrderId: Json.str(json, const ['storeOrderId']),
+        customerName: Json.strOrNull(json, const ['customerName']),
       );
 
   static MerchantOrderItem orderItem(Map<String, dynamic> json) =>
@@ -350,6 +358,9 @@ abstract interface class MerchantRepository {
     String? reason,
     Courier? courier,
   });
+
+  /// The store's returns, newest first, each with the order it is on.
+  Future<Result<PaginatedList<MerchantReturnRow>>> returns({int page = 1});
 
   /// APPROVED or REJECTED for a new return; REFUNDED once the item is back
   /// and the cash handed over.
@@ -583,6 +594,15 @@ class MerchantRepositoryImpl implements MerchantRepository {
   }
 
   @override
+  Future<Result<PaginatedList<MerchantReturnRow>>> returns({int page = 1}) {
+    return client.getPage<MerchantReturnRow>(
+      ApiEndpoints.merchantReturns,
+      page: page,
+      itemDecoder: MerchantMappers.returnRow,
+    );
+  }
+
+  @override
   Future<Result<void>> answerReturn(
     String returnId,
     String status, {
@@ -783,6 +803,27 @@ class MerchantOrdersNotifier extends PagedNotifier<MerchantOrderRow> {
         .orders(status: status, page: page);
   }
 }
+
+/// The store's returns. A shopper asking for one, and each answer, arrive on
+/// the orders topic, so the list follows without a pull.
+class MerchantReturnsNotifier extends PagedNotifier<MerchantReturnRow> {
+  @override
+  Future<PagedState<MerchantReturnRow>> build() {
+    ref.watch(accountIdProvider);
+    ref.watch(liveTopicProvider(LiveTopic.orders));
+    return super.build();
+  }
+
+  @override
+  Future<Result<PaginatedList<MerchantReturnRow>>> fetchPage(int page) {
+    return ref.read(merchantRepositoryProvider).returns(page: page);
+  }
+}
+
+final merchantReturnsProvider =
+    AsyncNotifierProvider<MerchantReturnsNotifier, PagedState<MerchantReturnRow>>(
+      MerchantReturnsNotifier.new,
+    );
 
 final merchantOrderCountsProvider = FutureProvider<Map<String, int>>((
   ref,

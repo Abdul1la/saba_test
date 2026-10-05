@@ -31,6 +31,9 @@ export async function startHarness(options: { push?: SendPush | null } = {}) {
   const mediaDir = await mkdtemp(path.join(tmpdir(), 'saba-test-'))
   const config = testConfig({ DATABASE_URL: url, MEDIA_DIR: mediaDir })
   const pool: Pool = createPool(url, 4)
+  // Products wait in Saba's queue, as the tests were written for; the switch
+  // that skips it (migration 0013, on in production) has its own test.
+  await exec(pool, "UPDATE app_settings SET value = 'false' WHERE name = 'auto_approve_products'")
   const inbox = new Map<string, string>()
   const app = await startApp({
     config,

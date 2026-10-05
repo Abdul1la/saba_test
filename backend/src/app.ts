@@ -25,6 +25,7 @@ import { adminOrderRoutes } from './modules/admin-orders.js'
 import { adminProductRoutes } from './modules/admin-products.js'
 import { adminReturnRoutes } from './modules/admin-returns.js'
 import { adminReviewRoutes } from './modules/admin-reviews.js'
+import { adminSettingsRoutes } from './modules/admin-settings.js'
 import { adminStoreRoutes } from './modules/admin-stores.js'
 import { authRoutes } from './modules/auth.js'
 import { billRoutes } from './modules/bills.js'
@@ -166,6 +167,7 @@ export function createApp({ config, pool, logger, sms, push, media }: AppDeps): 
   adminReviewRoutes(api, ctx)
   adminCustomerRoutes(api, ctx)
   adminDashboardRoutes(api, ctx)
+  adminSettingsRoutes(api, ctx)
   billRoutes(api, ctx)
   eventRoutes(api)
   app.use(config.apiPrefix, api.router)

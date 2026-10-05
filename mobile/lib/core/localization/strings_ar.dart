@@ -1037,4 +1037,12 @@ const Map<String, String> stringsAr = <String, String>{
   'productNotFoundMessage': 'ربما سُحب من البيع، أو أن الرابط غير صحيح.',
   'cancelledNothingCharged': 'أُلغي الطلب: لن يُدفع أي مبلغ منه.',
   'refusedNothingPaid': 'رُفض عند الباب: لم يُدفع أي مبلغ.',
+  'storePhone': 'هاتف المتجر',
+  'autoDeliverOnTemplate':
+      'إن لم تسجّله «تم التسليم» حتى {date}، تسجّله سبأ كمُسلَّم ويُبلَّغ المتسوّق.',
+  'noteAutoDelivered': 'سُجّل كمُسلَّم تلقائياً: بقي في الطريق 5 أيام.',
+  'emptyStoreReturns': 'لا مرتجعات بعد',
+  'emptyStoreReturnsMessage': 'حين يطلب متسوّق إرجاع شيء من متجرك، يظهر هنا.',
+  'returnNeedsAnswer': 'افتح الطلب لتوافق أو ترفض',
+  'returnNeedsCash': 'استلمه، ثم سجّل أنك أعدت المبلغ',
 };

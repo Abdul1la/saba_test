@@ -20,6 +20,7 @@ import '../catalog_providers.dart';
 import '../widgets/connected_product_card.dart';
 import '../widgets/filter_sheet.dart';
 import '../widgets/product_card.dart';
+import '../widgets/subcategory_circles.dart';
 import '../../../../core/widgets/saba_nav_bar.dart';
 
 /// Paginated product results.
@@ -42,6 +43,33 @@ class ProductListScreen extends ConsumerStatefulWidget {
 
 class _ProductListScreenState extends ConsumerState<ProductListScreen> {
   late ProductQuery _query = widget.initialQuery;
+
+  /// The category this list opened on (a Home tile): its sub-categories are
+  /// offered above the grid.
+  late final String? _parentId = widget.initialQuery.categoryId;
+
+  /// The sub-category circles while the list is within [_parentId], else null.
+  Widget? _subcategories() {
+    final parent = _parentId == null
+        ? null
+        : ref
+              .watch(categoryTreeProvider)
+              .value
+              ?.where((category) => category.id == _parentId)
+              .firstOrNull;
+    if (parent == null || parent.children.isEmpty) return null;
+    final chosen = _query.categoryId;
+    final within =
+        chosen == parent.id || parent.children.any((c) => c.id == chosen);
+    if (!within) return null;
+    return SubcategoryCircles(
+      parent: parent,
+      selectedId: chosen == parent.id ? null : chosen,
+      onSelected: (id) => setState(
+        () => _query = _query.copyWith(categoryId: id ?? parent.id),
+      ),
+    );
+  }
 
   Future<void> _openSort() async {
     final selected = await AppDialogs.bottomSheet<ProductSort>(
@@ -104,6 +132,7 @@ class _ProductListScreenState extends ConsumerState<ProductListScreen> {
                     onRetryLoadMore: notifier.retryLoadMore,
                     onSort: _openSort,
                     onQueryChanged: (next) => setState(() => _query = next),
+                    top: _subcategories(),
                   ),
                 ),
                 PositionedDirectional(
@@ -170,6 +199,7 @@ class ResultsGrid extends StatelessWidget {
     required this.onRetryLoadMore,
     required this.onSort,
     required this.onQueryChanged,
+    this.top,
   });
 
   final PagedState<ProductSummary> paged;
@@ -180,13 +210,32 @@ class ResultsGrid extends StatelessWidget {
   final VoidCallback onSort;
   final ValueChanged<ProductQuery> onQueryChanged;
 
+  /// Above the count, scrolling with the grid: a category's sub-categories.
+  final Widget? top;
+
   @override
   Widget build(BuildContext context) {
     final l10n = context.l10n;
     final columns = context.productGridColumns;
 
     if (paged.items.isEmpty && !paged.isLoadingMore) {
-      return _EmptyResults(query: query, onQueryChanged: onQueryChanged);
+      final empty = _EmptyResults(query: query, onQueryChanged: onQueryChanged);
+      // An empty sub-category keeps its row, so "All" is one tap away.
+      if (top == null) return empty;
+      return Column(
+        children: [
+          Padding(
+            padding: const EdgeInsets.fromLTRB(
+              AppSpacing.screenGutter,
+              AppSpacing.md + 2,
+              AppSpacing.screenGutter,
+              0,
+            ),
+            child: top,
+          ),
+          Expanded(child: empty),
+        ],
+      );
     }
 
     return LayoutBuilder(
@@ -210,10 +259,16 @@ class ResultsGrid extends StatelessWidget {
             AppSpacing.screenGutter,
             SabaNavBar.clearance(context),
           ),
-          header: ResultsBar(
-            count: paged.total,
-            sortLabel: sortLabel(l10n, query.sort),
-            onSort: onSort,
+          header: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              ?top,
+              ResultsBar(
+                count: paged.total,
+                sortLabel: sortLabel(l10n, query.sort),
+                onSort: onSort,
+              ),
+            ],
           ),
           gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
             crossAxisCount: columns,

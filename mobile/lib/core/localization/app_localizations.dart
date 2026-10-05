@@ -1151,6 +1151,17 @@ class AppLocalizations {
   String couponsFrom(String store) =>
       _v('couponsFromTemplate').replaceFirst('{store}', store);
 
+  String get storePhone => _v('storePhone');
+  String get noteAutoDelivered => _v('noteAutoDelivered');
+  String get emptyStoreReturns => _v('emptyStoreReturns');
+  String get emptyStoreReturnsMessage => _v('emptyStoreReturnsMessage');
+  String get returnNeedsAnswer => _v('returnNeedsAnswer');
+  String get returnNeedsCash => _v('returnNeedsCash');
+
+  /// "Not marked Delivered by Thu 9 Oct? Saba marks it delivered then."
+  String autoDeliverOn(String date) =>
+      _v('autoDeliverOnTemplate').replaceFirst('{date}', date);
+
   /// The design writes a discount as '− 25%' — a true minus sign and
   /// nothing else. 'off' is still translated and still used by screen
   /// readers through [discountBadgeLabel].

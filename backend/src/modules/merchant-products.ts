@@ -12,6 +12,7 @@ import { fold, searchWords } from '../lib/fold.js'
 import { publish } from '../lib/events.js'
 import type { MessageKey } from '../lib/i18n.js'
 import { LOW_STOCK_AT_MOST, productPrice, saleIsOn, saleOff, stockStatus } from '../lib/pricing.js'
+import { settingOn } from '../lib/settings.js'
 import { keyOf } from '../lib/storage.js'
 import { loadProducts, Product, productSearchText, shaper, type Loaded } from './products.js'
 
@@ -299,7 +300,8 @@ export function merchantProductRoutes(api: Api, ctx: Context): void {
         const productId = inserted.insertId
         await saveImages(conn, productId, refs.images ?? [])
         await saveSkus(conn, productId, body, body.price, 0, me(req).id)
-        // It waits in Saba's queue.
+        // It waits in Saba's queue, unless Saba's switch approves it at once.
+        await approveIfAuto(conn, productId)
         publish(conn, 'ADMINS', 'products', productId)
         return productId
       })
@@ -390,6 +392,8 @@ export function merchantProductRoutes(api: Api, ctx: Context): void {
           await exec(conn, "UPDATE products SET status = 'PENDING', submitted_at = NOW(3) WHERE id = ?", [product.id])
           publish(conn, 'ADMINS', 'products', product.id)
         }
+        // Saba's switch on: nothing waits, not even what was waiting before it.
+        if (await approveIfAuto(conn, product.id)) publish(conn, 'ADMINS', 'products', product.id)
         return product.id
       })
       return detailOf(pool, req, id)
@@ -434,6 +438,7 @@ export function merchantProductRoutes(api: Api, ctx: Context): void {
         [product.id],
       )
       if (changed.affectedRows === 0) throw new AppError(409, 'CONFLICT_ERROR', 'admin.wrongState')
+      await approveIfAuto(pool, product.id)
       publish(pool, 'ADMINS', 'products', product.id)
       return {}
     },
@@ -827,6 +832,23 @@ function normalOriginal(body: ProductInput): number | null {
 }
 
 /** Every product has its Arabic name: 3 or more letters, with an Arabic one (`_noArabicName`). */
+/**
+ * Saba's switch (admin website, migration 0013): on, a waiting product is
+ * approved at once, with what an admin's approval does besides (a brand its
+ * store typed is approved with it). One whose Arabic name an admin would turn
+ * down keeps waiting for them. The store is not told: it just saved it.
+ * Whether it was approved.
+ */
+async function approveIfAuto(db: Pool | Connection, productId: number): Promise<boolean> {
+  if (!(await settingOn(db, 'auto_approve_products'))) return false
+  const row = await one<{ name_ar: string }>(db, "SELECT name_ar FROM products WHERE id = ? AND status = 'PENDING'", [productId])
+  if (!row || row.name_ar.trim().length < 3 || !/[؀-ۿ]/.test(row.name_ar)) return false
+  const changed = await exec(db, "UPDATE products SET status = 'APPROVED', rejection_reason = NULL WHERE id = ? AND status = 'PENDING'", [productId])
+  if (changed.affectedRows === 0) return false
+  await exec(db, "UPDATE brands b JOIN products p ON p.brand_id = b.id SET b.status = 'APPROVED' WHERE p.id = ? AND b.status = 'PENDING'", [productId])
+  return true
+}
+
 export function checkNameAr(nameAr: string): void {
   if (!/[؀-ۿ]/.test(nameAr)) throw fieldError('nameAr', 'product.nameAr')
   // Arabic, but too short: say that, not "write it in Arabic" (M3).

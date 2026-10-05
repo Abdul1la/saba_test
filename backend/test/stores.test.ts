@@ -389,6 +389,8 @@ describe("a store's public page and the city chips", () => {
     assert.equal(page.body.data.governorate, 'KARBALA')
     assert.equal(page.body.data.rating, 0)
     assert.equal(page.body.data.isOpen, true)
+    // Shoppers can call the store: its owner's number.
+    assert.match(page.body.data.phone, /^\+964\d{10}$/)
     await h.call('POST', `/admin/stores/${store.storeId}/suspend`, { token: admin, body: { reason: 'x' } })
     assert.equal((await h.call('GET', `/merchants/${store.storeId}/store`)).status, 404)
   })

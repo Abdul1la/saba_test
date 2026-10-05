@@ -865,7 +865,8 @@ describe("the store's steps (DATABASE_DESIGN.md §5.3)", () => {
     assert.equal((await h.call('GET', `/merchants/me/orders/${part}`, { token: stranger.token })).status, 404)
     assert.equal((await h.call('PATCH', `/merchants/me/orders/${part}/status`, { token: who.token, body: { status: 'CONFIRMED' } })).status, 403)
     const counts = (await h.call('GET', '/merchants/me/orders/counts', { token: store.token })).body.data
-    assert.deepEqual(counts, { PENDING: 1 })
+    // RETURNS: the store's returns waiting for it, for its Returns tab.
+    assert.deepEqual(counts, { PENDING: 1, RETURNS: 0 })
     const detail = (await h.call('GET', `/merchants/me/orders/${part}`, { token: store.token })).body.data
     assert.equal(detail.customerPhone, who.phone)
     assert.deepEqual(detail.returns, [])

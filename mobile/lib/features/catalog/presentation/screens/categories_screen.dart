@@ -17,6 +17,7 @@ import '../../domain/entities.dart';
 import '../../domain/product_query.dart';
 import '../catalog_providers.dart';
 import '../widgets/filter_sheet.dart';
+import '../widgets/subcategory_circles.dart';
 import 'product_list_screen.dart';
 
 /// Browse — things you can buy, with the categories across the top.
@@ -40,6 +41,9 @@ class _CategoriesScreenState extends ConsumerState<CategoriesScreen> {
   /// null is "All". Held here rather than in the query so the strip can be
   /// drawn before the products have loaded.
   String? _categoryId;
+
+  /// One of [_categoryId]'s sub-categories, null for all of it.
+  String? _subcategoryId;
   ProductSort _sort = ProductSort.relevance;
 
   /// The strip reads the categories again when the app is reopened: a
@@ -77,9 +81,24 @@ class _CategoriesScreenState extends ConsumerState<CategoriesScreen> {
   Widget build(BuildContext context) {
     final l10n = context.l10n;
     final tree = ref.watch(categoryTreeProvider);
-    final query = ProductQuery(categoryId: _categoryId, sort: _sort);
+    final query = ProductQuery(
+      categoryId: _subcategoryId ?? _categoryId,
+      sort: _sort,
+    );
     final state = ref.watch(productListProvider(query));
     final notifier = ref.read(productListProvider(query).notifier);
+
+    // The chosen category's sub-categories, as pictures above its products.
+    final parent = _categoryId == null
+        ? null
+        : tree.value?.where((c) => c.id == _categoryId).firstOrNull;
+    final subcategories = parent == null || parent.children.isEmpty
+        ? null
+        : SubcategoryCircles(
+            parent: parent,
+            selectedId: _subcategoryId,
+            onSelected: (id) => setState(() => _subcategoryId = id),
+          );
 
     return Scaffold(
       body: SafeArea(
@@ -89,16 +108,20 @@ class _CategoriesScreenState extends ConsumerState<CategoriesScreen> {
             PageTitle(title: l10n.browse),
             ShopHeader(hint: l10n.searchProductsAndStores),
             // The strip keeps its place while the categories load, so the
-            // screen does not jump once they arrive.
+            // screen does not jump once they arrive. "All" is always on it:
+            // it was drawn only with the categories, so while they loaded,
+            // or when reading them again failed (a weak signal, coming back
+            // to the app), the whole strip went and "All" with it. The
+            // categories last read stay meanwhile.
             SizedBox(
               height: AppSizes.filterChipHeight + AppSpacing.md,
-              child: tree.maybeWhen(
-                data: (categories) => _CategoryStrip(
-                  categories: categories,
-                  selectedId: _categoryId,
-                  onSelected: (id) => setState(() => _categoryId = id),
-                ),
-                orElse: () => const SizedBox.shrink(),
+              child: _CategoryStrip(
+                categories: tree.value ?? const <Category>[],
+                selectedId: _categoryId,
+                onSelected: (id) => setState(() {
+                  _categoryId = id;
+                  _subcategoryId = null;
+                }),
               ),
             ),
             Expanded(
@@ -108,12 +131,28 @@ class _CategoriesScreenState extends ConsumerState<CategoriesScreen> {
                 loadingBuilder: (_) => const ProductGridSkeleton(itemCount: 8),
                 builder: (paged) {
                   if (paged.items.isEmpty) {
-                    return NoResultsView(
+                    final empty = NoResultsView(
                       icon: SabaIcons.grid,
                       title: l10n.emptyTitle,
                       // Says which category is empty rather than implying the
                       // whole shop is.
                       message: l10n.emptyProducts,
+                    );
+                    // An empty sub-category keeps its row: "All" is one tap away.
+                    if (subcategories == null) return empty;
+                    return Column(
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.fromLTRB(
+                            AppSpacing.screenGutter,
+                            AppSpacing.md + 2,
+                            AppSpacing.screenGutter,
+                            0,
+                          ),
+                          child: subcategories,
+                        ),
+                        Expanded(child: empty),
+                      ],
                     );
                   }
 
@@ -129,9 +168,14 @@ class _CategoriesScreenState extends ConsumerState<CategoriesScreen> {
                     onRetryLoadMore: notifier.retryLoadMore,
                     onSort: _openSort,
                     onQueryChanged: (next) => setState(() {
-                      _categoryId = next.categoryId;
+                      // A filter that changed the category starts it afresh.
+                      if (next.categoryId != query.categoryId) {
+                        _categoryId = next.categoryId;
+                        _subcategoryId = null;
+                      }
                       _sort = next.sort;
                     }),
+                    top: subcategories,
                   );
                 },
               ),

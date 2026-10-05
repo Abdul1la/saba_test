@@ -19,8 +19,10 @@ import '../../../../core/router/app_routes.dart';
 import '../../../../core/theme/app_dimensions.dart';
 import '../../../../core/theme/saba_icons.dart';
 import '../../../../core/utils/context_extensions.dart';
+import '../../../../core/utils/iraqi_phone.dart';
 import '../../../../core/utils/json_reader.dart';
 import '../../../../core/widgets/app_button.dart';
+import '../../../../core/widgets/call_button.dart';
 import '../../../../core/widgets/app_dialogs.dart';
 import '../../../../core/widgets/app_network_image.dart';
 import '../../../../core/widgets/async_state_view.dart';
@@ -62,6 +64,7 @@ class MerchantStore {
     this.governorate,
     this.address,
     this.delivery,
+    this.phone,
   });
 
   final String id;
@@ -83,6 +86,9 @@ class MerchantStore {
 
   /// Where it delivers and what it asks.
   final StoreDelivery? delivery;
+
+  /// The owner's number, for a shopper who would rather call than message.
+  final String? phone;
 }
 
 final merchantStoreProvider = FutureProvider.family<MerchantStore, String>((
@@ -108,6 +114,7 @@ final merchantStoreProvider = FutureProvider.family<MerchantStore, String>((
         address: Json.strOrNull(json, const ['businessAddress', 'address']),
         delivery: StoreDelivery.fromJson(json['delivery']),
         isOpen: Json.boolean(json, const ['isOpen'], fallback: true),
+        phone: Json.strOrNull(json, const ['phone']),
       );
     },
   );
@@ -426,6 +433,13 @@ class _StoreHeader extends StatelessWidget {
                     tone: StatusTone.negative,
                   ),
                 ),
+              if (store.phone case final phone? when phone.isNotEmpty)
+                Padding(
+                  padding: const EdgeInsets.only(top: AppSpacing.md),
+                  // The owner previewing their shop sees the number shoppers
+                  // see, with nobody to call.
+                  child: _StorePhone(phone: phone, canCall: !isPreview),
+                ),
               if (store.delivery case final delivery?)
                 Consumer(
                   builder: (context, ref, _) =>
@@ -512,6 +526,76 @@ class _StoreHeader extends StatelessWidget {
           child: _StoreSearch(onChanged: onSearch),
         ),
       ],
+    );
+  }
+}
+
+/// The store's number, under its name: who answers, and one tap to call.
+class _StorePhone extends StatelessWidget {
+  const _StorePhone({required this.phone, required this.canCall});
+
+  final String phone;
+  final bool canCall;
+
+  @override
+  Widget build(BuildContext context) {
+    final market = context.market;
+
+    return Container(
+      padding: const EdgeInsetsDirectional.fromSTEB(
+        AppSpacing.md,
+        AppSpacing.sm,
+        AppSpacing.sm,
+        AppSpacing.sm,
+      ),
+      decoration: BoxDecoration(
+        color: market.surfaceMuted,
+        borderRadius: BorderRadius.circular(AppRadius.md),
+      ),
+      child: Row(
+        children: [
+          Container(
+            width: 36,
+            height: 36,
+            alignment: Alignment.center,
+            decoration: BoxDecoration(
+              color: market.successSoft,
+              shape: BoxShape.circle,
+            ),
+            child: SabaIcon(SabaIcons.phone, size: 16, color: market.success),
+          ),
+          const SizedBox(width: AppSpacing.md),
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  context.l10n.storePhone,
+                  style: context.textStyles.labelSmall,
+                ),
+                const SizedBox(height: 2),
+                // A number reads left to right, in Arabic too.
+                Directionality(
+                  textDirection: TextDirection.ltr,
+                  child: Text(
+                    IraqiPhone.display(phone),
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                    style: context.textStyles.titleMedium?.copyWith(
+                      fontSize: 15,
+                      fontFeatures: const [FontFeature.tabularFigures()],
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+          if (canCall) ...[
+            const SizedBox(width: AppSpacing.sm),
+            CallButton(number: phone),
+          ],
+        ],
+      ),
     );
   }
 }

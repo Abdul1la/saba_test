@@ -23,6 +23,9 @@ export const NAME_MAX = { person: 50, store: 40 }
 /** A shopper may ask for a return this many days after delivery (BR). */
 export const RETURN_WINDOW_DAYS = 7
 
+/** A part still on its way this many days after the store sent it is marked delivered for it (the user's call, 2026-10-05). */
+export const AUTO_DELIVER_DAYS = 5
+
 /** A shopper with no order delivered and paid can order at most this, in IQD (`_overFirstOrderLimit`). */
 export const FIRST_ORDER_LIMIT = 1_000_000
 

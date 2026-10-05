@@ -1060,4 +1060,14 @@ const Map<String, String> stringsEn = <String, String>{
       'It may have been taken off sale, or the link is wrong.',
   'cancelledNothingCharged': 'Cancelled: none of this will be charged.',
   'refusedNothingPaid': 'Refused at the door: nothing was paid.',
+  'storePhone': 'Store phone',
+  'autoDeliverOnTemplate':
+      'Not marked "Delivered" by {date}? Saba marks it delivered then, and the shopper is told.',
+  'noteAutoDelivered':
+      'Marked delivered automatically: it was on its way for 5 days.',
+  'emptyStoreReturns': 'No returns yet',
+  'emptyStoreReturnsMessage':
+      'When a shopper asks to return something from your store, it shows here.',
+  'returnNeedsAnswer': 'Open the order to approve or decline',
+  'returnNeedsCash': 'Collect it, then mark the cash handed back',
 };

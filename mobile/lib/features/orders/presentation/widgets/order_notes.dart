@@ -59,6 +59,8 @@ String? timelineNote(AppLocalizations l10n, OrderTimelineEntry entry) {
       : reasonLabel(l10n, entry.reasonCode!);
   final parts = <String>[
     if (entry.noteCode == 'ORDER_RECEIVED') l10n.noteOrderReceived,
+    // The store never pressed "Delivered": Saba did, 5 days after it was sent.
+    if (entry.noteCode == 'AUTO_DELIVERED') l10n.noteAutoDelivered,
     ?entry.storeName,
     ?reason,
     ?entry.note,

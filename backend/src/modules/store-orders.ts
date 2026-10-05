@@ -14,6 +14,7 @@ import { publish } from '../lib/events.js'
 import { notify, type NotificationType } from '../lib/notify.js'
 import { billingMonth } from '../lib/money.js'
 import { normalizePhone } from '../lib/phone.js'
+import { AUTO_DELIVER_DAYS } from '../rules.js'
 import {
   addressJson,
   addStep,
@@ -100,6 +101,8 @@ const StoreOrder = z
     cancellationReason: z.string().nullable(),
     received: z.boolean().nullable(),
     deliveredAt: z.string().nullable(),
+    /** On its way: when Saba marks it delivered if the store has not (AUTO_DELIVER_DAYS after it was sent). */
+    autoDeliverAt: z.string().nullable(),
   })
   .meta({ id: 'StoreOrder' })
 
@@ -117,6 +120,89 @@ const TOLD: Partial<Record<PartStatus, [MessageKey, MessageKey, NotificationType
 function phoneWords(phone: string): Record<Lang, string> {
   const shown = phone.replace(/^\+964(\d{3})(\d{3})(\d{4})$/, '+964 $1 $2 $3')
   return { en: shown, ar: `⁦${shown}⁩` }
+}
+
+/** A part delivered now: on the bill of the month it arrived, on Iraq's calendar. */
+async function markDelivered(conn: Connection, partId: number): Promise<void> {
+  const at = new Date()
+  await exec(conn, "UPDATE order_store_parts SET status = 'DELIVERED', delivered_at = ?, billing_month = ? WHERE id = ?", [at, billingMonth(at), partId])
+}
+
+/**
+ * Parts still on their way AUTO_DELIVER_DAYS after the store sent them (the
+ * user's call, 2026-10-05: a store that forgets "Delivered"). Each is marked
+ * delivered as the store's own button would (the bill, the return window, the
+ * order's status), its step noted AUTO_DELIVERED, and both sides are told:
+ * the shopper, with who to contact if it never came; the store, why. Run by
+ * the hourly housekeeping; a part that fails is tried again at the next run.
+ */
+export async function autoDeliver(pool: Pool): Promise<{ delivered: number; failed: number }> {
+  const due = await rows<{ id: number; order_id: number }>(
+    pool,
+    `SELECT id, order_id FROM order_store_parts
+      WHERE status = 'SHIPPED' AND shipped_at < NOW(3) - INTERVAL ? DAY
+      ORDER BY shipped_at, id LIMIT 200`,
+    [AUTO_DELIVER_DAYS],
+  )
+  let delivered = 0
+  let failed = 0
+  for (const waiting of due) {
+    try {
+      const done = await withTransaction(pool, async (conn) => {
+        // The order, then its part, as the store's own step locks them (DATABASE_DESIGN.md §5.1).
+        const order = await one<{ id: number; customer_id: number; order_number: string }>(
+          conn,
+          'SELECT id, customer_id, order_number FROM orders WHERE id = ? FOR UPDATE',
+          [waiting.order_id],
+        )
+        const part = await one<{ id: number; status: PartStatus; store_id: number }>(
+          conn,
+          'SELECT id, status, store_id FROM order_store_parts WHERE id = ? FOR UPDATE',
+          [waiting.id],
+        )
+        // The store got there first since the list was read.
+        if (!order || part?.status !== 'SHIPPED') return false
+        const store = await one<{ store_name: string; owner_user_id: number }>(conn, 'SELECT store_name, owner_user_id FROM stores WHERE id = ?', [
+          part.store_id,
+        ])
+        await markDelivered(conn, part.id)
+        await rollUp(conn, order.id, null)
+        await addStep(conn, order.id, part.id, 'DELIVERED', { storeName: store?.store_name, noteCode: 'AUTO_DELIVERED' })
+
+        const words = { store: store?.store_name ?? '', number: order.order_number, days: AUTO_DELIVER_DAYS }
+        const told = (title: MessageKey, body: MessageKey) => ({
+          en: { title: t('en', title, words), body: t('en', body, words) },
+          ar: { title: t('ar', title, words), body: t('ar', body, words) },
+        })
+        await notify(
+          conn,
+          order.customer_id,
+          'DELIVERY',
+          told('notify.partAutoDelivered.title', 'notify.partAutoDelivered.body'),
+          { type: 'ORDER', id: order.id },
+          { push: true },
+        )
+        if (store) {
+          await notify(
+            conn,
+            store.owner_user_id,
+            'ORDER',
+            told('notify.storeAutoDelivered.title', 'notify.storeAutoDelivered.body'),
+            { type: 'STORE_ORDER', id: part.id },
+            { push: true },
+          )
+        }
+        publish(conn, [order.customer_id, ...(store ? [store.owner_user_id] : []), 'ADMINS'], 'orders', order.id)
+        // Delivered goods are this month's sales: Finance changes (W8).
+        publish(conn, 'ADMINS', 'bills')
+        return true
+      })
+      if (done) delivered += 1
+    } catch {
+      failed += 1
+    }
+  }
+  return { delivered, failed }
 }
 
 export function storeOrderRoutes(api: Api, ctx: Context): void {
@@ -176,6 +262,10 @@ export function storeOrderRoutes(api: Api, ctx: Context): void {
       cancellationReason: part.cancellation_reason,
       received: part.received === null ? null : part.received === 1,
       deliveredAt: part.delivered_at?.toISOString() ?? null,
+      autoDeliverAt:
+        part.status === 'SHIPPED' && part.shipped_at
+          ? new Date(part.shipped_at.getTime() + AUTO_DELIVER_DAYS * 24 * 60 * 60 * 1000).toISOString()
+          : null,
     }
   }
 
@@ -224,7 +314,7 @@ export function storeOrderRoutes(api: Api, ctx: Context): void {
     method: 'get',
     path: '/merchants/me/orders/counts',
     tag: TAG,
-    summary: "How many of the store's parts are at each step",
+    summary: "How many of the store's parts are at each step; RETURNS: its returns waiting for it (asked, or approved and not yet refunded)",
     who: STORE,
     response: z.record(z.string(), z.number()),
     async handle({ req }) {
@@ -234,7 +324,12 @@ export function storeOrderRoutes(api: Api, ctx: Context): void {
         'SELECT status, COUNT(*) AS n FROM order_store_parts WHERE store_id = ? GROUP BY status',
         [store.id],
       )
-      return Object.fromEntries(found.map((row) => [row.status, Number(row.n)]))
+      const returns = await one<{ n: number }>(
+        pool,
+        "SELECT COUNT(*) AS n FROM returns WHERE store_id = ? AND status IN ('REQUESTED', 'APPROVED')",
+        [store.id],
+      )
+      return { ...Object.fromEntries(found.map((row) => [row.status, Number(row.n)])), RETURNS: Number(returns?.n ?? 0) }
     },
   })
 
@@ -313,16 +408,9 @@ export function storeOrderRoutes(api: Api, ctx: Context): void {
             )
             break
           }
-          case 'DELIVERED': {
-            // On the bill of the month it arrived, on Iraq's calendar.
-            const at = new Date()
-            await exec(conn, "UPDATE order_store_parts SET status = 'DELIVERED', delivered_at = ?, billing_month = ? WHERE id = ?", [
-              at,
-              billingMonth(at),
-              part!.id,
-            ])
+          case 'DELIVERED':
+            await markDelivered(conn, part!.id)
             break
-          }
           case 'CANCELLED':
             reason = DECLINE_REASONS.find((code) => code === body.reason) ?? null
             if (!reason) throw fieldError('reason', 'order.declineReason')

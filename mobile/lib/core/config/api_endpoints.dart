@@ -140,6 +140,7 @@ class ApiEndpoints {
   static const String merchantOrderCounts = '/merchants/me/orders/counts';
 
   /// A store's answer to a return request.
+  static const String merchantReturns = '/merchants/me/returns';
   static String merchantReturn(String id) => '/merchants/me/returns/$id';
 
   static String merchantOrderStatus(String id) =>

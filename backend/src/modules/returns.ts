@@ -358,6 +358,45 @@ export function returnRoutes(api: Api, ctx: Context): void {
   })
 
   route(api, {
+    method: 'get',
+    path: '/merchants/me/returns',
+    tag: 'Store: orders',
+    summary: "The store's returns, newest first; status OPEN: the ones waiting for it (asked, or approved and not yet refunded)",
+    who: ['MERCHANT'],
+    query: PageQuery.extend({ status: z.string().max(20).optional() }),
+    response: z.array(Return.extend({ storeOrderId: z.string() }).meta({ id: 'StoreReturn' })),
+    async handle({ req, query }) {
+      const store = await one<{ id: number }>(pool, 'SELECT id FROM stores WHERE owner_user_id = ?', [me(req).id])
+      if (!store) throw notFound()
+      const where = ['store_id = ?']
+      const params: unknown[] = [store.id]
+      const wanted = (query.status ?? '').trim().toUpperCase()
+      if (wanted === 'OPEN') {
+        where.push("status IN ('REQUESTED', 'APPROVED')")
+      } else if (wanted) {
+        where.push('status = ?')
+        params.push(wanted)
+      }
+      const total = await one<{ n: number }>(pool, `SELECT COUNT(*) AS n FROM returns WHERE ${where.join(' AND ')}`, params)
+      const ids = await rows<{ id: number }>(
+        pool,
+        `SELECT id FROM returns WHERE ${where.join(' AND ')} ORDER BY requested_at DESC, id DESC LIMIT ? OFFSET ?`,
+        [...params, query.perPage, (query.page - 1) * query.perPage],
+      )
+      const found = await loadReturns(
+        pool,
+        ids.map((row) => row.id),
+      )
+      return new Page(
+        // The store's order screen holds the answer buttons: its part's id.
+        found.map((data) => ({ ...returnJson(req, ctx, data), storeOrderId: String(data.ret.part_id) })),
+        query,
+        Number(total?.n ?? 0),
+      )
+    },
+  })
+
+  route(api, {
     method: 'patch',
     path: '/merchants/me/returns/:id',
     tag: 'Store: orders',

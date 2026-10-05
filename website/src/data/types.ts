@@ -197,6 +197,8 @@ export interface OrderStep {
   occurredAt: string
   /** The store that took this step; the server's, the mock has none. */
   storeName?: string
+  /** AUTO_DELIVERED: Saba marked it delivered, the store having left it on its way 5 days. */
+  noteCode?: string
 }
 
 /** A shopper's `Order` with the customer a store sees (`MerchantOrderRow`). */

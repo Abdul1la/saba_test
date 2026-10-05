@@ -2,7 +2,7 @@ import 'package:flutter/foundation.dart';
 
 import '../../../core/location/governorate.dart';
 import '../../orders/domain/entities.dart' show OrderAddress;
-import '../../returns/domain/entities.dart' show ReturnDetail;
+import '../../returns/domain/entities.dart' show ReturnDetail, ReturnSummary;
 
 /// One point on a sales chart.
 @immutable
@@ -220,6 +220,7 @@ class MerchantOrderRow {
     this.customerPhone,
     this.paymentMethodLabel,
     this.items = const <MerchantOrderItem>[],
+    this.autoDeliverAt,
   });
 
   final String id;
@@ -251,6 +252,27 @@ class MerchantOrderRow {
   /// The lines, so the card can say what is in the order. A count alone tells
   /// a merchant nothing they can act on.
   final List<MerchantOrderItem> items;
+
+  /// On its way: when Saba marks it delivered if the store has not, five
+  /// days after it was sent. Null at every other step.
+  final DateTime? autoDeliverAt;
+}
+
+/// One of the store's returns, with the order it belongs to: the order's
+/// screen is where the store answers it.
+@immutable
+class MerchantReturnRow {
+  const MerchantReturnRow({
+    required this.request,
+    required this.storeOrderId,
+    this.customerName,
+  });
+
+  final ReturnSummary request;
+
+  /// The store's order (its part of the shopper's order) the return is on.
+  final String storeOrderId;
+  final String? customerName;
 }
 
 /// One line of a merchant order.
