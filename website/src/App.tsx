@@ -8,6 +8,7 @@ import { DashboardPage } from '@/pages/dashboard'
 import { FeaturedPage } from '@/pages/featured'
 import { FinancePage } from '@/pages/finance'
 import { LoginPage } from '@/pages/login'
+import { NotificationsPage } from '@/pages/notifications'
 import { OrdersPage } from '@/pages/orders'
 import { ProductsPage } from '@/pages/products'
 import { QueuePage } from '@/pages/queue'
@@ -55,6 +56,7 @@ const router = createBrowserRouter(
         <Route path="featured" element={<FeaturedPage />} />
         <Route path="returns" element={<ReturnsPage />} />
         <Route path="customers" element={<CustomersPage />} />
+        <Route path="notifications" element={<NotificationsPage />} />
       </Route>
       <Route path="*" element={<Navigate to="/" replace />} />
     </>,

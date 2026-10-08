@@ -17,6 +17,8 @@ export type NotificationType =
   | 'MESSAGE'
   | 'TICKET'
   | 'PAYMENT'
+  /** Saba's own, from the admin website (migration 0014): opens nothing. */
+  | 'ANNOUNCEMENT'
 
 /** What a tap opens (notifications_screen.dart). */
 export type NotificationTarget =

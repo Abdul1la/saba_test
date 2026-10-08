@@ -18,6 +18,7 @@ import { logSms, otpiqSms, type SendSms } from './lib/sms.js'
 import { IMAGE_KEY, imageTypeOf, mediaStoreOf, UPLOADS_PATH, type MediaStore } from './lib/storage.js'
 import { createTokens, type Tokens } from './lib/tokens.js'
 import { accountRoutes } from './modules/account.js'
+import { adminAnnouncementRoutes } from './modules/admin-announcements.js'
 import { adminCatalogRoutes } from './modules/admin-catalog.js'
 import { adminCustomerRoutes } from './modules/admin-customers.js'
 import { adminDashboardRoutes } from './modules/admin-dashboard.js'
@@ -168,6 +169,7 @@ export function createApp({ config, pool, logger, sms, push, media }: AppDeps): 
   adminCustomerRoutes(api, ctx)
   adminDashboardRoutes(api, ctx)
   adminSettingsRoutes(api, ctx)
+  adminAnnouncementRoutes(api, ctx)
   billRoutes(api, ctx)
   eventRoutes(api)
   app.use(config.apiPrefix, api.router)

@@ -1,6 +1,6 @@
 import { useEffect, useId, useState, type ComponentType } from 'react'
 import { NavLink, Outlet, useLocation, useNavigate } from 'react-router'
-import { ClipboardCheck, Flag, FlaskConical, Globe, ImageIcon, LayoutGrid, LifeBuoy, LogOut, Menu, Package, ReceiptText, RotateCcw, Shapes, ShieldAlert, Star, Store, Tag, Users, Wallet } from 'lucide-react'
+import { ClipboardCheck, Flag, FlaskConical, Globe, ImageIcon, LayoutGrid, LifeBuoy, LogOut, Megaphone, Menu, Package, ReceiptText, RotateCcw, Shapes, ShieldAlert, Star, Store, Tag, Users, Wallet } from 'lucide-react'
 import { DetailSheets } from '@/components/detail-sheets'
 import { Button } from '@/components/ui/button'
 import { DirectionProvider } from '@/components/ui/direction'
@@ -112,6 +112,8 @@ function SidebarNav({ onNavigate }: { onNavigate?: () => void }) {
         { to: '/products', label: t.nav.products, icon: Package },
         { to: '/customers', label: t.nav.customers, icon: Users },
         { to: '/finance', label: t.nav.finance, icon: Wallet },
+        // Saba's announcements to customers, stores, or both.
+        { to: '/notifications', label: t.nav.notifications, icon: Megaphone },
       ],
     },
     {
@@ -234,6 +236,7 @@ export function AppShell() {
     '/featured': t.nav.featured,
     '/returns': t.nav.returns,
     '/customers': t.nav.customers,
+    '/notifications': t.nav.notifications,
   }
 
   return (
